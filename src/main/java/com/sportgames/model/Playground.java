@@ -5,9 +5,9 @@ import java.util.Set;
 public class Playground {
 
     private long id;
-    private String address; //type Address
-    private Set<String> sports;
-    private Set<SportEvent> events;
+    private String address; //type Address. Адрес площадки
+    private Set<String> sports; // Виды спорта, поддерживаемые площадкой
+    private Set<SportEvent> events; // Сет текущих ивентов площадки
 
     public long getId() {
         return id;

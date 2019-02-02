@@ -5,9 +5,9 @@ import java.util.Set;
 public class SportEvent {
 
     private long id;
-    private String sport;
-    private String timeEvent;
-    private Set<String> players;
+    private String sport; // Вид спорта события
+    private String timeEvent; //Время проведения события
+    private Set<String> players; // Сет игроков, учавствующих в событии
 
     public long getId() {
         return id;
