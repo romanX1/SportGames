@@ -10,7 +10,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String userPage(){
-        return "/pages/index";
+        return "index";
     }
 
 
