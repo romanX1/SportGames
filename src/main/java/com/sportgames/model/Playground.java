@@ -27,7 +27,7 @@ public class Playground {
 
     public Playground(String address){
         this.address = address;
-        this.sports = sports;
+
     }
 
     public long getId() {

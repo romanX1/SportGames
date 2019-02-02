@@ -15,10 +15,6 @@ public class Sport {
 
     public Sport(){}
 
-    public Sport(String type){
-        this.type = type;
-    }
-
     public long getId() {
         return id;
     }
