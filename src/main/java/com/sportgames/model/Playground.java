@@ -23,6 +23,13 @@ public class Playground {
     @Column (name = "events")
     private Set<SportEvent> events; // Сет текущих ивентов площадки
 
+    public Playground(){}
+
+    public Playground(String address){
+        this.address = address;
+        this.sports = sports;
+    }
+
     public long getId() {
         return id;
     }

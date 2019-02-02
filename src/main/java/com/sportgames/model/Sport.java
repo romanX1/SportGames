@@ -13,6 +13,12 @@ public class Sport {
     @Column(name = "type", nullable = false)
     private String type;
 
+    public Sport(){}
+
+    public Sport(String type){
+        this.type = type;
+    }
+
     public long getId() {
         return id;
     }
