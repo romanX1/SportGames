@@ -1,13 +1,27 @@
 package com.sportgames.model;
 
 import java.util.Set;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "sportevents")
 public class SportEvent {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String sport; // Вид спорта события
+
+    @OneToOne
+    @Column (name = "sport", nullable = false)
+    private Sport sport; // Вид спорта события
+
+    @Column (name = "time", nullable = false)
     private String timeEvent; //Время проведения события
-    private Set<String> players; // Сет игроков, учавствующих в событии
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Column (name = "users")
+    private Set<User> users; // Сет игроков, учавствующих в событии
 
     public long getId() {
         return id;
@@ -17,11 +31,11 @@ public class SportEvent {
         this.id = id;
     }
 
-    public String getSport() {
+    public Sport getSport() {
         return sport;
     }
 
-    public void setSport(String sport) {
+    public void setSport(Sport sport) {
         this.sport = sport;
     }
 
@@ -33,11 +47,11 @@ public class SportEvent {
         this.timeEvent = timeEvent;
     }
 
-    public Set<String> getPlayers() {
-        return players;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setPlayers(Set<String> players) {
-        this.players = players;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
