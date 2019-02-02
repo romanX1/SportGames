@@ -11,7 +11,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String userPage(){
-        return "user";
+        return "index";
     }
 
 
