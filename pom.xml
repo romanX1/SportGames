@@ -8,5 +8,16 @@
     <artifactId>com.sportgames</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <spring.version>5.1.3.RELEASE</spring.version>
+    </properties>
+<dependencies>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+</dependencies>
 
 </project>
