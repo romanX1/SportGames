@@ -21,7 +21,7 @@ public class SportDAOImpl implements SportDAO {
 
     @Override
     public List<Sport> getAll() {
-        return null;
+        return entityManager.createQuery("FROM Sport",Sport.class).getResultList();
     }
 
     @Override

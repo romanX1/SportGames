@@ -10,4 +10,5 @@ public interface PlaygroundService {
     List<Playground> getAll();
     void add(Playground playground);
 
+    Playground get(Long id);
 }
