@@ -8,6 +8,7 @@ public class Sport {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "type", nullable = false)
