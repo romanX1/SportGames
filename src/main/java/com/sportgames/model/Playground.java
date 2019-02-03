@@ -16,12 +16,17 @@ public class Playground {
     private String address; //type Address. Адрес площадки
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column (name = "sports", nullable = false)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column (name = "events")
     private Set<SportEvent> events; // Сет текущих ивентов площадки
+
+    public Playground(){}
+
+    public Playground(String address){
+        this.address = address;
+
+    }
 
     public long getId() {
         return id;

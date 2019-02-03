@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>playgrounds</title>
+</head>
+<body>
+<h1>grounds</h1>
+
+<a href="addGround">Add ground</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr th:each ="ground : ${grounds}">
+            <td th:utext="${ground.address}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

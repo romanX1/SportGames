@@ -13,6 +13,8 @@ public class Sport {
     @Column(name = "type", nullable = false)
     private String type;
 
+    public Sport(){}
+
     public long getId() {
         return id;
     }
