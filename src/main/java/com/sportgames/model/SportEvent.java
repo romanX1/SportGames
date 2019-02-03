@@ -21,6 +21,7 @@ public class SportEvent {
     private Set<User> users; // Сет игроков, учавствующих в событии
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn(name="playgrounds_sports", referencedColumnName="id", nullable=false)
     private Playground playground;
 
     public Long getId() {
