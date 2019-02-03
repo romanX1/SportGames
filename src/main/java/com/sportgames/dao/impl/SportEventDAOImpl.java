@@ -1,32 +1,32 @@
-package com.sportgames.dao;
+package com.sportgames.dao.impl;
 
-import com.sportgames.model.User;
+import com.sportgames.dao.SportEventDAO;
+import com.sportgames.model.SportEvent;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-@Repository("UserDAO")
-public class UserDAOImpl implements UserDAO {
+@Repository("SportEventDAO")
+public class SportEventDAOImpl implements SportEventDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public User findById(int id) {
+    public SportEvent findById(int id) {
         return null;
     }
 
     @Override
-    public List<User> getAll() {
+    public List<SportEvent> getAll() {
         return null;
     }
 
     @Override
-    public void add(User user) {
-        entityManager.merge(user);
+    public void add(SportEvent sportEvent) {
+        entityManager.merge(sportEvent);
     }
 
     @Override
@@ -35,12 +35,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User get(int id) {
+    public SportEvent get(int id) {
         return null;
     }
 
     @Override
-    public User findByName(String name) {
+    public SportEvent findByName(String name) {
         return null;
     }
 }
