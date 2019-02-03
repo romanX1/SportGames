@@ -18,7 +18,7 @@ public class Playground {
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
 
-     // Сет текущих ивентов площадки
+
 
     public Playground(){}
 

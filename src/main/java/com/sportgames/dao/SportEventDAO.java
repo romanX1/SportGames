@@ -4,10 +4,10 @@ import com.sportgames.model.SportEvent;
 import java.util.List;
 
 public interface SportEventDAO {
-    SportEvent findById(int id);
+    SportEvent findById(Long id);
     List<SportEvent> getAll();
     void add(SportEvent sportEvent);
-    void delete(int id);
-    SportEvent get(int id);
+    void delete(Long id);
+    SportEvent get(Long id);
     SportEvent findByName(String name);
 }

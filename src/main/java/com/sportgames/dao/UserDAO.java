@@ -6,10 +6,10 @@ import com.sportgames.model.User;
 import java.util.List;
 
 public interface UserDAO {
-    User findById(int id);
+    User findById(Long id);
     List<User> getAll();
     void add(User user);
-    void delete(int id);
-    User get(int id);
+    void delete(Long id);
+    User get(Long id);
     User findByName(String name);
 }

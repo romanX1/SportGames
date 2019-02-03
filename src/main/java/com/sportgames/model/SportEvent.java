@@ -17,10 +17,11 @@ public class SportEvent {
     @Column (name = "time", nullable = false)
     private String timeEvent; //Время проведения события
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<User> users; // Сет игроков, учавствующих в событии
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinColumn(name="playgrounds_sports", referencedColumnName="id", nullable=false)
     private Playground playground;
 
     public Long getId() {

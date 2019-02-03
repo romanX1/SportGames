@@ -15,7 +15,7 @@ public class SportDAOImpl implements SportDAO {
     private EntityManager entityManager;
 
     @Override
-    public Sport findById(int id) {
+    public Sport findById(Long id) {
         return null;
     }
 
@@ -30,12 +30,12 @@ public class SportDAOImpl implements SportDAO {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
 
     }
 
     @Override
-    public Sport get(int id) {
+    public Sport get(Long id) {
         return null;
     }
 

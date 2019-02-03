@@ -30,7 +30,7 @@ public class TestData {
     private final static Logger logger = LoggerFactory.getLogger(TestData.class);
 
     public void initData(){
-        //logger.error("dgdfegdfg");
+        logger.error("dgdfegdfg");
         HashSet<User> users=new HashSet<>();
         User user=new User();
         user.setName("igrok");
@@ -59,6 +59,7 @@ public class TestData {
         soccerGame.setSport(soccer);
         soccerGame.setUsers(users);
         soccerGame.setTimeEvent("anytime");
+        soccerGame.setPlayground(kremlin);
 
         SportEvent volleyballGame=new SportEvent();
         volleyballGame.setSport(volleyball);
