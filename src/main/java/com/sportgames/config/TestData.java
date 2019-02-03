@@ -26,7 +26,7 @@ public class TestData {
     @Autowired
     SportEventDAO sportEventDAO;
 
-    public void init(){
+    public void initData(){
 
         Playground kremlin=new Playground("kremlin");
         playgroundDAO.add(kremlin);

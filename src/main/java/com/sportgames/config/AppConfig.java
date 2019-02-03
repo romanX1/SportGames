@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-    @Bean(initMethod = "init")
+    @Bean(initMethod = "initData")
 
     public TestData initTestData(){
         return new TestData();
