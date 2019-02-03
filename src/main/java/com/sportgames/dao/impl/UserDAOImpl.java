@@ -37,7 +37,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
 
-
     @Override
     public User findByName(String name) {
         return entityManager.find(User.class, name);
