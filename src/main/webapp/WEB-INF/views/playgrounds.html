@@ -6,9 +6,8 @@
     <title>playgrounds</title>
 </head>
 <body>
-<h1>grounds</h1>
+<h1>Grounds</h1>
 
-<a href="addGround">Add ground</a>
 <br/><br/>
 <div>
     <table border="1">
@@ -17,5 +16,19 @@
         </tr>
     </table>
 </div>
+<h1>Sports</h1>
+
+    <div th:each="sport : ${sports}">
+            <a th:href="'/playgrounds/'+${sport.type}"
+            th:utext="${sport.type}"/><br>
+    </div>
+    <form th:action="@{/addGround}" >
+    <input type="submit" value="Add new Ground"></p>
+    </form>
+</form>
+
+<!--<a href="addGround">Add ground</a>-->
+
 </body>
 </html>
+

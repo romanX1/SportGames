@@ -67,7 +67,7 @@ public class TestData {
         volleyballGame.setPlayground(kremlin);
 
 
-        sportEventDAO.add(volleyballGame);
-        sportEventDAO.add(soccerGame);
+//        sportEventDAO.add(volleyballGame);
+//        sportEventDAO.add(soccerGame);
     }
 }

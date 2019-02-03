@@ -4,15 +4,15 @@ import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 import com.sportgames.service.PlaygroundService;
+import com.sportgames.service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +24,8 @@ public class HelloController {
 
     @Autowired
     private PlaygroundService playgroundService ;
+    @Autowired
+    private SportService sportService ;
 
 
     @GetMapping("/")
@@ -34,9 +36,15 @@ public class HelloController {
     @GetMapping("/addGround")
     public String addGround(Model model){
         //model.addAttribute("Playground", new Playground ());
-
         return "addground";
     }
+
+    @PostMapping("/addGround")
+    public void addGround(HttpServletRequest req){
+
+        playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
+    }
+
 
     @GetMapping("/playgrounds")
     public ModelAndView playGrounds(){
@@ -49,10 +57,11 @@ public class HelloController {
         if (type.isEmpty()) {
             playgrounds = playgroundService.getAll();
         } else {
-            playgrounds = playgroundService.getPlaygroundsBySportType(type);
+            playgrounds = playgroundService.getPlaygroundBySportType(type);
         }
         ModelAndView modelAndView = new ModelAndView("playgrounds");
         modelAndView.addObject("grounds", playgrounds);
+        modelAndView.addObject("sports", sportService.getAll() );
 
         return modelAndView;
     }

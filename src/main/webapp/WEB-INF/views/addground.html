@@ -7,9 +7,9 @@
 </head>
 <body>
 <h1>Please add new ground</h1>
-<form action="#" th:action="@{/addground}" th:object="${Playground}" method="post">
-    <p>Address: <input type="text" th:field="*{address}" /></p>
-    <p><input type="submit" value="Добавить" /> </p>
+<form action="/" th:action="@{/addGround}" method="post">
+    <p>Address: <input type="text" name="newAddress"/></p>
+    <p><input type="submit" value="ADD" /> </p>
 </form>
 </body>
 </html>
