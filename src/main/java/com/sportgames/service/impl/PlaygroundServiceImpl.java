@@ -1,15 +1,16 @@
-package com.sportgames.service;
+package com.sportgames.service.impl;
 
 import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
+import com.sportgames.service.PlaygroundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("playgroundService")
-//@Transactional
+@Service("PlaygroundService")
+@Transactional
 public class PlaygroundServiceImpl implements PlaygroundService {
 
     @Autowired

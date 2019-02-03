@@ -1,7 +1,8 @@
-package com.sportgames.dao;
+package com.sportgames.dao.impl;
 
 
 
+import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
