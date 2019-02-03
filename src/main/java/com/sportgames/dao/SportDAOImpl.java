@@ -11,7 +11,7 @@ public class SportDAOImpl implements SportDAO {
     }
 
     @Override
-    public List<Sport> list() {
+    public List<Sport> getAll() {
         return null;
     }
 

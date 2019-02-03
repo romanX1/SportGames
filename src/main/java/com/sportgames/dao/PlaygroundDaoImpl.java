@@ -20,7 +20,7 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
     }
 
     @Override
-    public List<Playground> list() {
+    public List<Playground> getAll() {
         return entityManager.createQuery("SELECT play FROM Playground play " , Playground.class).getResultList();
     }
 

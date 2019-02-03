@@ -11,7 +11,7 @@ public class SportEventDAOImpl implements SportEventDAO {
     }
 
     @Override
-    public List<SportEvent> list() {
+    public List<SportEvent> getAll() {
         return null;
     }
 

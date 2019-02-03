@@ -11,7 +11,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> list() {
+    public List<User> getAll() {
         return null;
     }
 
