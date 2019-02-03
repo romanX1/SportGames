@@ -17,6 +17,11 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     private PlaygroundDAO dao;
 
     @Override
+    public List<Playground> getPlaygroundBySportType(String type) {
+        return dao.getPlaygroundBySportType(type);
+    }
+
+    @Override
     public List<Playground> getAll() {
         return dao.getAll();
     }
