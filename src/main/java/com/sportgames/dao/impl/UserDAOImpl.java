@@ -1,6 +1,7 @@
-package com.sportgames.dao;
+package com.sportgames.dao.impl;
 
-import com.sportgames.model.Sport;
+import com.sportgames.dao.UserDAO;
+import com.sportgames.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,25 +9,25 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-@Repository("SportDAO")
-public class SportDAOImpl implements SportDAO {
+@Repository("UserDAO")
+public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public Sport findById(int id) {
+    public User findById(int id) {
         return null;
     }
 
     @Override
-    public List<Sport> getAll() {
+    public List<User> getAll() {
         return null;
     }
 
     @Override
-    public void add(Sport sport) {
-        entityManager.merge(sport);
+    public void add(User user) {
+        entityManager.merge(user);
     }
 
     @Override
@@ -35,12 +36,12 @@ public class SportDAOImpl implements SportDAO {
     }
 
     @Override
-    public Sport get(int id) {
+    public User get(int id) {
         return null;
     }
 
     @Override
-    public Sport findByName(String name) {
+    public User findByName(String name) {
         return null;
     }
 }
