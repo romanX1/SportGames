@@ -1,9 +1,5 @@
 package com.sportgames.config;
 
-import com.sportgames.dao.PlaygroundDAO;
-import com.sportgames.dao.SportDAO;
-import com.sportgames.dao.SportEventDAO;
-import com.sportgames.dao.UserDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
@@ -12,11 +8,12 @@ import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
 import com.sportgames.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 
 public class TestData {
@@ -30,7 +27,10 @@ public class TestData {
     @Autowired
     private SportEventService sportEventDAO;
 
+    private final static Logger logger = LoggerFactory.getLogger(TestData.class);
+
     public void initData(){
+        //logger.error("dgdfegdfg");
         HashSet<User> users=new HashSet<>();
         User user=new User();
         user.setName("igrok");
