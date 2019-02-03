@@ -4,16 +4,18 @@ package com.sportgames.dao.impl;
 
 import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Repository("PlaygroundDAO")
 public class PlaygroundDaoImpl implements PlaygroundDAO {
 
-    @PersistenceContext
+    @Autowired
     private EntityManager entityManager;
 
     public Playground findById(int id) {
@@ -27,7 +29,7 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @Override
     public void add(Playground playground) {
-        entityManager.merge(playground);
+        entityManager.persist(playground);
     }
 
     @Override

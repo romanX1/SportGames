@@ -8,9 +8,8 @@ import javax.persistence.*;
 public class SportEvent {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
     private Sport sport; // Вид спорта события
@@ -21,11 +20,14 @@ public class SportEvent {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<User> users; // Сет игроков, учавствующих в событии
 
-    public long getId() {
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Playground playground;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,5 +53,13 @@ public class SportEvent {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Playground getPlayground() {
+        return playground;
+    }
+
+    public void setPlayground(Playground playground) {
+        this.playground = playground;
     }
 }

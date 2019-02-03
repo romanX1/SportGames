@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service("SportEventService")
-@Transactional
 public class SportEventServiceImpl implements SportEventService {
 
     @Autowired
@@ -22,6 +21,7 @@ public class SportEventServiceImpl implements SportEventService {
     }
 
     @Override
+    @Transactional
     public void add(SportEvent sportEvent) {
         dao.add(sportEvent);
     }

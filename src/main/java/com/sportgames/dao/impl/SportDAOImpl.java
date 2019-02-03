@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Repository("SportDAO")
 public class SportDAOImpl implements SportDAO {
 
@@ -27,7 +26,7 @@ public class SportDAOImpl implements SportDAO {
 
     @Override
     public void add(Sport sport) {
-        entityManager.merge(sport);
+        entityManager.persist(sport);
     }
 
     @Override

@@ -8,6 +8,10 @@ import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
+import com.sportgames.service.PlaygroundService;
+import com.sportgames.service.SportEventService;
+import com.sportgames.service.SportService;
+import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
@@ -18,18 +22,20 @@ import java.util.Set;
 public class TestData {
 
     @Autowired
-    PlaygroundDAO playgroundDAO;
+    private PlaygroundService playgroundDAO;
     @Autowired
-    UserDAO userDAO;
+    private UserService userDAO;
     @Autowired
-    SportDAO sportDAO;
+    private SportService sportDAO;
     @Autowired
-    SportEventDAO sportEventDAO;
+    private SportEventService sportEventDAO;
 
     public void initData(){
-
-        Playground kremlin=new Playground("kremlin");
-        playgroundDAO.add(kremlin);
+        HashSet<User> users=new HashSet<>();
+        User user=new User();
+        user.setName("igrok");
+        users.add(user);
+        userDAO.add(user);
 
         Sport soccer=new Sport();
         Sport volleyball=new Sport();
@@ -41,17 +47,13 @@ public class TestData {
         sportDAO.add(volleyball);
         sportDAO.add(badminton);
 
+        Playground kremlin=new Playground("kremlin");
         Set<Sport> kremlinSports=new HashSet<>();
         kremlinSports.add(soccer);
         kremlinSports.add(volleyball);
         kremlinSports.add(badminton);
         kremlin.setSports(kremlinSports);
-
-        HashSet<User> users=new HashSet<>();
-        User user=new User();
-        user.setName("igrok");
-        users.add(user);
-        userDAO.add(user);
+        playgroundDAO.add(kremlin);
 
         SportEvent soccerGame=new SportEvent();
         soccerGame.setSport(soccer);
@@ -62,10 +64,8 @@ public class TestData {
         volleyballGame.setSport(volleyball);
         volleyballGame.setUsers(users);
         volleyballGame.setTimeEvent("never");
+        volleyballGame.setPlayground(kremlin);
 
-        Set<SportEvent> kremlinEvents=new HashSet<>();
-        kremlinEvents.add(soccerGame);
-        kremlinEvents.add(volleyballGame);
 
         sportEventDAO.add(volleyballGame);
         sportEventDAO.add(soccerGame);
