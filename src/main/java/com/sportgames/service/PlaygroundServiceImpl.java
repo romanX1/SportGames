@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service("playgroundService")
-@Transactional
+//@Transactional
 public class PlaygroundServiceImpl implements PlaygroundService {
 
     @Autowired
