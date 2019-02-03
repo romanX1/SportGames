@@ -1,25 +1,48 @@
 package com.sportgames.dao;
 
-import java.util.List;
+
 
 import com.sportgames.model.Playground;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @SuppressWarnings("ALL")
 @Repository("playgroundDAO")
 public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager entityManager;
 
     public Playground findById(int id) {
-        return em.find(Playground.class, id);
+        return entityManager.find(Playground.class, id);
     }
+
+    @Override
+    public List<Playground> list() {
+        return entityManager.createQuery("SELECT play FROM Playground play " , Playground.class).getResultList();
+    }
+
+    @Override
+    public void add(Playground playground) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public Playground get(int id) {
+        return null;
+    }
+
+    @Override
+    public Playground findByName(String name) {
+        return null;
+    }
+
 
 }
