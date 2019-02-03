@@ -10,16 +10,15 @@ public class Playground {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column (name = "address", unique = true, nullable = false)
     private String address; //type Address. Адрес площадки
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<SportEvent> events; // Сет текущих ивентов площадки
+     // Сет текущих ивентов площадки
 
     public Playground(){}
 
@@ -28,11 +27,11 @@ public class Playground {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,14 +49,6 @@ public class Playground {
 
     public void setSports(Set<Sport> sports) {
         this.sports = sports;
-    }
-
-    public Set<SportEvent> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<SportEvent> events) {
-        this.events = events;
     }
 
 }
