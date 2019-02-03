@@ -9,6 +9,7 @@ public interface PlaygroundDAO {
 
     Playground findById(int id);
     List<Playground> getAll();
+    List<Playground> getPlaygroundBySportType(String type);
     void add(Playground playground);
     void delete(int id);
     Playground get(int id);

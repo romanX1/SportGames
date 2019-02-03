@@ -26,7 +26,7 @@ public class SportEventDAOImpl implements SportEventDAO {
 
     @Override
     public void add(SportEvent sportEvent) {
-        entityManager.merge(sportEvent);
+        entityManager.persist(sportEvent);
     }
 
     @Override

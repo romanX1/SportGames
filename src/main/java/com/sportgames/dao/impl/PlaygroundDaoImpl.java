@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
+@SuppressWarnings("ALL")
 @Repository("PlaygroundDAO")
 public class PlaygroundDaoImpl implements PlaygroundDAO {
 
@@ -23,8 +23,15 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
     }
 
     @Override
+    public List<Playground> getPlaygroundBySportType(String type) {
+        return entityManager.createQuery("SELECT play FROM Playground play " +
+                "JOIN play.sports AS sport W" +
+                "HERE sport.type = :typeName" , Playground.class).setParameter("typeName", type).getResultList();
+    }
+
+    @Override
     public List<Playground> getAll() {
-        return entityManager.createQuery("SELECT play FROM Playground play " , Playground.class).getResultList();
+        return entityManager.createQuery("SELECT play FROM Playground play  " , Playground.class).getResultList();
     }
 
     @Override
