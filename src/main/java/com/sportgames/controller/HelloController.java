@@ -30,14 +30,17 @@ public class HelloController {
     }
 
     @GetMapping("/addGround")
-    public String addGround(){
+    public String addGround(Model model){
+        model.addAttribute("Playground", new Playground ());
+
         return "addground";
     }
 
     @GetMapping("/playgrounds")
     public String playGrounds(Model model){
-       // playgroundDAO.getAll();
+        playgroundService.add(new Playground("Test #1"));
         model.addAttribute("grounds",playgroundService.getAll());
+
         return "playgrounds";
     }
 
