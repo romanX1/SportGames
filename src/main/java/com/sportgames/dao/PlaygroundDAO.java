@@ -12,6 +12,5 @@ public interface PlaygroundDAO {
     List<Playground> getPlaygroundBySportType(String type);
     void add(Playground playground);
     void delete(Long id);
-    Playground get(Long id);
     Playground findByName(String name);
 }

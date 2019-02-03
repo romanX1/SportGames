@@ -8,6 +8,5 @@ public interface SportEventDAO {
     List<SportEvent> getAll();
     void add(SportEvent sportEvent);
     void delete(Long id);
-    SportEvent get(Long id);
     SportEvent findByName(String name);
 }

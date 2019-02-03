@@ -9,6 +9,5 @@ public interface SportDAO {
     List<Sport> getAll();
     void add(Sport sport);
     void delete(Long id);
-    Sport get(Long id);
     Sport findByName(String name);
 }

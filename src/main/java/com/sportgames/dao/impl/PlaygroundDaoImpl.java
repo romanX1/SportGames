@@ -39,17 +39,13 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @Override
     public void delete(Long id) {
-
-    }
-
-    @Override
-    public Playground get(Long id) {
-        return null;
+        Playground playground = entityManager.find(Playground.class, id);
+        entityManager.remove(playground);
     }
 
     @Override
     public Playground findByName(String name) {
-        return null;
+        return entityManager.find(Playground.class, name);
     }
 
 

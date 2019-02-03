@@ -17,12 +17,12 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findById(Long id) {
-        return null;
+        return entityManager.find(User.class, id);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return entityManager.createQuery("SELECT u FROM User u  " , User.class).getResultList();
     }
 
     @Override
@@ -32,16 +32,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(Long id) {
-
+        User user = entityManager.find(User.class, id);
+        entityManager.remove(user);
     }
 
-    @Override
-    public User get(Long id) {
-        return null;
-    }
+
 
     @Override
     public User findByName(String name) {
-        return null;
+        return entityManager.find(User.class, name);
     }
 }
