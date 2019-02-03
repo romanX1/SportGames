@@ -3,7 +3,7 @@ package com.sportgames.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "players")
+@Table(name = "users")
 public class User {
 
     @Id
