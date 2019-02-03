@@ -16,7 +16,7 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
 
     @Override
-    public User findById(int id) {
+    public User findById(Long id) {
         return null;
     }
 
@@ -31,12 +31,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
 
     }
 
     @Override
-    public User get(int id) {
+    public User get(Long id) {
         return null;
     }
 
