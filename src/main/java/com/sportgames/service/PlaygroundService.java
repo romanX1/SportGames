@@ -7,4 +7,5 @@ import java.util.List;
 public interface PlaygroundService {
 
     List<Playground> getAll();
+    void add(Playground playground);
 }

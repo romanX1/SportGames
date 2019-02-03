@@ -1,10 +1,18 @@
 package com.sportgames.dao;
 
 import com.sportgames.model.SportEvent;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@SuppressWarnings("ALL")
+@Repository("SportEventDAO")
 public class SportEventDAOImpl implements SportEventDAO {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public SportEvent findById(int id) {
@@ -18,7 +26,7 @@ public class SportEventDAOImpl implements SportEventDAO {
 
     @Override
     public void add(SportEvent sportEvent) {
-
+        entityManager.merge(sportEvent);
     }
 
     @Override

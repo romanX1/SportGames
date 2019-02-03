@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-@Repository("playgroundDAO")
+@Repository("PlaygroundDAO")
 public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @PersistenceContext
@@ -26,7 +26,7 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @Override
     public void add(Playground playground) {
-
+        entityManager.merge(playground);
     }
 
     @Override

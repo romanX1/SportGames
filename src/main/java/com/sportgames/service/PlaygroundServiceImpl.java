@@ -19,4 +19,9 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     public List<Playground> getAll() {
         return dao.getAll();
     }
+
+    @Override
+    public void add(Playground playground) {
+        dao.add(playground);
+    }
 }
