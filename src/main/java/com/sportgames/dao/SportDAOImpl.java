@@ -5,6 +5,7 @@ import com.sportgames.model.Sport;
 import java.util.List;
 
 public class SportDAOImpl implements SportDAO {
+
     @Override
     public Sport findById(int id) {
         return null;
