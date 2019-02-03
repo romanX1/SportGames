@@ -15,7 +15,7 @@ import java.util.List;
 @Repository("PlaygroundDAO")
 public class PlaygroundDaoImpl implements PlaygroundDAO {
 
-    @Autowired
+    @PersistenceContext
     private EntityManager entityManager;
 
     public Playground findById(int id) {
