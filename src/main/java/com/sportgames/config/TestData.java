@@ -10,6 +10,7 @@ import com.sportgames.service.SportService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -58,9 +59,12 @@ public class TestData {
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
             se.setSport(pgsports.get(random.nextInt(pgsports.size())));
             se.setPlayground(pg);
-
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
-            se.setTimeEvent(new UUID(0, random.nextLong()).toString());
+
+            se.setTimeStart(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
+                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
+            se.setTimeEnd(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
+                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
             sportEventService.add(se);
         }
 

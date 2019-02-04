@@ -35,8 +35,6 @@ public class SportEventDAOImpl implements SportEventDAO {
         entityManager.remove(sportEvent);
     }
 
-
-
     @Override
     public SportEvent findByName(String name) {
         return entityManager.find(SportEvent.class, name);

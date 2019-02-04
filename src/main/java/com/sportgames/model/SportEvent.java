@@ -1,5 +1,6 @@
 package com.sportgames.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -14,8 +15,11 @@ public class SportEvent {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     private Sport sport; // Вид спорта события
 
-    @Column (name = "time", nullable = false)
-    private String timeEvent; //Время проведения события
+    @Column (name = "timeStart", nullable = false)
+    private LocalDateTime timeStart; //Время начала события
+
+    @Column (name = "timeEnd", nullable = false)
+    private LocalDateTime timeEnd; //Время окончания события
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<User> users; // Сет игроков, учавствующих в событии
@@ -40,14 +44,6 @@ public class SportEvent {
         this.sport = sport;
     }
 
-    public String getTimeEvent() {
-        return timeEvent;
-    }
-
-    public void setTimeEvent(String timeEvent) {
-        this.timeEvent = timeEvent;
-    }
-
     public Set<User> getUsers() {
         return users;
     }
@@ -62,5 +58,21 @@ public class SportEvent {
 
     public void setPlayground(Playground playground) {
         this.playground = playground;
+    }
+
+    public LocalDateTime getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(LocalDateTime timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public LocalDateTime getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(LocalDateTime timeEnd) {
+        this.timeEnd = timeEnd;
     }
 }
