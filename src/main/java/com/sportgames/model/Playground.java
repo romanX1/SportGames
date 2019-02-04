@@ -15,7 +15,7 @@ public class Playground {
     @Column (name = "address", unique = true, nullable = false)
     private String address; //type Address. Адрес площадки
 
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
 
 

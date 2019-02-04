@@ -16,12 +16,12 @@ public class SportEventDAOImpl implements SportEventDAO {
 
     @Override
     public SportEvent findById(Long id) {
-        return null;
+        return entityManager.find(SportEvent.class, id);
     }
 
     @Override
     public List<SportEvent> getAll() {
-        return null;
+        return entityManager.createQuery("SELECT se FROM SportEvent se  " , SportEvent.class).getResultList();
     }
 
     @Override
@@ -31,16 +31,14 @@ public class SportEventDAOImpl implements SportEventDAO {
 
     @Override
     public void delete(Long id) {
-
+        SportEvent sportEvent = entityManager.find(SportEvent.class, id);
+        entityManager.remove(sportEvent);
     }
 
-    @Override
-    public SportEvent get(Long id) {
-        return null;
-    }
+
 
     @Override
     public SportEvent findByName(String name) {
-        return null;
+        return entityManager.find(SportEvent.class, name);
     }
 }
