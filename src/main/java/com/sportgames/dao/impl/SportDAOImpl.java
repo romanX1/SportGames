@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Repository("SportDAO")
 public class SportDAOImpl implements SportDAO {
 
@@ -16,12 +17,12 @@ public class SportDAOImpl implements SportDAO {
 
     @Override
     public Sport findById(Long id) {
-        return null;
+        return entityManager.find(Sport.class, id);
     }
 
     @Override
     public List<Sport> getAll() {
-        return entityManager.createQuery("FROM Sport",Sport.class).getResultList();
+        return entityManager.createQuery("SELECT s FROM Sport s  " , Sport.class).getResultList();
     }
 
     @Override
@@ -31,16 +32,14 @@ public class SportDAOImpl implements SportDAO {
 
     @Override
     public void delete(Long id) {
-
+        Sport sport = entityManager.find(Sport.class, id);
+        entityManager.remove(sport);
     }
 
-    @Override
-    public Sport get(Long id) {
-        return null;
-    }
+
 
     @Override
     public Sport findByName(String name) {
-        return null;
+        return entityManager.find(Sport.class, name);
     }
 }
