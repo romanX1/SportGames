@@ -11,7 +11,7 @@ public class SportEvent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     private Sport sport; // Вид спорта события
 
     @Column (name = "time", nullable = false)

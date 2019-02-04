@@ -52,7 +52,7 @@ public class TestData {
         int or2 = randomer % 31;
 
         //EVENTS
-        for (int i = 0; i < random.nextInt() % 30; i++) {
+        for (int i = 0; i < 50; i++) {
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long)(Math.abs(random.nextInt() % 4)));
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
