@@ -54,7 +54,7 @@ public class TestData {
         //EVENTS
         for (int i = 0; i < 50; i++) {
             SportEvent se = new SportEvent();
-            Playground pg = playgroundService.get((long)(Math.abs(random.nextInt() % 4)));
+            Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
             se.setSport(pgsports.get(random.nextInt(pgsports.size())));
             se.setPlayground(pg);
