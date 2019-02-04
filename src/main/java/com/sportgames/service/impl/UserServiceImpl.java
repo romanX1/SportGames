@@ -27,4 +27,11 @@ public class UserServiceImpl implements UserService {
     public void add(User user) {
         dao.add(user);
     }
+
+    @Override
+    public User findById(Long id) {
+        return dao.findById(id);
+    }
+
+
 }

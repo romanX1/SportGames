@@ -54,12 +54,19 @@ public class TestData {
 
         //EVENTS
         for (int i = 0; i < 50; i++) {
+            List<User> userList = new ArrayList<>();
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
             se.setSport(pgsports.get(i%(pgsports.size())));
             se.setPlayground(pg);
-            se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
+            int randomK = (int) (Math.random() * 25);
+
+            for (int k = 0; k < randomK; k++) {
+                userList.add(userService.findById((long) ((Math.random() * 28) + 1)));
+            }
+
+            se.setUsers(new HashSet<>(userList));
 
             //EVENTS DATE AND TIME
             LocalDateTime ldStart=LocalDateTime.of(2019, (int)Math.random()+2, (int)Math.random()*27+1,(int)Math.random()*10+10, (int)Math.random()*60);
@@ -79,7 +86,7 @@ public class TestData {
 
     private void usersData() {
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 1; i < 30; i++) {
             User user = new User();
             user.setName("user" + i);
             userService.add(user);
