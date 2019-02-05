@@ -7,6 +7,7 @@ import com.sportgames.model.SportEvent;
 import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
+import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,8 @@ public class HelloController {
     private SportService sportService ;
     @Autowired
     private SportEventService sportEventService;
+    @Autowired
+    private UserService userService;
 
 
     @GetMapping("/")
@@ -37,11 +40,26 @@ public class HelloController {
         return "index";
     }
 
+    @GetMapping("/event")
+    public ModelAndView eventPage(){
+        long id = 4L;
+        SportEvent sportEvent = sportEventService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("event");
+        modelAndView.addObject("sportEvent", sportEvent);
+        return modelAndView;
+    }
 
-//    @PostMapping("/addGround") //возможно не нужен
-//    public void addGround(HttpServletRequest req){
-//        playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
-//    }
+    @GetMapping("/addGround")
+    public String addGround(Model model){
+        //model.addAttribute("Playground", new Playground ());
+        return "addground";
+    }
+
+    @PostMapping("/addGround")
+    public void addGround(HttpServletRequest req){
+
+        playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
+    }
 
 
     @GetMapping("/playgrounds")
