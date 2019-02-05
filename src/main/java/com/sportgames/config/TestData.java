@@ -81,7 +81,7 @@ public class TestData {
 
         for (int i = 0; i < 30; i++) {
             User user = new User();
-            user.setName("user" + i * Math.random());
+            user.setName("user" + i);
             userService.add(user);
         }
     }
