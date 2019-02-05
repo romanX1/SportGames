@@ -36,8 +36,8 @@ public class TestData {
 
 
         for (String p : playgrounds) {
-            int r1 = Math.abs(random.nextInt() % 7);
-            int r2 = Math.abs(random.nextInt() % 15);
+            int r1 = (int)Math.random()*7+1;
+            int r2 = (int)Math.random()*15;
             Set<Sport> sports = new HashSet<>();
             sports.addAll(sportService
                     .getAll()
@@ -57,7 +57,7 @@ public class TestData {
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(i%(pgsports.size()-1)));
+            se.setSport(pgsports.get(i%(pgsports.size())));
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
 
