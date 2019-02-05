@@ -57,7 +57,7 @@ public class TestData {
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(random.nextInt(pgsports.size())));
+            se.setSport(pgsports.get((int)((pgsports.size()-1)*Math.random()+1)));
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
 

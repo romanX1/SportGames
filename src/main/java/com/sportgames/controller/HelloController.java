@@ -3,8 +3,12 @@ package com.sportgames.controller;
 import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
+import com.sportgames.model.SportEvent;
+import com.sportgames.model.User;
 import com.sportgames.service.PlaygroundService;
+import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
+import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +27,27 @@ import java.util.Set;
 public class HelloController {
 
     @Autowired
-    private PlaygroundService playgroundService ;
+    private SportEventService sportEventService;
     @Autowired
-    private SportService sportService ;
+    private PlaygroundService playgroundService;
+    @Autowired
+    private SportService sportService;
+    @Autowired
+    private UserService userService;
 
 
     @GetMapping("/")
     public String userPage(){
         return "index";
+    }
+
+    @GetMapping("/event")
+    public ModelAndView eventPage(){
+        long id = 4L;
+        SportEvent sportEvent = sportEventService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("event");
+        modelAndView.addObject("sportEvent", sportEvent);
+        return modelAndView;
     }
 
     @GetMapping("/addGround")
@@ -44,7 +61,6 @@ public class HelloController {
 
         playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
     }
-
 
     @GetMapping("/playgrounds")
     public ModelAndView playGrounds(){
@@ -65,19 +81,6 @@ public class HelloController {
 
         return modelAndView;
     }
-
-//    @RequestMapping(value = { "/groundList" }, method = RequestMethod.GET)
-//    public String groundList(Model model) {
-//
-//        grounds.add(new Playground("address"));
-//        grounds.add(new Playground("address111"));
-//        grounds.add(new Playground("address222"));
-//
-//        model.addAttribute("grounds", grounds);
-//
-//        return "playgrounds";
-//    }
-
 
 
 }

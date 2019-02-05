@@ -1,6 +1,5 @@
 package com.sportgames.service;
 
-import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 
 import java.util.List;

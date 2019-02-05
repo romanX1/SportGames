@@ -16,6 +16,11 @@ public class SportEventServiceImpl implements SportEventService {
     private SportEventDAO dao;
 
     @Override
+    public SportEvent findById(Long id) {
+        return dao.findById(id);
+    }
+
+    @Override
     public List<SportEvent> getAll() {
         return dao.getAll();
     }

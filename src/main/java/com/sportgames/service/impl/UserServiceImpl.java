@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
     public void add(User user) {
         dao.add(user);
     }
+
+    @Override
+    public List<User> getUsersByEventTime(String timeEvent) {
+        return dao.getUsersByEventTime(timeEvent);
+    }
 }
