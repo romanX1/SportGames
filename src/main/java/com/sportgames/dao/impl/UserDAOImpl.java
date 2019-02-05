@@ -41,4 +41,11 @@ public class UserDAOImpl implements UserDAO {
     public User findByName(String name) {
         return entityManager.find(User.class, name);
     }
+
+    @Override
+    public List<User> getUsersByEventTime(String time) {
+        return entityManager.createQuery("SELECT u FROM User u " +
+                "JOIN u.time AS time W" +
+                "HERE u.time = :typeName" , User.class).setParameter("time", time).getResultList();
+    }
 }
