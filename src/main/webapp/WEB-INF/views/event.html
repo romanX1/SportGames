@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>event</title>
+</head>
+<body>
+<div>
+    <tr>
+        <center>
+        <h1>
+            <td th:text="${sportEvent.playground.address}">...</td>
+        </h1>
+    </center>
+    </tr>
+    <center>
+        <h2>
+        <td th:text="${sportEvent.sport.type}">...</td>
+        </h2>
+        <td th:text="${sportEvent.timeStart}">...</td>
+        <td th:text="${sportEvent.timeEnd}">....</td>
+    </center>
+    <center>
+    <table border="1">
+            <h3>ИГРОКИ</h3>
+        <tr th:each ="user : ${sportEvent.users}">
+            <td th:text="${user.name}">...</td>
+
+        </tr>
+
+    </table>
+    </center>
+</div>
+
+</body>
+</html>
