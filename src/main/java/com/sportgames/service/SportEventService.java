@@ -9,4 +9,5 @@ public interface SportEventService {
 
     List<SportEvent> getAll();
     void add(SportEvent sportEvent);
+    List<SportEvent> getByPlayground(String adr);
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${address}+' рассписание на сегодня'"/>
+</head>
+<body>
+<h1 th:text=" ${address}"/>
+<div>
+    <table border="1">
+
+        <tr th:each ="event : ${events}">
+            <td th:utext="${event.getTimeStart()}+' - '+${event.getTimeEnd()}"/>
+            <td th:utext="${event.sport.type}"/>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

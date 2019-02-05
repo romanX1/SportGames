@@ -25,6 +25,12 @@ public class SportEventDAOImpl implements SportEventDAO {
     }
 
     @Override
+    public List<SportEvent> getAllByPlayground(String adr) {
+        return entityManager.createQuery("SELECT ev FROM SportEvent ev JOIN ev.playground pg WHERE pg.address LIKE :adr")
+                .setParameter("adr", adr).getResultList();
+    }
+
+    @Override
     public void add(SportEvent sportEvent) {
         entityManager.persist(sportEvent);
     }

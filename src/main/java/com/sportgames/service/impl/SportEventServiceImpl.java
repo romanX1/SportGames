@@ -25,4 +25,9 @@ public class SportEventServiceImpl implements SportEventService {
     public void add(SportEvent sportEvent) {
         dao.add(sportEvent);
     }
+
+    @Override
+    public List<SportEvent> getByPlayground(String adr) {
+        return dao.getAllByPlayground(adr);
+    }
 }

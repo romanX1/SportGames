@@ -18,6 +18,7 @@ public class Sport {
 
     public Sport(String type) {
         this.type = type;
+
     }
 
     public Long getId() {

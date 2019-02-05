@@ -35,4 +35,9 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     public Playground get(Long id) {
         return dao.findById(id);
     }
+
+    @Override
+    public Playground findByName(String name) {
+        return dao.findByName(name);
+    }
 }
