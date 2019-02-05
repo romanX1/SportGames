@@ -3,8 +3,12 @@ package com.sportgames.controller;
 import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
+import com.sportgames.model.SportEvent;
 import com.sportgames.service.PlaygroundService;
+import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
+import com.sportgames.service.UserService;
+import com.sportgames.service.impl.SportEventServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +32,8 @@ public class HelloController {
     private SportService sportService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private SportEventService sportEventService;
 
 
     @GetMapping("/")
