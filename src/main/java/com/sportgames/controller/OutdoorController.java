@@ -25,9 +25,9 @@ public class OutdoorController {
     }
 
     @GetMapping("/outdoorpanel")
-    public ModelAndView outdoor(@RequestParam String pgName){
+    public ModelAndView outdoor(@RequestParam(defaultValue = "Кремль") String pgName){
         ModelAndView mav=new ModelAndView("outdoorpanel");
-        String playground=pgName.isEmpty()?"Кремль":pgName;
+        String playground=pgName;
         mav.addObject("events", seService.getByPlayground(playground));
         mav.addObject("address", playground);
         return mav;

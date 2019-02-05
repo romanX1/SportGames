@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:include="fragments :: head">
+
     <title th:text="${address}+' рассписание на сегодня'"/>
 </head>
 <body>
@@ -11,10 +11,21 @@
     <table border="1">
 
         <tr th:each ="event : ${events}">
-            <td th:utext="${event.getTimeStart()}+' - '+${event.getTimeEnd()}"/>
-            <td th:utext="${event.sport.type}"/>
+            <td th:text="${event.getTimeStart()}+' - '+${event.getTimeEnd()}"/>
+            <td th:text="${event.sport.type}"/>
+            <td ><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" th:attrappend="data-target='#users-'+${event.id}">
+                Список участников
+            </button></td>
+            <div class="modal fade" th:id="'users-'+${event.id}" tabindex="-1" role="dialog" aria-hidden="true">
+                <table border="1">
+                    <tr th:each="user : ${event.getUsers()}">
+                        <td th:utext="${user.getName()}"/>
+                    </tr>
+                </table>
+            </div>
         </tr>
     </table>
 </div>
+
 </body>
 </html>
