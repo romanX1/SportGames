@@ -36,8 +36,8 @@ public class TestData {
 
 
         for (String p : playgrounds) {
-            int r1 = Math.abs(random.nextInt() % 7);
-            int r2 = Math.abs(random.nextInt() % 15);
+            int r1 = (int)Math.random()*7+1;
+            int r2 = (int)Math.random()*15;
             Set<Sport> sports = new HashSet<>();
             sports.addAll(sportService
                     .getAll()
@@ -50,21 +50,22 @@ public class TestData {
 
         int randomer = Math.abs(random.nextInt(30));
         int or1 = randomer % 15;
-        int or2 = randomer % 31;
+        int or2 = randomer % 30;
 
         //EVENTS
         for (int i = 0; i < 50; i++) {
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get((int)((pgsports.size()-1)*Math.random()+1)));
+            se.setSport(pgsports.get(i%(pgsports.size())));
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
 
-            se.setTimeStart(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
-                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
-            se.setTimeEnd(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
-                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
+            //EVENTS DATE AND TIME
+            LocalDateTime ldStart=LocalDateTime.of(2019, (int)Math.random()+2, (int)Math.random()*27+1,(int)Math.random()*10+10, (int)Math.random()*60);
+            LocalDateTime ldEnd=ldStart.plusMinutes((int)Math.random()*75+30);
+            se.setTimeStart(ldStart);
+            se.setTimeEnd(ldEnd);
             sportEventService.add(se);
         }
 
@@ -80,7 +81,7 @@ public class TestData {
 
         for (int i = 0; i < 30; i++) {
             User user = new User();
-            user.setName("user" + i * Math.random());
+            user.setName("user" + i);
             userService.add(user);
         }
     }
