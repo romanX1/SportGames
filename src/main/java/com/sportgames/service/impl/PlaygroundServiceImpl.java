@@ -32,7 +32,7 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     }
 
     @Override
-    public Playground get(Long id) {
+    public Playground findById(Long id) {
         return dao.findById(id);
     }
 

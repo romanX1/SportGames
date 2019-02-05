@@ -25,4 +25,9 @@ public class SportServiceImpl implements SportService {
     public void add(Sport sport) {
         dao.add(sport);
     }
+
+    @Override
+    public Sport findById(long id) {
+        return dao.findById(id);
+    }
 }

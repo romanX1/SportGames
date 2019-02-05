@@ -10,5 +10,5 @@ public interface PlaygroundService {
     List<Playground> getAll();
     void add(Playground playground);
     Playground findByName(String name);
-    Playground get(Long id);
+    Playground findById(Long id);
 }
