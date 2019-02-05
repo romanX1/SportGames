@@ -57,14 +57,15 @@ public class TestData {
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(random.nextInt(pgsports.size())));
+            se.setSport(pgsports.get(i%(pgsports.size()-1)));
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
 
-            se.setTimeStart(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
-                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
-            se.setTimeEnd(LocalDateTime.of(2019, (int) (Math.random() * 11) + 1,(int) (Math.random() * 25) + 1,
-                    (int) (Math.random() * 23),(int) (Math.random() * 59)));
+            //EVENTS DATE AND TIME
+            LocalDateTime ldStart=LocalDateTime.of(2019, (int)Math.random()+2, (int)Math.random()*27+1,(int)Math.random()*10+10, (int)Math.random()*60);
+            LocalDateTime ldEnd=ldStart.plusMinutes((int)Math.random()*75+30);
+            se.setTimeStart(ldStart);
+            se.setTimeEnd(ldEnd);
             sportEventService.add(se);
         }
 
@@ -91,7 +92,7 @@ public class TestData {
                 "городки", "теннси", "гольф", "баскетбол", "шахматы",
                 "керлинг", "хоккей на траве", "хоккей с мячом", "литрбол", "нарды"};
         for (String s : allSports) {
-            sportService.add(new Sport(s));
+            sportService.add(new Sport(s, 1800000+(long)Math.random()*3600000));
         }
     }
 }
