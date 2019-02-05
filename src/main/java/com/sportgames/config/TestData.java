@@ -36,8 +36,8 @@ public class TestData {
 
 
         for (String p : playgrounds) {
-            int r1 = (int)Math.random()*7+1;
-            int r2 = (int)Math.random()*15;
+            int r1 = (int) (Math.random() * 7 + 1);
+            int r2 = (int) (Math.random() * 15);
             Set<Sport> sports = new HashSet<>();
             sports.addAll(sportService
                     .getAll()
@@ -54,16 +54,26 @@ public class TestData {
 
         //EVENTS
         for (int i = 0; i < 50; i++) {
+            List<User> userList = new ArrayList<>();
             SportEvent se = new SportEvent();
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
+
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(i%(pgsports.size())));
+            se.setSport(pgsports.get(i % (pgsports.size())));
+
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
+            int randomK = (int) (Math.random() * 25);
+
+            for (int k = 0; k < randomK; k++) {
+                userList.add(userService.findById((long) ((Math.random() * 28) + 1)));
+            }
+
+            se.setUsers(new HashSet<>(userList));
 
             //EVENTS DATE AND TIME
-            LocalDateTime ldStart=LocalDateTime.of(2019, (int)Math.random()+2, (int)Math.random()*27+1,(int)Math.random()*10+10, (int)Math.random()*60);
-            LocalDateTime ldEnd=ldStart.plusMinutes((int)Math.random()*75+30);
+            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
+            LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
             se.setTimeStart(ldStart);
             se.setTimeEnd(ldEnd);
             sportEventService.add(se);
