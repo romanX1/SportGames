@@ -4,6 +4,7 @@ import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
+import com.sportgames.model.User;
 import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.lang.reflect.Parameter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,6 +48,31 @@ public class HelloController {
 //        playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
 //    }
 
+    @GetMapping("/addnewevent/{type}")
+    public ModelAndView addneweventMenu(@PathVariable String type){
+        ModelAndView modelAndView = new ModelAndView("addnewevent");
+
+        modelAndView.addObject("playground", playgroundService.getByName(type));
+        modelAndView.addObject("sports", sportService.getAll());
+
+        return modelAndView;
+    }
+
+    @PostMapping("/addnewevent")
+    public String addNewEvent(@RequestParam("select") Long sportId,@RequestParam("groundId") Long groundId,
+                            @RequestParam("data") String data,
+                            @RequestParam("timeStart") String timeStart,
+                            @RequestParam("timeEnd") String timeEnd){
+        String startTime = data + " " + timeStart;
+        String endTime = data + " " + timeEnd;
+        Playground playground = playgroundService.get(groundId);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dataTimeStart = LocalDateTime.parse(startTime,formatter);
+        LocalDateTime dataTimeEnd = LocalDateTime.parse(endTime,formatter);
+        Sport sport = sportService.getSportById(sportId);
+        sportEventService.add(new SportEvent(sport,dataTimeEnd,dataTimeStart,playground));
+        return "redirect:/playgrounds";
+    }
 
     @GetMapping("/playgrounds")
     public ModelAndView playGrounds(){
