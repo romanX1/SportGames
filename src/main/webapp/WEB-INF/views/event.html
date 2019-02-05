@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-<head>
+<head th:include="fragments :: head">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>event</title>
 </head>
 <body>
-<div>
+<div class="container">
     <tr>
         <center>
         <h1>
@@ -22,7 +22,7 @@
         <td th:text="${sportEvent.timeEnd}">....</td>
     </center>
     <center>
-    <table border="1">
+    <table class = "table table-dark table-striped">
             <h3>ИГРОКИ</h3>
         <tr th:each ="user : ${sportEvent.users}">
             <td th:text="${user.name}">...</td>
