@@ -13,16 +13,12 @@ public class Sport {
     @Column(name = "type", nullable = false)
     private String type;
 
-    @Column(nullable=false)
-    private final Long maxDuration;
-
     public Sport() {
-        this.maxDuration=1000*60*60L;
     }
 
-    public Sport(String type, Long maxDuration) {
+    public Sport(String type) {
         this.type = type;
-        this.maxDuration=maxDuration;
+
     }
 
     public Long getId() {

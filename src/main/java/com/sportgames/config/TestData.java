@@ -50,7 +50,7 @@ public class TestData {
 
         int randomer = Math.abs(random.nextInt(30));
         int or1 = randomer % 15;
-        int or2 = randomer % 31;
+        int or2 = randomer % 30;
 
         //EVENTS
         for (int i = 0; i < 50; i++) {
@@ -92,7 +92,7 @@ public class TestData {
                 "городки", "теннси", "гольф", "баскетбол", "шахматы",
                 "керлинг", "хоккей на траве", "хоккей с мячом", "литрбол", "нарды"};
         for (String s : allSports) {
-            sportService.add(new Sport(s, 1800000+(long)Math.random()*3600000));
+            sportService.add(new Sport(s));
         }
     }
 }
