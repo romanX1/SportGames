@@ -16,6 +16,11 @@ public class SportEventServiceImpl implements SportEventService {
     private SportEventDAO dao;
 
     @Override
+    public SportEvent findById(Long id) {
+        return dao.findById(id);
+    }
+
+    @Override
     public List<SportEvent> getAll() {
         return dao.getAll();
     }
@@ -24,5 +29,10 @@ public class SportEventServiceImpl implements SportEventService {
     @Transactional
     public void add(SportEvent sportEvent) {
         dao.add(sportEvent);
+    }
+
+    @Override
+    public List<SportEvent> getByPlayground(String adr) {
+        return dao.getAllByPlayground(adr);
     }
 }

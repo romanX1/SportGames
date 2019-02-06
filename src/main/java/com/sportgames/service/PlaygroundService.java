@@ -9,6 +9,6 @@ public interface PlaygroundService {
     List<Playground> getPlaygroundBySportType(String type);
     List<Playground> getAll();
     void add(Playground playground);
-
-    Playground get(Long id);
+    Playground findByName(String name);
+    Playground findById(Long id);
 }
