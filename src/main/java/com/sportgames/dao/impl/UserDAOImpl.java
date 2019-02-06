@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -45,7 +46,17 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getUsersByEventTime(String time) {
         return entityManager.createQuery("SELECT u FROM User u " +
-                "JOIN u.time AS time W" +
-                "HERE u.time = :typeName" , User.class).setParameter("time", time).getResultList();
+                "JOIN u.time AS time " +
+                "WHERE u.time = :typeName" , User.class).setParameter("time", time).getResultList();
+    }
+
+    @Override
+    public List<User> getUsersByEventId(Long eventId) {
+        return entityManager
+                .createQuery("SELECT users FROM SportEvent as event " +
+                        "JOIN event.users as users " +
+                        "WHERE event.id = :eventId", User.class)
+                .setParameter("eventId", eventId )
+                .getResultList();
     }
 }

@@ -13,13 +13,15 @@ import java.util.List;
 @RequestMapping("/api/users/")
 public class UserRestController {
 
-//    @Autowired
-//    SportEventService sportEventService;
-//
-//    @RequestMapping(value="/outdoorpanel", method = RequestMethod.GET)
-//    public ResponseEntity<User> updateUser(@PathVariable("type") String type) {
-//
-//
-//        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
-//    }
+    @Autowired
+    SportEventService sportEventService;
+
+    @RequestMapping(value="/{user}", method = RequestMethod.GET)
+    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
+
+        User currentUser = new User();
+        currentUser.setName("Vasya");
+
+        return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+    }
 }
