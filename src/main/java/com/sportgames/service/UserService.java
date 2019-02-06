@@ -11,4 +11,5 @@ public interface UserService extends UserDetailsService {
     User findById(Long id);
     List<User> getUsersByEventTime(String timeEvent);
     String encodePassword (String password);
+    List<User> getUsersByEventId(Long eventId);
 }

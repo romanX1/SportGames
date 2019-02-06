@@ -87,6 +87,7 @@
             <version>1.7.3.RELEASE</version>
         </dependency>
 
+
         <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -108,9 +109,17 @@
             <version>${spring.version}</version>
         </dependency>
 
-
-
-
+        <!--FAKER-->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.7</version>
+        </dependency>
 
     </dependencies>
 

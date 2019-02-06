@@ -1,12 +1,13 @@
 package com.sportgames.config;
 
+
 import com.sportgames.model.*;
 import com.sportgames.service.*;
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-
 
 public class TestData {
 
@@ -22,71 +23,40 @@ public class TestData {
     private UserRoleService userRoleService;
 
     public void initData() {
-        Random random = new Random();
-        //USERS
         usersData();
-        //SPORTS
-        sportsData();
-        //PLAYGROUNDS
-        String[] playgrounds = playgroundsData();
+        Faker faker = new Faker(new Locale("ru"));
+        List<Sport> allSports = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            Sport sport = new Sport(faker.esports().game());
+            sportService.add(sport);
+        }
+        allSports = sportService.getAll();
+        Playground pgk=new Playground("Кремль");
+        int sk1 = (int) (Math.random() * 15);
+        int sk2 = (int) (Math.random() * 14) + 15;
+        Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
+        pgk.setSports(ksports);
+        playgroundService.add(pgk);
+
+        for (int i = 0; i < 30; i++) {
+            Playground pg = new Playground(faker.address().streetAddress());
 
 
-        for (String p : playgrounds) {
-            int r1 = (int) (Math.random() * 7 + 1);
-            int r2 = (int) (Math.random() * 15);
-            Set<Sport> sports = new HashSet<>();
-            sports.addAll(sportService
-                    .getAll()
-                    .subList(Math.min(r1, r2), Math.max(r1, r2)));
-            Playground pg = new Playground(p);
+            int s1 = (int) (Math.random() * 15);
+            int s2 = (int) (Math.random() * 14) + 15;
+            Set<Sport> sports = new HashSet<>(allSports.subList(Math.min(s1, s2), Math.max(s1, s2)));
             pg.setSports(sports);
+
             playgroundService.add(pg);
-
         }
-
-        int randomer = Math.abs(random.nextInt(30));
-        int or1 = randomer % 15;
-        int or2 = randomer % 30;
-
-        //EVENTS
-        for (int i = 0; i < 50; i++) {
-            List<User> userList = new ArrayList<>();
-            SportEvent se = new SportEvent();
-            Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
-
-            List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(i % (pgsports.size() == 0 ? 1 : pgsports.size())));
-
-            se.setPlayground(pg);
-            se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
-            int randomK = (int) (Math.random() * 25);
-
-            for (int k = 0; k < randomK; k++) {
-                userList.add(userService.findById((long) ((Math.random() * 28) + 1)));
-            }
-
-            se.setUsers(new HashSet<>(userList));
-
-            //EVENTS DATE AND TIME
-            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
-            LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
-            se.setTimeStart(ldStart);
-            se.setTimeEnd(ldEnd);
-            sportEventService.add(se);
-        }
-
-
-    }
-
-    private String[] playgroundsData() {
-        String[] s = {"Кремль", "Ледовый", "Олимпийский", "Дворец Пионеров"};
-        return s;
-    }
+      
+      
+    }  
 
     private void usersData() {
         userRoleData();
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 300; i++) {
             User user = new User();
             user.setName("user" + i);
             user.setLogin("user" + i);
@@ -110,13 +80,25 @@ public class TestData {
         userRoleService.add(new UserRole("ROLE_ADMIN"));
         userRoleService.add(new UserRole("ROLE_USER"));
     }
+          List<User> users = new ArrayList<>();
+        users = userService.getAll();
 
-    private void sportsData() {
-        String allSports[] = {"футбол", "волейбол", "бадминтон", "хоккей",
-                "городки", "теннси", "гольф", "баскетбол", "шахматы",
-                "керлинг", "хоккей на траве", "хоккей с мячом", "литрбол", "нарды"};
-        for (String s : allSports) {
-            sportService.add(new Sport(s));
+        for (int i = 0; i < 100; i++) {
+            int s1 = (int) (Math.random() * 300);
+            int s2 = (int) (Math.random() * 298 + 1);
+            SportEvent spe = new SportEvent();
+            spe.setUsers(new HashSet<>(users.subList(Math.min(s1, s2), Math.max(s1, s2))));
+            Playground pg = playgroundService.findById((long) (i % (int) (Math.random() * 28 + 1) + 1));
+            spe.setPlayground(pg);
+            List<Sport> pgsports = new ArrayList<>(pg.getSports());
+            int g = pgsports.size() != 1 ? i % (pgsports.size() - 1) : 0;
+            spe.setSport(pgsports.get(g));
+            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
+            LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
+            spe.setTimeStart(ldStart);
+            spe.setTimeEnd(ldEnd);
+            sportEventService.add(spe);
         }
-    }
+
+          }
 }

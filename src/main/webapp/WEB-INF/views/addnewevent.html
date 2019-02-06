@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:include="fragments :: head">
+
+</head>
+<body>
+<form th:action="@{addnewevent}" method="post">
+    <h3>Выбрать площадку</h3>
+    <div>
+        <select class="form-control" id="exampleFormControlSelect1" name="selectGround" style="width: fit-content">
+            <option th:each=" playground :${playgrounds}" th:text="${playground.address}"
+                    th:value="${playground.id}"></option>
+        </select>
+    </div>
+    <h3>Выбрать вид спорта</h3>
+    <div>
+        <select class="form-control" id="exampleFormControlSelect1" name="selectSport"style="width: fit-content">
+            <option th:each=" sport :${sports}" th:text="${sport.type}"
+            th:value="${sport.id}"></option>
+        </select>
+    </div>
+<br>
+  <div>
+      <p>Выберите дату:</p>
+      <input type="date" name="data">
+            <!--<input type="submit" value="Отправить"></p>-->
+  </div>
+    <div>
+<p> Время начало:</p>
+        <input type="time" name="timeStart">
+        <p> Время завершения:</p>
+        <input type="time" name="timeEnd">
+    </div>
+    <br>
+
+    <input type="submit" value="Создать ИвЕнт">
+
+</form>
+
+</body>
+</html>

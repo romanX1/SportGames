@@ -13,8 +13,12 @@ import java.util.List;
 @Transactional
 public class PlaygroundServiceImpl implements PlaygroundService {
 
+    private final PlaygroundDAO dao;
+
     @Autowired
-    private PlaygroundDAO dao;
+    public PlaygroundServiceImpl(PlaygroundDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public List<Playground> getPlaygroundBySportType(String type) {
@@ -32,8 +36,13 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     }
 
     @Override
-    public Playground get(Long id) {
+    public Playground findById(Long id) {
         return dao.findById(id);
+    }
+
+    @Override
+    public List<Playground> getPlaygroundBySportType(Long sportTypeId) {
+        return dao.getPlaygroundBySportType(sportTypeId);
     }
 
     @Override

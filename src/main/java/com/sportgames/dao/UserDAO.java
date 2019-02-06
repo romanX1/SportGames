@@ -13,5 +13,5 @@ public interface UserDAO {
     User findByName(String name);
     User findByLogin(String login);
     List<User> getUsersByEventTime(String time);
-
+    List<User> getUsersByEventId(Long eventId);
 }

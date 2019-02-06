@@ -8,4 +8,5 @@ public interface SportService {
 
     List<Sport> getAll();
     void add(Sport sport);
+    Sport findById(long id);
 }

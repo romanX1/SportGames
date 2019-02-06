@@ -52,5 +52,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return dao.findByLogin(s);
+      
+    @Override
+    public List<User> getUsersByEventId(Long eventId) {
+        return dao.getUsersByEventId(eventId);
     }
 }
