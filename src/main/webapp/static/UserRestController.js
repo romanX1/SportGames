@@ -1,11 +1,11 @@
-var getUsers = function() {
+var RestGet = function() {
 
     $.ajax({
-        url: "/api/users/getAllUsers/"+typeId,
-        type: "GET",
-        data: type,
-        success: function (data) {
-            alert(data);
-        }
+        type: 'GET',
+        url:  "/outdoorpanel",
+        success: function(result) {
+            alert(result.message);
+        },
     });
+
 }
