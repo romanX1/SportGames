@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>playgrounds</title>
+<head th:include="fragments :: head">
+    <title th:text="'Площадки на которых доступен '+${sports.get(0).type}"/>
 </head>
 <body>
-<h1>Grounds</h1>
+<h1 th:text="'Площадки с '+${sports.get(0).type}"/>
 
 <br/><br/>
 <div>
-    <table border="1">
+    <table class="table table-dark table-striped">
         <tr th:each ="ground : ${grounds}">
-            <td th:utext="${ground.address}">...</td>
+            <td th:text="${ground.address}">...</td>
         </tr>
     </table>
 </div>
-<h1>Sports</h1>
-
-    <div th:each="sport : ${sports}">
-            <a th:href="'/playgrounds/'+${sport.type}"
-            th:utext="${sport.type}"/><br>
-    </div>
+<h1>Виды спорта</h1>
+<table class="table table-dark table-striped">
+    <tr th:each="sport : ${sports}">
+        <a th:href="'/playgrounds?type='+${sport.type}"
+           th:utext="${sport.type}"/><br>
+    </tr>
+</table>
     <form th:action="@{/addGround}" >
-    <input type="submit" value="Add new Ground"></p>
+        <button type="button" class="btn btn-primary btn-lg">Предложить площадку</button>
     </form>
 </form>
 

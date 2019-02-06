@@ -63,18 +63,9 @@ public class HelloController {
 
 
     @GetMapping("/playgrounds")
-    public ModelAndView playGrounds(){
-        return playGroundsByType("");
-    }
-
-    @GetMapping("/playgrounds/{type}")
-    public ModelAndView playGroundsByType(@PathVariable String type){
+    public ModelAndView playGroundsByType(){
         List<Playground> playgrounds;
-        if (type.isEmpty()) {
             playgrounds = playgroundService.getAll();
-        } else {
-            playgrounds = playgroundService.getPlaygroundBySportType(type);
-        }
         ModelAndView modelAndView = new ModelAndView("playgrounds");
         modelAndView.addObject("grounds", playgrounds);
         modelAndView.addObject("sports", sportService.getAll() );
