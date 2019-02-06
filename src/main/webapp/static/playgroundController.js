@@ -3,6 +3,8 @@ function playGroundsByType(type){
         url: "rest/PlaygroundRestController",
         type: "POST",
         data:type,
-        success: function(data){}
+        success: function(data){
+        alert(data);
+        }
     });
 }
