@@ -4,12 +4,8 @@ var RestGet = function() {
         type: 'GET',
         url:  "/outdoorpanel",
         success: function(result) {
-            alert("At " + result.time
-                + ": " + result.message);
+            alert(result.message);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + " " + jqXHR.responseText);
-        }
     });
 
 }
