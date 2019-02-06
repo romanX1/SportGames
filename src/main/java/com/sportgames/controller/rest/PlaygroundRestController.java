@@ -16,7 +16,7 @@ public class PlaygroundRestController {
     @Autowired
     private PlaygroundService playgroundService;
 
-    @GetMapping("/by/{sportTypeId}")
+    @GetMapping("/byId/{sportTypeId}")
     public List<Playground> playgroundsByType(@PathVariable Long sportTypeId){
         List<Playground> playgrounds = playgroundService.getPlaygroundBySportType(sportTypeId);
         return playgrounds;
