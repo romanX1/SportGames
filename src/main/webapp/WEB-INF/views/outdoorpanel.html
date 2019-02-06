@@ -16,7 +16,7 @@
             <td th:text="${event.getTimeStart().toLocalTime().toString()}+' - '+${event.getTimeEnd().toLocalTime().toString()}"/>
             <td th:text="${event.sport.type}"/>
             <td>
-                <button type="button" onclick="RestGet()" class="btn btn-primary btn-lg" data-toggle="modal"
+                <button type="button" th:onclick="'+${event.sport.type}+'\');' class="btn btn-primary btn-lg" data-toggle="modal"
                         th:attrappend="data-target='#users-'+${event.id}">
                     Список участников
                 </button>
