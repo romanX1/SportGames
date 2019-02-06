@@ -4,23 +4,27 @@ import com.sportgames.model.Playground;
 import com.sportgames.service.PlaygroundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/playgrounds")
 public class PlaygroundRestController {
+
     @Autowired
     private PlaygroundService playgroundService;
 
-    @PostMapping("/playgroundRest")
-    public ResponseEntity<List<Playground>> playgrounds(@RequestParam(value="type") String type){
-        List<Playground> playgrounds=new ArrayList<>();
-        playgrounds=playgroundService.getPlaygroundBySportType(type);
-        return ResponseEntity.ok(playgrounds);
+    @GetMapping("/by/{sportTypeId}")
+    public List<Playground> playgroundsByType(@PathVariable Long sportTypeId){
+        List<Playground> playgrounds = playgroundService.getPlaygroundBySportType(sportTypeId);
+        return playgrounds;
+    }
+
+    @GetMapping("/")
+    public List<Playground> playgrounds(){
+        List<Playground> playgrounds = playgroundService.getAll();
+        return playgrounds;
     }
 }

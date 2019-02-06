@@ -37,6 +37,11 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     }
 
     @Override
+    public List<Playground> getPlaygroundBySportType(Long sportTypeId) {
+        return dao.getPlaygroundBySportType(sportTypeId);
+    }
+
+    @Override
     public Playground findByName(String name) {
         return dao.findByName(name);
     }
