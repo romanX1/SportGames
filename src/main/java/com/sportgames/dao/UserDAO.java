@@ -12,4 +12,6 @@ public interface UserDAO {
     void delete(Long id);
     User findByName(String name);
     List<User> getUsersByEventTime(String time);
+
+    List<User> getUsersByEventId(Long eventId);
 }

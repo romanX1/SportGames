@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@SuppressWarnings("ALL")
 @Repository("SportEventDAO")
 public class SportEventDAOImpl implements SportEventDAO {
 

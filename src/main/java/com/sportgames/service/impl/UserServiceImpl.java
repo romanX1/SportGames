@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsersByEventTime(String timeEvent) {
         return dao.getUsersByEventTime(timeEvent);
     }
+
+    @Override
+    public List<User> getUsersByEventId(Long eventId) {
+        return dao.getUsersByEventId(eventId);
+    }
 }

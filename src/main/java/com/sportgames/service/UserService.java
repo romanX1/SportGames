@@ -11,4 +11,6 @@ public interface UserService {
     void add(User user);
     User findById(Long id);
     List<User> getUsersByEventTime(String timeEvent);
+
+    List<User> getUsersByEventId(Long eventId);
 }
