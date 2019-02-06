@@ -1,10 +1,10 @@
-function playGroundsByType(type){
+function playGroundsByType(typeId) {
     $.ajax({
-        url: "/playgroundRest",
-        type: "POST",
-        data:{type: type},
-        success: function(data){
-        alert(data);
+        url: "/api/playgrounds/getBySportType/"+typeId,
+        type: "GET",
+        data: type,
+        success: function (data) {
+            alert(data);
         }
     });
 }
