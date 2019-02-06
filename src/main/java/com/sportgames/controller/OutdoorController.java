@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,7 @@ public class OutdoorController {
         String playground=pgName;
         mav.addObject("events", seService.getByPlayground(playground));
         mav.addObject("address", playground);
+        mav.addObject("formatter", DateTimeFormatter.ofPattern("H-m-s"));
         return mav;
     }
 }

@@ -12,6 +12,7 @@ import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -34,6 +35,13 @@ public class TestData {
             sportService.add(sport);
         }
         allSports = sportService.getAll();
+        Playground pgk=new Playground("Кремль");
+        int sk1 = (int) (Math.random() * 15);
+        int sk2 = (int) (Math.random() * 14) + 15;
+        Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
+        pgk.setSports(ksports);
+        playgroundService.add(pgk);
+
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
 
