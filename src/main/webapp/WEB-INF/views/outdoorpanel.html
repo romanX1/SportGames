@@ -3,7 +3,9 @@
 <html lang="en">
 <head th:include="fragments :: head">
 
+    <script type="text/javascript"
     <title th:text="${address}+' рассписание на сегодня'"/>
+
 </head>
 <body>
 <h2 th:text=" ${address}"/>
@@ -14,7 +16,7 @@
             <td th:text="${event.getTimeStart().toLocalTime().toString()}+' - '+${event.getTimeEnd().toLocalTime().toString()}"/>
             <td th:text="${event.sport.type}"/>
             <td>
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                <button type="button" onclick="RestGet()" class="btn btn-primary btn-lg" data-toggle="modal"
                         th:attrappend="data-target='#users-'+${event.id}">
                     Список участников
                 </button>
@@ -30,7 +32,7 @@
                     <table class="table table-dark table-striped" style="color:black">
                         <tbody>
                         <tr th:each="user : ${event.getUsers()}">
-                            <td th:utext="${user.getName()}"/>
+                            <td th:text="${user.getName()}"/>
                         </tr>
                         </tbody>
                     </table>
