@@ -1,13 +1,7 @@
 package com.sportgames.config;
 
-import com.sportgames.model.Playground;
-import com.sportgames.model.Sport;
-import com.sportgames.model.SportEvent;
-import com.sportgames.model.User;
-import com.sportgames.service.PlaygroundService;
-import com.sportgames.service.SportEventService;
-import com.sportgames.service.SportService;
-import com.sportgames.service.UserService;
+import com.sportgames.model.*;
+import com.sportgames.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -24,6 +18,8 @@ public class TestData {
     private SportService sportService;
     @Autowired
     private SportEventService sportEventService;
+    @Autowired
+    private UserRoleService userRoleService;
 
     public void initData() {
         Random random = new Random();
@@ -59,7 +55,7 @@ public class TestData {
             Playground pg = playgroundService.get((long) (Math.random() * 3) + 1);
 
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            se.setSport(pgsports.get(i % (pgsports.size())));
+            se.setSport(pgsports.get(i % (pgsports.size() == 0 ? 1 : pgsports.size())));
 
             se.setPlayground(pg);
             se.setUsers(new HashSet<>(userService.getAll().subList(Math.min(or1, or2), Math.max(or1, or2))));
@@ -88,14 +84,32 @@ public class TestData {
     }
 
     private void usersData() {
+        userRoleData();
 
         for (int i = 0; i < 30; i++) {
             User user = new User();
             user.setName("user" + i);
+            user.setLogin("user" + i);
+            user.setPassword(userService.encodePassword("user" + i));
+            user.setAutorities(new HashSet<>(randomAutorities()));
             userService.add(user);
         }
     }
 
+    private List<UserRole> randomAutorities() {
+        List<UserRole> userRoles = new ArrayList<>();
+        int k = (int) (Math.round(Math.random()) + 1);
+        for (int i = 0; i < k; i++) {
+            if (i == 0) userRoles.add(userRoleService.findByAuthority("ROLE_USER"));
+            if (i == 1) userRoles.add(userRoleService.findByAuthority("ROLE_ADMIN"));
+        }
+        return userRoles;
+    }
+
+    private void userRoleData() {
+        userRoleService.add(new UserRole("ROLE_ADMIN"));
+        userRoleService.add(new UserRole("ROLE_USER"));
+    }
 
     private void sportsData() {
         String allSports[] = {"футбол", "волейбол", "бадминтон", "хоккей",
