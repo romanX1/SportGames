@@ -51,8 +51,8 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
     @Override
     public List<Playground> getPlaygroundBySportType(Long sportTypeId) {
         return entityManager.createQuery("SELECT play FROM Playground play " +
-                "JOIN play.sports AS sport W" +
-                "HERE sport.type.id = :sportTypeId" , Playground.class).setParameter("sportTypeId", sportTypeId)
+                "JOIN play.sports AS sport " +
+                "WHERE sport.id = :sportTypeId" , Playground.class).setParameter("sportTypeId", sportTypeId)
                 .getResultList();
     }
 
