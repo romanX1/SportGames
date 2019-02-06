@@ -40,7 +40,19 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findByName(String name) {
-        return entityManager.find(User.class, name);
+        return entityManager
+                .createQuery("SELECT r FROM User As r WHERE r.name = :param", User.class)
+                .setParameter("param", name)
+                .getSingleResult();
+    }
+
+    @Override
+    public User findByLogin(String login) {
+        return entityManager
+                //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
+                .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
+                .setParameter("param", login)
+                .getSingleResult();
     }
 
     @Override
