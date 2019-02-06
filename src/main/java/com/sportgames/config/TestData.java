@@ -49,8 +49,26 @@ public class TestData {
 
             playgroundService.add(pg);
         }
-      
-      
+
+        List<User> users;
+        users = userService.getAll();
+
+        for (int i = 0; i < 100; i++) {
+            int s1 = (int) (Math.random() * 300);
+            int s2 = (int) (Math.random() * 298 + 1);
+            SportEvent spe = new SportEvent();
+            spe.setUsers(new HashSet<>(users.subList(Math.min(s1, s2), Math.max(s1, s2))));
+            Playground pg = playgroundService.findById((long) (i % (int) (Math.random() * 28 + 1) + 1));
+            spe.setPlayground(pg);
+            List<Sport> pgsports = new ArrayList<>(pg.getSports());
+            int g = pgsports.size() != 1 ? i % (pgsports.size() - 1) : 0;
+            spe.setSport(pgsports.get(g));
+            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
+            LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
+            spe.setTimeStart(ldStart);
+            spe.setTimeEnd(ldEnd);
+            sportEventService.add(spe);
+        }
     }  
 
     private void usersData() {
@@ -80,25 +98,6 @@ public class TestData {
         userRoleService.add(new UserRole("ROLE_ADMIN"));
         userRoleService.add(new UserRole("ROLE_USER"));
     }
-          List<User> users = new ArrayList<>();
-        users = userService.getAll();
 
-        for (int i = 0; i < 100; i++) {
-            int s1 = (int) (Math.random() * 300);
-            int s2 = (int) (Math.random() * 298 + 1);
-            SportEvent spe = new SportEvent();
-            spe.setUsers(new HashSet<>(users.subList(Math.min(s1, s2), Math.max(s1, s2))));
-            Playground pg = playgroundService.findById((long) (i % (int) (Math.random() * 28 + 1) + 1));
-            spe.setPlayground(pg);
-            List<Sport> pgsports = new ArrayList<>(pg.getSports());
-            int g = pgsports.size() != 1 ? i % (pgsports.size() - 1) : 0;
-            spe.setSport(pgsports.get(g));
-            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
-            LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
-            spe.setTimeStart(ldStart);
-            spe.setTimeEnd(ldEnd);
-            sportEventService.add(spe);
-        }
 
-          }
 }
