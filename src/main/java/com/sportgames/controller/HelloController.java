@@ -66,28 +66,28 @@ public class HelloController {
         playgroundService.add(new Playground((String) req.getAttribute("newAddress")));
     }
 
-    @GetMapping("/addnewevent/{type}")
-    public ModelAndView addneweventMenu(@PathVariable String type){
+    @GetMapping("/addnewevent")
+    public ModelAndView addneweventMenu(){
         ModelAndView modelAndView = new ModelAndView("addnewevent");
 
-        modelAndView.addObject("playground", playgroundService.getByName(type));
+        modelAndView.addObject("playgrounds", playgroundService.getAll());
         modelAndView.addObject("sports", sportService.getAll());
 
         return modelAndView;
     }
 
     @PostMapping("/addnewevent")
-    public String addNewEvent(@RequestParam("select") Long sportId,@RequestParam("groundId") Long groundId,
+    public String addNewEvent(@RequestParam("selectSport") Long sportId,@RequestParam("selectGround") Long groundId,
                             @RequestParam("data") String data,
                             @RequestParam("timeStart") String timeStart,
                             @RequestParam("timeEnd") String timeEnd){
         String startTime = data + " " + timeStart;
         String endTime = data + " " + timeEnd;
-        Playground playground = playgroundService.get(groundId);
+        Playground playground = playgroundService.findById(groundId);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dataTimeStart = LocalDateTime.parse(startTime,formatter);
         LocalDateTime dataTimeEnd = LocalDateTime.parse(endTime,formatter);
-        Sport sport = sportService.getSportById(sportId);
+        Sport sport = sportService.findById(sportId);
         sportEventService.add(new SportEvent(sport,dataTimeEnd,dataTimeStart,playground));
         return "redirect:/playgrounds";
     }

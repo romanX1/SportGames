@@ -28,6 +28,9 @@ public class SportEvent {
     @JoinColumn(name="playgrounds_sports", referencedColumnName="id", nullable=false)
     private Playground playground;
 
+    public SportEvent() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -74,5 +77,12 @@ public class SportEvent {
 
     public void setTimeEnd(LocalDateTime timeEnd) {
         this.timeEnd = timeEnd;
+    }
+
+    public SportEvent(Sport sport, LocalDateTime timeStart, LocalDateTime timeEnd, Playground playground) {
+        this.sport = sport;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.playground = playground;
     }
 }
