@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -39,13 +40,35 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findByName(String name) {
-        return entityManager.find(User.class, name);
+        return entityManager
+                .createQuery("SELECT r FROM User As r WHERE r.name = :param", User.class)
+                .setParameter("param", name)
+                .getSingleResult();
+    }
+
+    @Override
+    public User findByLogin(String login) {
+        return entityManager
+                //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
+                .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
+                .setParameter("param", login)
+                .getSingleResult();
     }
 
     @Override
     public List<User> getUsersByEventTime(String time) {
         return entityManager.createQuery("SELECT u FROM User u " +
-                "JOIN u.time AS time W" +
-                "HERE u.time = :typeName" , User.class).setParameter("time", time).getResultList();
+                "JOIN u.time AS time " +
+                "WHERE u.time = :typeName" , User.class).setParameter("time", time).getResultList();
+    }
+
+    @Override
+    public List<User> getUsersByEventId(Long eventId) {
+        return entityManager
+                .createQuery("SELECT users FROM SportEvent as event " +
+                        "JOIN event.users as users " +
+                        "WHERE event.id = :eventId", User.class)
+                .setParameter("eventId", eventId )
+                .getResultList();
     }
 }

@@ -13,8 +13,12 @@ import java.util.List;
 @Transactional
 public class PlaygroundServiceImpl implements PlaygroundService {
 
+    private final PlaygroundDAO dao;
+
     @Autowired
-    private PlaygroundDAO dao;
+    public PlaygroundServiceImpl(PlaygroundDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public List<Playground> getPlaygroundBySportType(String type) {

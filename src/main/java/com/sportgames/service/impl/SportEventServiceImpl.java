@@ -12,8 +12,12 @@ import java.util.List;
 @Service("SportEventService")
 public class SportEventServiceImpl implements SportEventService {
 
+    private final SportEventDAO dao;
+
     @Autowired
-    private SportEventDAO dao;
+    public SportEventServiceImpl(SportEventDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public SportEvent findById(Long id) {

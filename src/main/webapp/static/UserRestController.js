@@ -1,15 +1,12 @@
-var RestGet = function() {
+function RestGet(type) {
 
     $.ajax({
         type: 'GET',
         url:  "/outdoorpanel",
+        data:{type: type},
         success: function(result) {
-            alert("At " + result.time
-                + ": " + result.message);
+            alert(result.message);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + " " + jqXHR.responseText);
-        }
     });
 
 }
