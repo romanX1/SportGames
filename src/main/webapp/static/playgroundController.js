@@ -1,8 +1,8 @@
 function playGroundsByType(type){
     $.ajax({
-        url: "rest/PlaygroundRestController",
+        url: "/playgroundRest",
         type: "POST",
-        data:type,
+        data:{type: type},
         success: function(data){
         alert(data);
         }
