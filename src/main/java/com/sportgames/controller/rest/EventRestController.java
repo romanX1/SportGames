@@ -34,4 +34,9 @@ public class EventRestController {
     public SportEvent getEvent(@PathVariable Long eventId) {
         return eventService.findById(eventId);
     }
+
+    @GetMapping("/")
+    public List<SportEvent> getAllEvent() {
+        return eventService.getAll();
+    }
 }

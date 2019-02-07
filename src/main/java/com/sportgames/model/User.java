@@ -1,5 +1,6 @@
 package com.sportgames.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,14 +19,17 @@ public class User implements UserDetails {
     @Column (name = "name", nullable = false)
     private String name;
 
+    @JsonIgnore
     @Column (name = "login", nullable = false)
     private String login;
 
+    @JsonIgnore
     @Column (name = "password", nullable = false)
     private String password;
 
+
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Set<UserRole> autorities;
+    private Set<UserRole> authorities;
 
 
 
@@ -57,12 +61,10 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Set<UserRole> getAutorities() {
-        return autorities;
-    }
 
-    public void setAutorities(Set<UserRole> autorities) {
-        this.autorities = autorities;
+
+    public void setAuthorities(Set<UserRole> authorities) {
+        this.authorities = authorities;
     }
 
     @Override
@@ -83,9 +85,10 @@ public class User implements UserDetails {
         return result;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getAutorities();
+        return authorities;
     }
 
     @Override
@@ -98,21 +101,25 @@ public class User implements UserDetails {
         return getLogin();
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;
