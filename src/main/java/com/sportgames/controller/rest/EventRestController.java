@@ -5,6 +5,7 @@ import com.sportgames.model.User;
 import com.sportgames.service.SportEventService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,11 @@ public class EventRestController {
         this.eventService = eventService;
     }
 
+    @GetMapping("/")
+    public SportEvent getAuthentificatedEvent() {
+        User authentification = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return null;
+    }
     @GetMapping("/{eventId}/users")
     public List<User> getUsersForEvent(@PathVariable Long eventId) {
         return userService.getUsersByEventId(eventId);

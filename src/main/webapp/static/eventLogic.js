@@ -1,3 +1,11 @@
+$( document ).ready(function() {
+    getUserAuth()
+});
+
+$( "#auth ").on( "load", function() {
+
+});
+
 function getUserForEventById(id) {
     var result = {};
     $.ajax({

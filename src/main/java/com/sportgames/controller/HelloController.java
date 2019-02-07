@@ -10,6 +10,8 @@ import com.sportgames.service.SportEventService;
 import com.sportgames.service.SportService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +53,8 @@ public class HelloController {
         SportEvent sportEvent = sportEventService.findById(id);
         ModelAndView modelAndView = new ModelAndView("event");
         modelAndView.addObject("sportEvent", sportEvent);
+
+
         return modelAndView;
     }
 

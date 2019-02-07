@@ -20,6 +20,10 @@
         </h2>
         <td th:text="${sportEvent.timeStart}">...</td>
         <td th:text="${sportEvent.timeEnd}">....</td>
+        <br>
+        <button type="button" th:onclick="'getUserByName('+${currentName}+')'">
+            Добавиться в это событие
+        </button>
     </center>
     <center>
     <table class = "table table-dark table-striped">
