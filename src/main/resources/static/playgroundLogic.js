@@ -10,8 +10,7 @@ function playGroundsByType(typeId, typeName) {
             document.title='Площадки на которых доступен '+typeName;
             tbl.empty();
             $.each(data, function (i, v) {
-                console.log('added address');
-                tbl.append('<tr><td>'+data[i].address+'</td></tr>');
+                tbl.append('<tr><td>'+v.address+'</td></tr>');
             });
         }
     });
