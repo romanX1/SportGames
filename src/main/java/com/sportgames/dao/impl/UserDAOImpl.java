@@ -2,6 +2,7 @@ package com.sportgames.dao.impl;
 
 import com.sportgames.dao.UserDAO;
 import com.sportgames.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -47,10 +48,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User findByLogin(String login) {
+    public UserDetails findByLogin(String login) {
         return entityManager
                 //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
-                .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
+                .createQuery("SELECT r FROM User As r WHERE r.login = :param", UserDetails.class)
                 .setParameter("param", login)
                 .getSingleResult();
     }
