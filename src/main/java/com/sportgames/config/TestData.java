@@ -5,9 +5,12 @@ import com.sportgames.model.*;
 import com.sportgames.service.*;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 import java.util.*;
 
+@Component
 public class TestData {
 
     @Autowired
@@ -68,7 +71,7 @@ public class TestData {
             spe.setTimeEnd(ldEnd);
             sportEventService.add(spe);
         }
-    }  
+    }
 
     private void usersData() {
         userRoleData();

@@ -19,11 +19,10 @@ public class User implements UserDetails {
     @Column (name = "name", nullable = false)
     private String name;
 
-    @JsonIgnore
+
     @Column (name = "login", nullable = false)
     private String login;
 
-    @JsonIgnore
     @Column (name = "password", nullable = false)
     private String password;
 
@@ -85,7 +84,7 @@ public class User implements UserDetails {
                 ", name='" + name + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", autorities=" + autorities +
+                ", autorities=" + authorities +
                 '}';
     }
 

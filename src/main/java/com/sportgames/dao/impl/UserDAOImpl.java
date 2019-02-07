@@ -48,10 +48,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserDetails findByLogin(String login) {
+    public User findByLogin(String login) {
         return entityManager
                 //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
-                .createQuery("SELECT r FROM User As r WHERE r.login = :param", UserDetails.class)
+                .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
                 .setParameter("param", login)
                 .getSingleResult();
     }

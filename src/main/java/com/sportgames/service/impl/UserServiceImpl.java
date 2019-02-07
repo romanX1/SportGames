@@ -5,6 +5,7 @@ import com.sportgames.model.User;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,13 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("UserService")
+@Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
 
     @Autowired
     private UserDAO dao;
+
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
@@ -46,11 +48,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public String encodePassword(String password) {
         return passwordEncoder.encode(password);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return dao.findByLogin(s);
     }
 
     @Override
