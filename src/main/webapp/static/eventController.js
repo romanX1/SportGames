@@ -13,7 +13,7 @@ function getAllPlaygrounds() {
         async: false,
 
         success: function (grounds) {
-            var select = $('#exampleFormControlSelect');
+            var select = $('#exampleFormControlSelect1');
             $.each(grounds, function (index, value) {
                 select.append('<option>' + value.address + '</option>')
             });
