@@ -4,7 +4,7 @@
 <head th:include="fragments :: head">
 </head>
 <body>
-<form th:action="@{addnewevent}" method="post" id="formAdd">
+<form th:action="@{/addnewevent}" method="post" id="formAdd">
     <div class="panel panel-primary">
         <div class="panel-heading">Выбрать площадку</div>
         <div class="panel-body">
@@ -31,21 +31,11 @@
             <h4> Время завершения:</h4>
             <input type="time" name="timeEnd">
         </div>
-<<<<<<< HEAD
         <div class="container">
-            <button type="submit" class="btn btn-primary btn-lg">Создать Ивент!</button>
+            <input type="submit" form="formAdd" class="btn btn-primary btn-lg">Создать Ивент!</input>
         </div>
     </div>
-=======
-        <!--<div class="container">-->
-        <!--</div>-->
-    </div>
-<<<<<<< Updated upstream
-=======
-    <button type="submit" form="formAdd" class="btn btn-primary btn-lg">Создать Ивент!</button>
->>>>>>> 888
 
->>>>>>> Stashed changes
 </form>
 </body>
 </html>
