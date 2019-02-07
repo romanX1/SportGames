@@ -1,17 +1,23 @@
+$(document).ready(function () {
+    getAllPlaygrounds();
+
+    $("#id_btn").on("click", function () {
+        getAllPlaygrounds();
+    });
+});
+
 function getAllPlaygrounds() {
     $.ajax({
         url: "/api/playgrounds/",
         type: "GET",
-        assync: false,
+        async: false,
 
         success: function (grounds) {
-            var select =$('#exampleFormControlSelect1');
-            $.each(grounds, function(index,value){
-                select.append($('<option>', {
-                value:index,
-                text:value
-                }
-            ));
-        });
-}});
+            var select = $('#exampleFormControlSelect');
+            $.each(grounds, function (index, value) {
+                select.append('<option>' + value.address + '</option>')
+            });
+        }
+    })
 }
+
