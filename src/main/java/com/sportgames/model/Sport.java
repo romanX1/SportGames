@@ -1,5 +1,6 @@
 package com.sportgames.model;
 
+
 import javax.persistence.*;
 
 @Entity
