@@ -1,7 +1,9 @@
 package com.sportgames.controller.rest;
 
+import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
+import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.SportEventService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,18 @@ public class EventRestController {
 
     private final UserService userService;
     private final SportEventService eventService;
+    private final PlaygroundService playgroundService;
 
     @Autowired
-    public EventRestController(UserService userService, SportEventService eventService) {
+    public EventRestController(UserService userService, SportEventService eventService, PlaygroundService playgroundService) {
         this.userService = userService;
         this.eventService = eventService;
+        this.playgroundService = playgroundService;
+    }
+
+    @GetMapping("/addevent")
+    public List<Playground> getAllPlayground(){
+        return playgroundService.getAll();
     }
 
     @GetMapping("/{eventId}/users")
