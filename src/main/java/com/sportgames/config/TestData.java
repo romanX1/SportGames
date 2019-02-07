@@ -1,20 +1,13 @@
 package com.sportgames.config;
 
-import com.github.javafaker.Faker;
-import com.sportgames.model.Playground;
-import com.sportgames.model.Sport;
-import com.sportgames.model.SportEvent;
-import com.sportgames.model.User;
-import com.sportgames.service.PlaygroundService;
-import com.sportgames.service.SportEventService;
-import com.sportgames.service.SportService;
-import com.sportgames.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sportgames.model.*;
+import com.sportgames.service.*;
+import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
 
 public class TestData {
 
@@ -26,8 +19,11 @@ public class TestData {
     private SportService sportService;
     @Autowired
     private SportEventService sportEventService;
+    @Autowired
+    private UserRoleService userRoleService;
 
     public void initData() {
+        usersData();
         Faker faker = new Faker(new Locale("ru"));
         List<Sport> allSports = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
@@ -45,6 +41,7 @@ public class TestData {
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
 
+
             int s1 = (int) (Math.random() * 15);
             int s2 = (int) (Math.random() * 14) + 15;
             Set<Sport> sports = new HashSet<>(allSports.subList(Math.min(s1, s2), Math.max(s1, s2)));
@@ -52,12 +49,8 @@ public class TestData {
 
             playgroundService.add(pg);
         }
-        for (int i = 0; i < 300; i++) {
-            User user = new User();
-            user.setName(faker.name().fullName());
-            userService.add(user);
-        }
-        List<User> users = new ArrayList<>();
+
+        List<User> users;
         users = userService.getAll();
 
         for (int i = 0; i < 100; i++) {
@@ -76,5 +69,35 @@ public class TestData {
             spe.setTimeEnd(ldEnd);
             sportEventService.add(spe);
         }
+    }  
+
+    private void usersData() {
+        userRoleData();
+
+        for (int i = 0; i < 300; i++) {
+            User user = new User();
+            user.setName("user" + i);
+            user.setLogin("user" + i);
+            user.setPassword(userService.encodePassword("user" + i));
+            user.setAutorities(new HashSet<>(randomAutorities()));
+            userService.add(user);
+        }
     }
+
+    private List<UserRole> randomAutorities() {
+        List<UserRole> userRoles = new ArrayList<>();
+        int k = (int) (Math.round(Math.random()) + 1);
+        for (int i = 0; i < k; i++) {
+            if (i == 0) userRoles.add(userRoleService.findByAuthority("ROLE_USER"));
+            if (i == 1) userRoles.add(userRoleService.findByAuthority("ROLE_ADMIN"));
+        }
+        return userRoles;
+    }
+
+    private void userRoleData() {
+        userRoleService.add(new UserRole("ROLE_ADMIN"));
+        userRoleService.add(new UserRole("ROLE_USER"));
+    }
+
+
 }
