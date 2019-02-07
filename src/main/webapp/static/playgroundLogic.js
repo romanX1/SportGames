@@ -2,7 +2,7 @@ function playGroundsByType(typeId, typeName) {
     $.ajax({
         url: "/api/playgrounds/byId/"+typeId,
         type: "GET",
-        assync: false,
+        async: false,
         data: typeId,
         success: function (data) {
             var tbl=$('#pg_tbl');

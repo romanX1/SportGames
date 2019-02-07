@@ -6,7 +6,6 @@ import com.sportgames.service.*;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class TestData {
@@ -79,7 +78,7 @@ public class TestData {
             user.setName("user" + i);
             user.setLogin("user" + i);
             user.setPassword(userService.encodePassword("user" + i));
-            user.setAutorities(new HashSet<>(randomAutorities()));
+            user.setAuthorities(new HashSet<>(randomAutorities()));
             userService.add(user);
         }
     }

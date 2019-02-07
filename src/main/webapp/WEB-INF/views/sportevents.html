@@ -3,13 +3,12 @@
 <html lang="ru">
 <head th:include="fragments :: head">
     <title>Events</title>
+
 </head>
 <body>
-<h1>Events</h1>
-
-<br/><br/>
+<h1>Список всех ивентов:</h1>
 <div>
-    <table class="table-dark table-striped">
+    <table id="table_1" class="table-dark table-striped">
         <thead>
         <tr>
             <th>Площадка</th>
@@ -19,14 +18,8 @@
             <th>Количество игроков</th>
         </tr>
         </thead>
-        <tbody>
-            <tr th:each ="sportevent : ${sportevents}">
-                <td th:utext="${sportevent.playground.address}">...</td>
-                <td th:utext="${sportevent.sport.type}">...</td>
-                <td th:utext="${sportevent.timeStart}">...</td>
-                <td th:utext="${sportevent.timeEnd}">...</td>
-                <td th:utext="${sportevent.users.size()}">...</td>
-            </tr>
+        <tbody id="tablebody_1">
+
         </tbody>
     </table>
 </div>
