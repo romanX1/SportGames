@@ -8,6 +8,7 @@ public interface SportEventDAO {
     List<SportEvent> getAll();
     List<SportEvent> getAllByPlayground(String adr);
     void add(SportEvent sportEvent);
+    void update(SportEvent sportEvent);
     void delete(Long id);
     SportEvent findByName(String name);
 }

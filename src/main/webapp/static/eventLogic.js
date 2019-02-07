@@ -1,10 +1,18 @@
-$( document ).ready(function() {
-    getUserAuth()
-});
 
-$( "#auth ").on( "load", function() {
+function getAuth(id) {
+    $.ajax({
+        url: "/api/events/"+id+"/join",
+        type: "GET",
+        async: false,
+        success: function (user) {
+            console.log(user)
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
+}
 
-});
 
 function getUserForEventById(id) {
     var result = {};

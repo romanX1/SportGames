@@ -33,6 +33,10 @@ public class SportEventDAOImpl implements SportEventDAO {
     public void add(SportEvent sportEvent) {
         entityManager.persist(sportEvent);
     }
+    @Override
+    public void update(SportEvent sportEvent) {
+        entityManager.merge(sportEvent);
+    }
 
     @Override
     public void delete(Long id) {

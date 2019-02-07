@@ -26,11 +26,15 @@ public class EventRestController {
         this.eventService = eventService;
     }
 
-    @GetMapping("/")
-    public SportEvent getAuthentificatedEvent() {
-        User authentification = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return null;
+    @GetMapping("/{eventId}/join")
+    public User getAuthentificatedEvent(@PathVariable Long eventId) {
+        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SportEvent sportEvent = eventService.findById(eventId);
+        sportEvent.getUsers().add(authUser);
+        eventService.update(sportEvent);
+        return authUser;
     }
+
     @GetMapping("/{eventId}/users")
     public List<User> getUsersForEvent(@PathVariable Long eventId) {
         return userService.getUsersByEventId(eventId);

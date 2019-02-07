@@ -77,6 +77,17 @@ public class User implements UserDetails {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", autorities=" + autorities +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id.hashCode();
         result = 31 * result + name.hashCode();
