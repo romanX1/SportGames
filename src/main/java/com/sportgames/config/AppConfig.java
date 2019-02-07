@@ -6,12 +6,21 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 @Configuration
 public class AppConfig {
+<<<<<<< Updated upstream
 /*
     @Bean(initMethod = "initData")
     public TestData initTestData(){
         return new TestData();
     }
     */
+=======
+
+//    @Bean(initMethod = "initData")
+//    public TestData initTestData(){
+//        return new TestData();
+//    }
+
+>>>>>>> Stashed changes
 
 //    @Bean
 //    public Jackson2ObjectMapperBuilder jacksonBuilder() {

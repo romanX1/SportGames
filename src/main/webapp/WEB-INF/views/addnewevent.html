@@ -4,7 +4,7 @@
 <head th:include="fragments :: head">
 </head>
 <body>
-<form th:action="@{addnewevent}" method="post">
+<form th:action="@{addnewevent}" method="post" id="formAdd">
     <div class="panel panel-primary">
         <div class="panel-heading">Выбрать площадку</div>
         <div class="panel-body">
@@ -17,7 +17,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Выбрать вид спорта</div>
         <div class="panel-body">
-            <select class="form-control" id="exampleFormControlSelect1" name="selectSport" style="width: fit-content">
+            <select class="form-control" id="exampleFormControlSelect" name="selectSport" style="width: fit-content">
                 <option th:each=" sport :${sports}" th:text="${sport.type}"
                         th:value="${sport.id}"></option>
             </select>
@@ -32,10 +32,14 @@
             <h4> Время завершения:</h4>
             <input type="time" name="timeEnd">
         </div>
-        <div class="container">
-            <button type="submit" class="btn btn-primary btn-lg">Создать Ивент!</button>
-        </div>
+        <!--<div class="container">-->
+        <!--</div>-->
     </div>
+<<<<<<< Updated upstream
+=======
+    <button type="submit" form="formAdd" class="btn btn-primary btn-lg">Создать Ивент!</button>
+
+>>>>>>> Stashed changes
 </form>
 </body>
 </html>
