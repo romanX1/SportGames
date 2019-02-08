@@ -38,13 +38,11 @@ public class HelloController {
     }
 
     @GetMapping("/event")
-    public ModelAndView eventPage(HttpServletRequest req){
-        long id = 15L;
-        SportEvent sportEvent = eventService.findById(id);
+    public ModelAndView eventPage(@RequestParam Long eventId){
+
+        SportEvent sportEvent = eventService.findById(eventId);
         ModelAndView modelAndView = new ModelAndView("event");
         modelAndView.addObject("sportEvent", sportEvent);
-
-
         return modelAndView;
     }
     @RequestMapping(value="/login", method = RequestMethod.GET)
@@ -121,18 +119,5 @@ public class HelloController {
 
         return modelAndView;
     }
-//    @RequestMapping(value = { "/groundList" }, method = RequestMethod.GET)
-//    public String groundList(Model model) {
-//
-//        grounds.add(new Playground("address"));
-//        grounds.add(new Playground("address111"));
-//        grounds.add(new Playground("address222"));
-//
-//        model.addAttribute("grounds", grounds);
-//
-//        return "playgrounds";
-//    }
-
-
 
 }

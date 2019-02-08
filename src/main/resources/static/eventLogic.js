@@ -8,7 +8,7 @@ function getAuth(id) {
 
             //$(event.users).each(function (i, user) {
                 $("#user-trs").append(
-                    "<tr id=''>" +
+                    "<tr id="+ user.id+">" +
                     "   <td>"+ user.name+"</td>" +
                     "</tr>"
                 );
@@ -27,14 +27,8 @@ function deleteAuth(id) {
         type: "GET",
         async: false,
         success: function (user) {
-
-            //$(event.users).each(function (i, user) {
-            $("#user-trs").remove(
-                "<tr id=''>" +
-                "   <td>"+ user.name+"</td>" +
-                "</tr>"
-            );
-            // })
+            var elem = document.getElementById(user.id);
+            elem.remove();
         },
 
         error: function (error) {
@@ -79,7 +73,7 @@ function fillEventToModal(event) {
     $("#header").text(event.sport.type+' с '+ event.timeStart + ' по ' + event.timeEnd);
     $(event.users).each(function (i, user) {
         $("#user-trs").append(
-            "<tr id=''>" +
+            "<tr id="+user.id+">" +
             "   <td>"+user.name+"</td>" +
             "</tr>"
         );
