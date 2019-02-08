@@ -95,11 +95,11 @@
             <version>2.3.0</version>
         </dependency>
         <!--LAX HTML mode-->
-        <!--<dependency>-->
-            <!--<groupId>net.sourceforge.nekohtml</groupId>-->
-            <!--<artifactId>nekohtml</artifactId>-->
-            <!--<version>1.9.15</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.15</version>
+        </dependency>
     </dependencies>
 
     <build>
