@@ -1,8 +1,3 @@
-$(document).ready( function (){
-    getAllSportEvents();
-}
-);
-
 function getAllSportEvents() {
     $.ajax({
         url: "api/events/",

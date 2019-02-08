@@ -45,7 +45,8 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
 
     @Override
     public Playground findByName(String name) {
-        return entityManager.find(Playground.class, name);
+        return (Playground)entityManager.createQuery("SELECT p FROM Playground p " +
+                "WHERE p.address = :name", Playground.class).setParameter("name",name).getResultList().get(0);
     }
 
     @Override
