@@ -5,6 +5,7 @@
     <title>event</title>
 </head>
 <body th:onload="'getAndFillEventForModal('+${sportEvent.id}+')'">
+<div th:replace="fragments::nav"/>
 <div class="container">
     <tr>
         <center>
@@ -35,6 +36,7 @@
             <!--</td>-->
             <tbody id="user-trs">
             </tbody>
+
         </table>
     </center>
 </div>

@@ -47,7 +47,10 @@ public class HelloController {
 
         return modelAndView;
     }
-
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
     @GetMapping("/addGround")
     public String addGround(Model model){
         //model.addAttribute("Playground", new Playground ());
@@ -63,7 +66,6 @@ public class HelloController {
     @GetMapping("/addnewevent")
     public ModelAndView addneweventMenu(){
         ModelAndView modelAndView = new ModelAndView("addnewevent");
-
         modelAndView.addObject("playgrounds", playgroundService.getAll());
         modelAndView.addObject("sports", sportService.getAll());
 
@@ -71,7 +73,8 @@ public class HelloController {
     }
 
     @PostMapping("/addnewevent")
-    public String addNewEvent(@RequestParam("selectSport") Long sportId,@RequestParam("selectGround") Long groundId,
+    public String addNewEvent(@RequestParam("selectSport") Long sportId,
+                              @RequestParam("selectGround") Long groundId,
                             @RequestParam("data") String data,
                             @RequestParam("timeStart") String timeStart,
                             @RequestParam("timeEnd") String timeEnd){
@@ -91,6 +94,7 @@ public class HelloController {
         List<Playground> playgrounds;
             playgrounds = playgroundService.getAll();
         ModelAndView modelAndView = new ModelAndView("playgrounds");
+        modelAndView.addObject("kremlin", playgroundService.findByName("Кремль"));
         modelAndView.addObject("grounds", playgrounds);
         modelAndView.addObject("sports", sportService.getAll() );
 

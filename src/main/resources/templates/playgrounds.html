@@ -3,26 +3,15 @@
 <head>
     <th:block th:include="fragments :: head"></th:block>
     <base href="/"/>
-    <link href="/static/css/left-sidebar.css" rel="stylesheet"  type="text/css"/>
+    <link href="../static/css/left-sidebar.css" th:href="@{/css/left-sidebar.css}"  rel="stylesheet" />
     <title th:text="'Площадки на которых доступен '+${sports.get(0).type}"/>
 </head>
 <body>
-<nav class="navbar navbar-default no-margin">
-    <div class="navbar-header fixed-brand">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-            <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-        </button>
-        <a class="navbar-brand" ><i class="fa fa-rocket fa-4"></i> Вид Спорта</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active" ><a class="navbar-brand" ><i class="fa fa-rocket fa-4"></i> Площадка</a></li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments::nav"/>
 <div id="wrapper">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+            <li><h3>Виды спорта</h3></li>
             <li th:each="sport : ${sports}">
                 <a th:onclick="'playGroundsByType('+${sport.id}+', \''+${sport.type}+'\');'"  th:text="${sport.type}">
                     <span class="fa-stack fa-lg pull-left">
@@ -31,7 +20,6 @@
                     </span>
                 </a>
             </li>
-
         </ul>
     </div><!-- /#sidebar-wrapper -->
     <div id="page-content-wrapper">
@@ -39,7 +27,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div>
-                        <table id="pg_tbl" class="table table-dark table-striped">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                            <tr>
+                                <td id="thead_sport">Адреса площадок</td>
+                            </tr>
+                            </thead>
+                            <tbody id="pg_tbl">
+                            <tr>
+                                <td></td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
