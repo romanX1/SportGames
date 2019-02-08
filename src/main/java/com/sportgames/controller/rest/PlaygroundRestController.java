@@ -25,4 +25,10 @@ public class PlaygroundRestController {
         List<Playground> playgrounds = playgroundService.getAll();
         return playgrounds;
     }
+
+    @RequestMapping("/supply")
+    public Boolean supplyPG(@RequestParam Playground pg){
+        playgroundService.add(pg);
+        return true;
+    }
 }

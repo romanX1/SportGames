@@ -8,7 +8,7 @@
 </head>
 <body>
 <div th:replace="fragments::nav"/>
-<div id="wrapper">
+<div id="wrapper" class="container">
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
             <li><h3>Виды спорта</h3></li>
@@ -56,19 +56,39 @@
                 <h4 class="modal-title">Предложить площадку</h4>
             </div>
             <div class="modal-body">
+
                 <p>Заполните все поля и после проверки модератором мы опубликуем площадку</p>
-                <select id="sport_select" class="selectpicker" multiple="multiple" data-live-search="true">
+                <form id="PGform" action="/api/playgrounds/add" method="POST">
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                <label for="PGaddress">Введите адрес:</label>
+                <input type="text" class="form-control" id="PGaddress" name="PGaddress"/>
 
-                </select>
+                        </div>
+                    </div>
+                        <label for="PGsports">Выберите виды спорта:</label><br/>
+                <div class="row">
 
-            </div>
+                        <select name="PGsports" id="PGsports" class="selectpicker col-lg-8" multiple="multiple" data-live-search="true">
+                    <option th:each="sport :${sports}" th:value="${sport.id}" th:text="${sport.type}" th:name="${sport.id}"></option>
+                        </select>
+                    <button onclick="supplyPlayground()" type="submit" class="btn btn-success col-lg-3" style="float:right">Предложить</button>
+                    </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Предложить</button>
+
+
+                </div>
+
+                </form>
+
             </div>
         </div>
 
     </div>
 </div>
+<script>
+
+</script>
 </body>
 </html>

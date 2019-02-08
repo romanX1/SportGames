@@ -23,9 +23,23 @@ function setPGs(data) {
     });
 }
 
-function setPGmodal() {
-    var sports=getAllSports();
-    // <option>Mustard</option>
-    // <option>Ketchup</option>
-    // <option>Relish</option>
+function supplyPlayground() {
+    var allSports=getAllSports();
+    var formsData=$('#PGsports').val();
+    var formsAddr=$('#PGaddress').val();
+
+    var newPG={};
+    newPG[formsAddr]={};
+    $.each(formsData, function (i, v) {
+        newPG[formsAddr][i]=allSports[v-1];
+    })
+
+    $.ajax({
+       url:"/api/playground/add" ,
+        method:"POST",
+
+
+
+    });
+    $('#supplyPlayground').serialize()
 }

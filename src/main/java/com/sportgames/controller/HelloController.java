@@ -33,7 +33,7 @@ public class HelloController {
 
 
     @GetMapping("/")
-    public String userPage(){
+    public String mainPage(){
         return "index";
     }
 

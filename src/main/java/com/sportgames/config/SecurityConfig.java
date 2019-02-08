@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("user")
                 .passwordParameter("pass")
                 .loginProcessingUrl("/auth")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/playgrounds");
     }
 
 }
