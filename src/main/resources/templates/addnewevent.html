@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments :: head">
 </head>
+<div th:replace="fragments::nav"/>
 <body>
 <form th:action="@{/addnewevent}" method="post" id="formAdd">
     <div class="panel panel-primary">
