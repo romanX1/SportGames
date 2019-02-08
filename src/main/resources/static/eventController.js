@@ -15,7 +15,8 @@ function getAllPlaygrounds() {
         success: function (grounds) {
             var select = $('#exampleFormControlSelect1');
             $.each(grounds, function (index, value) {
-                select.append('<option>' + value.address + '</option>')
+                select.append('<option value="'+value.id+'">' + value.address + '</option>')
+                    //.append('<option>' + value.address + '</option>')
             });
         }
     })

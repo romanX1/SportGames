@@ -81,7 +81,8 @@ public class HelloController {
     }
 
     @PostMapping("/addnewevent")
-    public String addNewEvent(@RequestParam("selectSport") Long sportId,@RequestParam("selectGround") Long groundId,
+    public String addNewEvent(@RequestParam("selectSport") Long sportId,
+                              @RequestParam("selectGround") Long groundId,
                             @RequestParam("data") String data,
                             @RequestParam("timeStart") String timeStart,
                             @RequestParam("timeEnd") String timeEnd){
