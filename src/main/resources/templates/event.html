@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments :: head">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>event</title>
 </head>
 <body>
@@ -20,7 +19,7 @@
         </h2>
         <td th:text="${sportEvent.timeStart}">...</td>
         <td th:text="${sportEvent.timeEnd}">....</td>
-        <br>
+        <p></p>
         <button type="button" th:onclick="'getAuth('+ ${sportEvent.id} +')'">
             Добавиться в это событие
         </button>
@@ -31,7 +30,7 @@
                     class="btn btn-primary btn-lg" data-toggle="modal" data-target="#users-modal">
                 Список участников
             </button>
-            </td>
+            <!--</td>-->
             <tbody id="user-trs">
             </tbody>
 

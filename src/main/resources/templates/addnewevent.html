@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments :: head">
 </head>
 <body>
@@ -8,8 +7,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Выбрать площадку</div>
         <div class="panel-body">
-            <select class="form-control" id="exampleFormControlSelect1" name="selectGround" style="width: fit-content">
-
+            <select class="form-control"  id="exampleFormControlSelect1" name="selectGround" style="width: fit-content">
             </select>
         </div>
     </div>
@@ -25,17 +23,16 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Выберите дату</div>
         <div class="panel-body">
-            <input type="date" name="data">
+            <input type="date" name="data"/>
             <h4> Время начало:</h4>
-            <input type="time" name="timeStart">
+            <input type="time" name="timeStart"/>
             <h4> Время завершения:</h4>
-            <input type="time" name="timeEnd">
+            <input type="time" name="timeEnd"/>
         </div>
-        <div class="container">
-            <input type="submit" form="formAdd" class="btn btn-primary btn-lg">Создать Ивент!</input>
-        </div>
+        <!--<div class="container">-->
+            <input type="submit" form="formAdd" class="btn btn-primary btn-lg" value="Создать Ивент!"/>
+        <!--</div>-->
     </div>
-
 </form>
 </body>
 </html>
