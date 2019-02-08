@@ -2,7 +2,7 @@ function playGroundsByType(typeId, typeName) {
     $.ajax({
         url: "/api/playgrounds/byId/"+typeId,
         type: "GET",
-        async: false,
+        assync: false,
         data: typeId,
         success: function (data) {
             var tbl=$('#pg_tbl');
@@ -10,7 +10,8 @@ function playGroundsByType(typeId, typeName) {
             document.title='Площадки на которых доступен '+typeName;
             tbl.empty();
             $.each(data, function (i, v) {
-                tbl.append('<tr><td>'+v.address+'</td></tr>');
+                console.log('added address');
+                tbl.append('<li class="list-group-item list-group-item-info">'+data[i].address+'</li>');
             });
         }
     });

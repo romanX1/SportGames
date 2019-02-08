@@ -3,7 +3,7 @@
 <head>
     <th:block th:include="fragments :: head"></th:block>
     <base href="/"/>
-    <link href="/static/css/left-sidebar.css" rel="stylesheet"  type="text/css"/>
+    <link href="../static/css/left-sidebar.css" th:href="@{/css/left-sidebar.css}"  rel="stylesheet" />
     <title th:text="'Площадки на которых доступен '+${sports.get(0).type}"/>
 </head>
 <body>
