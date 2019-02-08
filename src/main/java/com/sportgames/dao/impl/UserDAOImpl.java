@@ -12,7 +12,7 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 @Repository("UserDAO")
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements UserDAO{
 
     @PersistenceContext
     private EntityManager entityManager;

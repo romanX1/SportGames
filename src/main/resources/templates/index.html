@@ -1,20 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="fragments::head">
+    <meta charset="UTF-8"/>
 
-    <title>Welcome</title>
+
 </head>
 <body>
-<h1>Welcome</h1>
-
-
-<a th:href="@{/playgrounds}">Playgrounds</a>
-<p> </p>
-<a th:href="@{/sportevents}">Список ивентов</a>
-<p> </p>
-<a th:href="@{/event}">Сам ивент</a>
-<p> </p>
-<a th:href="@{/outdoorpanel}">Аутдор панель</a>
+<div th:replace="fragments::nav"/>
+<h1>Добро пожаловать</h1>
 
 </body>
+
 </html>

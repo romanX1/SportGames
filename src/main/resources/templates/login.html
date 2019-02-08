@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="fragments::head">
+    <meta charset="UTF-8"/>
+    <title>Представьтесь</title>
+</head>
+<body>
+<div class="login-card">
+    <h1>Представьтесь</h1><br/>
+    <form th:action="@{/auth}" method="POST">
+        <input type="text" name="user" placeholder="Логин"/>
+        <input type="password" name="pass" placeholder="Пароль"/>
+        <input type="submit" name="login" class="login login-submit" value="Войти"/>
+    </form>
+
+    <div class="login-help">
+        <a href="#">Register</a> • <a href="#">Забыл пароль</a>
+    </div>
+</div>
+</body>
+</html>
