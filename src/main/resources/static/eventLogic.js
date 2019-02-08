@@ -5,8 +5,38 @@ function getAuth(id) {
         type: "GET",
         async: false,
         success: function (user) {
-            console.log(user)
+
+            //$(event.users).each(function (i, user) {
+                $("#user-trs").append(
+                    "<tr id=''>" +
+                    "   <td>"+ user.name+"</td>" +
+                    "</tr>"
+                );
+           // })
         },
+
+        error: function (error) {
+            console.log(error)
+        }
+    });
+}
+
+function deleteAuth(id) {
+    $.ajax({
+        url: "/api/events/"+id+"/del",
+        type: "GET",
+        async: false,
+        success: function (user) {
+
+            //$(event.users).each(function (i, user) {
+            $("#user-trs").remove(
+                "<tr id=''>" +
+                "   <td>"+ user.name+"</td>" +
+                "</tr>"
+            );
+            // })
+        },
+
         error: function (error) {
             console.log(error)
         }

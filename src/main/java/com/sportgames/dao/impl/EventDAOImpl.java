@@ -1,6 +1,6 @@
 package com.sportgames.dao.impl;
 
-import com.sportgames.dao.SportEventDAO;
+import com.sportgames.dao.EventDAO;
 import com.sportgames.model.SportEvent;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository("SportEventDAO")
-public class SportEventDAOImpl implements SportEventDAO {
+public class EventDAOImpl implements EventDAO {
 
     @PersistenceContext
     private EntityManager entityManager;

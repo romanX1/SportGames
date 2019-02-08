@@ -3,7 +3,7 @@ package com.sportgames.dao;
 import com.sportgames.model.SportEvent;
 import java.util.List;
 
-public interface SportEventDAO {
+public interface EventDAO {
     SportEvent findById(Long id);
     List<SportEvent> getAll();
     List<SportEvent> getAllByPlayground(String adr);

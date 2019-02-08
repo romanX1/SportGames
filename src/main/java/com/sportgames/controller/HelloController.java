@@ -1,32 +1,22 @@
 package com.sportgames.controller;
 
-import com.sportgames.dao.PlaygroundDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
-import com.sportgames.model.User;
 import com.sportgames.service.PlaygroundService;
-import com.sportgames.service.SportEventService;
+import com.sportgames.service.EventService;
 import com.sportgames.service.SportService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.lang.reflect.Parameter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 @Controller
@@ -37,7 +27,7 @@ public class HelloController {
     @Autowired
     private SportService sportService ;
     @Autowired
-    private SportEventService sportEventService;
+    private EventService eventService;
     @Autowired
     private UserService userService;
 
@@ -48,9 +38,9 @@ public class HelloController {
     }
 
     @GetMapping("/event")
-    public ModelAndView eventPage(){
-        long id = 4L;
-        SportEvent sportEvent = sportEventService.findById(id);
+    public ModelAndView eventPage(HttpServletRequest req){
+        long id = 15L;
+        SportEvent sportEvent = eventService.findById(id);
         ModelAndView modelAndView = new ModelAndView("event");
         modelAndView.addObject("sportEvent", sportEvent);
 
@@ -92,7 +82,7 @@ public class HelloController {
         LocalDateTime dataTimeStart = LocalDateTime.parse(startTime,formatter);
         LocalDateTime dataTimeEnd = LocalDateTime.parse(endTime,formatter);
         Sport sport = sportService.findById(sportId);
-        sportEventService.add(new SportEvent(sport,dataTimeEnd,dataTimeStart,playground));
+        eventService.add(new SportEvent(sport,dataTimeEnd,dataTimeStart,playground));
         return "redirect:/playgrounds";
     }
 
@@ -116,7 +106,7 @@ public class HelloController {
     public ModelAndView eventsByTime(@PathVariable String time){
         List<SportEvent> sportEvents;
         if (time.isEmpty()) {
-            sportEvents = sportEventService.getAll();
+            sportEvents = eventService.getAll();
         } else {
             sportEvents = null;
             //sportEvents = playgroundService.getPlaygroundBySportType(time); //нужно допилить
