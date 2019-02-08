@@ -4,7 +4,7 @@ import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
 import com.sportgames.service.PlaygroundService;
-import com.sportgames.service.SportEventService;
+import com.sportgames.service.EventService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,11 +20,11 @@ import java.util.List;
 public class EventRestController {
 
     private final UserService userService;
-    private final SportEventService eventService;
+    private final EventService eventService;
     private final PlaygroundService playgroundService;
 
     @Autowired
-    public EventRestController(UserService userService, SportEventService eventService, PlaygroundService playgroundService) {
+    public EventRestController(UserService userService, EventService eventService, PlaygroundService playgroundService) {
         this.userService = userService;
         this.eventService = eventService;
         this.playgroundService = playgroundService;
@@ -42,6 +42,16 @@ public class EventRestController {
         sportEvent.getUsers().add(authUser);
         eventService.update(sportEvent);
         return authUser;
+    }
+
+    @GetMapping("/{eventId}/del")
+    public User delAuthentificatedEvent(@PathVariable Long eventId) {
+        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SportEvent sportEvent = eventService.findById(eventId);
+        sportEvent.getUsers().remove(authUser);
+        eventService.update(sportEvent);
+        return authUser;
+
     }
 
     @GetMapping("/{eventId}/users")

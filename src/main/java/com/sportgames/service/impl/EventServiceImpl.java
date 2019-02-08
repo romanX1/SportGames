@@ -1,8 +1,8 @@
 package com.sportgames.service.impl;
 
-import com.sportgames.dao.SportEventDAO;
+import com.sportgames.dao.EventDAO;
 import com.sportgames.model.SportEvent;
-import com.sportgames.service.SportEventService;
+import com.sportgames.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service("SportEventService")
-public class SportEventServiceImpl implements SportEventService {
+public class EventServiceImpl implements EventService {
 
-    private final SportEventDAO dao;
+    private final EventDAO dao;
 
     @Autowired
-    public SportEventServiceImpl(SportEventDAO dao) {
+    public EventServiceImpl(EventDAO dao) {
         this.dao = dao;
     }
 
@@ -36,11 +36,18 @@ public class SportEventServiceImpl implements SportEventService {
     }
 
     @Override
+    @Transactional
+    public void delete(Long id) {
+        dao.delete(id);
+    }
+
+    @Override
     public List<SportEvent> getByPlayground(String adr) {
         return dao.getAllByPlayground(adr);
     }
 
     @Override
+    @Transactional
     public void update(SportEvent sportEvent) {
         dao.update(sportEvent);
     }

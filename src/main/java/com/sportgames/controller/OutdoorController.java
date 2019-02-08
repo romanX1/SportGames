@@ -1,7 +1,7 @@
 package com.sportgames.controller;
 
 import com.sportgames.service.PlaygroundService;
-import com.sportgames.service.SportEventService;
+import com.sportgames.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,16 +10,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Controller
 public class OutdoorController {
     private final PlaygroundService pgService;
 
-    private final SportEventService seService;
+    private final EventService seService;
 
     @Autowired
-    public OutdoorController(PlaygroundService pgService, SportEventService seService) {
+    public OutdoorController(PlaygroundService pgService, EventService seService) {
         this.pgService = pgService;
         this.seService = seService;
     }

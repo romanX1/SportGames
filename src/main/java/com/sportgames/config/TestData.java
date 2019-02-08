@@ -20,7 +20,7 @@ public class TestData {
     @Autowired
     private SportService sportService;
     @Autowired
-    private SportEventService sportEventService;
+    private EventService eventService;
     @Autowired
     private UserRoleService userRoleService;
 
@@ -69,7 +69,7 @@ public class TestData {
             LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
             spe.setTimeStart(ldStart);
             spe.setTimeEnd(ldEnd);
-            sportEventService.add(spe);
+            eventService.add(spe);
         }
     }
 
