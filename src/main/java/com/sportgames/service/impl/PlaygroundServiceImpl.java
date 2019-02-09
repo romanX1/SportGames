@@ -46,6 +46,11 @@ public class PlaygroundServiceImpl implements PlaygroundService {
     }
 
     @Override
+    public void update(Playground playground) {
+        dao.update(playground);
+    }
+
+    @Override
     public Playground findByName(String name) {
         return dao.findByName(name);
     }

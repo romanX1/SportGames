@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("ALL")
 @Repository("SportDAO")
@@ -36,7 +38,11 @@ public class SportDAOImpl implements SportDAO {
         entityManager.remove(sport);
     }
 
-
+    @Override
+    public Set<Sport> findById(Long[] id) {
+        return new HashSet<>(entityManager.createQuery("SELECT s FROM Sport s WHERE s.id IN :ids", Sport.class)
+                .setParameter("ids",id).getResultList());
+    }
 
     @Override
     public Sport findByName(String name) {

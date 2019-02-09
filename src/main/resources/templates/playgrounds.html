@@ -58,7 +58,7 @@
             <div class="modal-body">
 
                 <p>Заполните все поля и после проверки модератором мы опубликуем площадку</p>
-                <form id="PGform" action="/api/playgrounds/add" method="POST">
+                <form th:action="@{/api/playgrounds/supply}" th:method="POST" id="PGform" action="">
                     <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
@@ -73,7 +73,7 @@
                         <select name="PGsports" id="PGsports" class="selectpicker col-lg-8" multiple="multiple" data-live-search="true">
                     <option th:each="sport :${sports}" th:value="${sport.id}" th:text="${sport.type}" th:name="${sport.id}"></option>
                         </select>
-                    <button onclick="supplyPlayground()" type="submit" class="btn btn-success col-lg-3" style="float:right">Предложить</button>
+                    <button onclick="supplyPlayground()" type="button" class="btn btn-success col-lg-3" style="float:right">Предложить</button>
                     </div>
 
 

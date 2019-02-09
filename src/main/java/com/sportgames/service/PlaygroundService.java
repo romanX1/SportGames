@@ -13,4 +13,6 @@ public interface PlaygroundService {
     Playground findById(Long id);
 
     List<Playground> getPlaygroundBySportType(Long sportTypeId);
+
+    void update(Playground playground);
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service("SportService")
 @Transactional
@@ -27,7 +28,12 @@ public class SportServiceImpl implements SportService {
     }
 
     @Override
-    public Sport findById(long id) {
+    public Sport findById(Long id) {
+        return dao.findById(id);
+    }
+
+    @Override
+    public Set<Sport> findById(Long[] id) {
         return dao.findById(id);
     }
 }

@@ -57,5 +57,10 @@ public class PlaygroundDaoImpl implements PlaygroundDAO {
                 .getResultList();
     }
 
+    @Override
+    public void update(Playground playground) {
+        entityManager.merge(playground);
+    }
+
 
 }
