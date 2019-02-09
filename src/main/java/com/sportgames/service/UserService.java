@@ -9,6 +9,7 @@ public interface UserService {
     List<User> getAll();
     void add(User user);
     User findById(Long id);
+    User findByName(String name);
     List<User> getUsersByEventTime(String timeEvent);
     String encodePassword (String password);
     List<User> getUsersByEventId(Long eventId);

@@ -36,15 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(new BCryptPasswordEncoder());
         return authProvider;
     }
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        //auth.inMemoryAuthentication().withUser("user").password(encoder.encode("user")).roles("ROLE_USER");
-        //auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ROLE_ADMIN");
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests()
 
                 .antMatchers("/**").access("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
@@ -54,9 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .loginPage("/login")
                 .usernameParameter("user")
-                .passwordParameter("pass")
-                .loginProcessingUrl("/auth")
-                .defaultSuccessUrl("/");
+                .passwordParameter("password");
+//                .loginProcessingUrl("/auth")
+              //  .defaultSuccessUrl("/");
     }
 
 }
