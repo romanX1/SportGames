@@ -16,18 +16,18 @@
         <div id="home" class="tab-pane fade in active">
             <p> </p>
             <h4>Login</h4>
-            <form th:action="@{/auth}" id="auth" method="post">
+            <form th:action="@{/login}" method="post">
                 <div class="input-group" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="user" type="text" class="form-control" name="user" placeholder="Email"> </input>
+                    <input type="text" class="form-control" name="user" placeholder="Email"> </input>
                 </div>
                 <p> </p>
                 <h4>Password</h4>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="pass" type="password" class="form-control" name="pass" placeholder="Password" data-toggle="pass" > </input>
+                    <input type="password" class="form-control" name="password" placeholder="Password"> </input>
                 </div>
-                <input type="submit" value="Log In" form="auth" class="btn btn-success" style="margin: 5% 85%;"></input>
+                <input type="submit" value="Log In" class="btn btn-success" style="margin: 5% 85%;" />
             </form>
 
         </div>
