@@ -1,14 +1,11 @@
 package com.sportgames.service.impl;
 
+import com.sportgames.dao.EventDAO;
 import com.sportgames.dao.UserDAO;
 import com.sportgames.model.User;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,35 +16,35 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
+
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @Autowired
-    private UserDAO dao;
+    private final UserDAO dao;
 
-    private PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
+    @Autowired
+    public UserServiceImpl(UserDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public List<User> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @Override
     public void add(User user) {
-        dao.add(user);
+        dao.saveAndFlush(user);
     }
 
     @Override
     public User findById(Long id) {
-        return dao.findById(id);
-    }
-
-    @Override
-    public User findByName(String name) {
-        return dao.findByLogin(name);
+        return dao.findUserById(id);
     }
 
     @Override
     public List<User> getUsersByEventTime(String timeEvent) {
-        return dao.getUsersByEventTime(timeEvent);
+        return null;
     }
 
     @Override
@@ -57,6 +54,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsersByEventId(Long eventId) {
-        return dao.getUsersByEventId(eventId);
+        return dao.getUsersById(eventId);
     }
 }
