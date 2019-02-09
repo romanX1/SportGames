@@ -1,12 +1,10 @@
 package com.sportgames.service.impl;
 
+import com.sportgames.dao.EventDAO;
 import com.sportgames.dao.UserDAO;
 import com.sportgames.model.User;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,30 +17,34 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
 
-    @Autowired
-    private UserDAO dao;
-
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    @Autowired
+    private final UserDAO dao;
+
+    @Autowired
+    public UserServiceImpl(UserDAO dao) {
+        this.dao = dao;
+    }
 
     @Override
     public List<User> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @Override
     public void add(User user) {
-        dao.add(user);
+        dao.saveAndFlush(user);
     }
 
     @Override
     public User findById(Long id) {
-        return dao.findById(id);
+        return dao.findUserById(id);
     }
 
     @Override
     public List<User> getUsersByEventTime(String timeEvent) {
-        return dao.getUsersByEventTime(timeEvent);
+        return null;
     }
 
     @Override
@@ -52,6 +54,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsersByEventId(Long eventId) {
-        return dao.getUsersByEventId(eventId);
+        return dao.getUsersById(eventId);
     }
 }

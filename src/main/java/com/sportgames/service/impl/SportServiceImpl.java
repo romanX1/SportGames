@@ -18,12 +18,12 @@ public class SportServiceImpl implements SportService {
 
     @Override
     public List<Sport> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @Override
     public void add(Sport sport) {
-        dao.add(sport);
+        dao.saveAndFlush(sport);
     }
 
     @Override

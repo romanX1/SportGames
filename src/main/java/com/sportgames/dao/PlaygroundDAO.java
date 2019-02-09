@@ -1,18 +1,25 @@
 package com.sportgames.dao;
 
 import com.sportgames.model.Playground;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 
-public interface PlaygroundDAO {
+public interface PlaygroundDAO  extends JpaRepository<Playground, Long> {
 
-    Playground findById(Long id);
-    List<Playground> getAll();
-    List<Playground> getPlaygroundBySportType(String type);
-    void add(Playground playground);
-    void delete(Long id);
-    Playground findByName(String name);
+    @Query(value = "SELECT play FROM Playground play " +
+            "JOIN play.sports AS sport W" +
+            "HERE sport.type = :type")
+    List<Playground> getPlaygroundsByType(@Param("type") String type);
 
-    List<Playground> getPlaygroundBySportType(Long sportTypeId);
+    Playground findByAddress(String address);
+
+    @Query(value = "SELECT play FROM Playground play " +
+            "JOIN play.sports AS sport W" +
+            "HERE sport.id = :id")
+    List<Playground> getPlaygroundsByType(@Param("id")Long id);
 }

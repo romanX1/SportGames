@@ -1,14 +1,18 @@
 package com.sportgames.dao;
 
 import com.sportgames.model.SportEvent;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface EventDAO {
+import java.util.List;
+import java.util.Optional;
+
+@Repository("eventDAO")
+public interface EventDAO extends JpaRepository<SportEvent, Long> {
+    List<SportEvent> getAllByPlaygroundAddress(String adr);
     SportEvent findById(Long id);
-    List<SportEvent> getAll();
-    List<SportEvent> getAllByPlayground(String adr);
-    void add(SportEvent sportEvent);
-    void update(SportEvent sportEvent);
-    void delete(Long id);
-    SportEvent findByName(String name);
+    List<SportEvent> findAll();
+
+
 }
