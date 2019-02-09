@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +50,18 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User findByLogin(String login) {
-        return entityManager
-                //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
-                .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
-                .setParameter("param", login)
-                .getSingleResult();
+        User user = new User();
+        try{
+            entityManager
+                    //.createQuery("SELECT u FROM User u JOIN u.login AS login WHERE u.login = :typeName" , User.class)
+                    .createQuery("SELECT r FROM User As r WHERE r.login = :param", User.class)
+                    .setParameter("param", login)
+                    .getSingleResult();
+        } catch (NoResultException e){
+            user = null;
+        }
+
+        return user;
     }
 
     @Override

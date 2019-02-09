@@ -1,23 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments::head">
     <meta charset="UTF-8"/>
     <title>Представьтесь</title>
 </head>
 <body>
-<div class="login_body">
-<div class="login-card">
-    <h1>Представьтесь</h1><br/>
-    <form th:action="@{/auth}" method="POST">
-        <input type="text" name="user" placeholder="Логин"/>
-        <input type="password" name="pass" placeholder="Пароль"/>
-        <input type="submit" name="login" class="login login-submit" value="Войти"/>
-    </form>
+<div class="container" style="margin: 5% 30%;width: 30%;">
+    <h3>Welcome</h3>
+    <ul class="nav nav-tabs">
+        <li class="active"> <a data-toggle="tab" href="#home">Log In</a></li>
+        <li><a data-toggle="tab" href="#menu1">Registration</a></li>
+    </ul>
+    <!--<div >-->
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <p> </p>
+            <h4>Login</h4>
+            <form th:action="@{/login}" method="post">
+                <div class="input-group" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" name="user" placeholder="Email"> </input>
+                </div>
+                <p> </p>
+                <h4>Password</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Password"> </input>
+                </div>
+                <input type="submit" value="Log In" class="btn btn-success" style="margin: 5% 85%;" />
+            </form>
 
-    <div class="login-help">
-        <a href="#">Register</a> • <a href="#">Забыл пароль</a>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <form th:action="@{/api/users/registration}" id="registrationForm">
+                <h4>Введите Ваше имя</h4>
+                <div class="input-group" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="name" type="text" class="form-control" name="name" placeholder="Имя"> </input>
+                </div>
+                <p style="display: none;color: red;" id="warning">Имя занято, выберите другое имя</p>
+                <p> </p>
+                <h4>Введите логин или Email</h4>
+                <div class="input-group" >
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="text" class="form-control" name="email" placeholder="Email"> </input>
+                </div>
+                <p> </p>
+                <h4>Введите пароль</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="pass2" type="password" class="form-control" name="pass" placeholder="Password"> </input>
+                </div>
+                <h4>Повторите ввод пароля</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password"> </input>
+                </div>
+                    <input type="submit" form="registrationForm" class="btn btn-success" style="margin: 5% 60%;" value="Зарегистрироваться"></input>
+            </form>
+        </div>
     </div>
 </div>
-</div>
+    <!--<p>-->
+
+    <!--</p>-->
+<!--<div class="login_body">-->
+<!--<div class="login-card">-->
+    <!--<h1>Представьтесь</h1><br/>-->
+
+    <!--<form th:action="@{/auth}" method="POST">-->
+        <!--<input type="text" name="user" placeholder="Логин"/>-->
+        <!--<input type="password" name="pass" placeholder="Пароль"/>-->
+        <!--<input type="submit" name="login" class="login login-submit" value="Войти"/>-->
+    <!--</form>-->
+
+    <!--<div class="login-help">-->
+        <!--<a href="#">Register</a> • <a href="#">Забыл пароль</a>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</div>-->
 </body>
 </html>
