@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByName(String name) {
+        return dao.findByLogin(name);
+    }
+
+    @Override
     public List<User> getUsersByEventTime(String timeEvent) {
         return dao.getUsersByEventTime(timeEvent);
     }
