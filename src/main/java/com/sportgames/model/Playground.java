@@ -18,8 +18,6 @@ public class Playground {
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
 
-
-
     public Playground(){}
 
     public Playground(String address){
