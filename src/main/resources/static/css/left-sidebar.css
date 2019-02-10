@@ -14,12 +14,8 @@
 
 #sidebar-wrapper {
     z-index: 1000;
-    position: absolute;
-    left: 250px;
-    width: 0;
+    position: relative;
     height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
     background: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -31,10 +27,9 @@
 }
 
 #page-content-wrapper {
-    position: absolute;
-    padding: 15px;
     width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: inline-block;
 }
 .xyz{
     min-width: 360px;
@@ -48,7 +43,7 @@
 }
 
 .sidebar-nav {
-    position: absolute;
+    position: relative;
     top: 0;
     width: 250px;
     margin: 0;
@@ -100,7 +95,8 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 250px;
+        /*padding-left: 250px;*/
+        width:100%;
     }
     .fixed-brand{
         width: 250px;
@@ -125,7 +121,7 @@
 
 
     #page-content-wrapper {
-        padding: 20px;
+
         position: relative;
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;

@@ -16,11 +16,13 @@ function playGroundsByType(typeId, typeName) {
 function setPGs(data) {
     var tbl = $('#pg_tbl');
     document.title = 'Площадки на которых доступен ' + data['type'];
-    tbl.empty();
-    $('#thead_sport').html("Адреса площадок с " + data['type'] + " <button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>")
+
+    $('#thead_sport').html(data['type'] + " <button type=\"button\" class=\"btn btn-success\" style=\"float: right;padding:0\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>")
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<li class="list-group-item list-group-item-info">' + v.address + '</li>');
+        tbl.append('<div class="row"><div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">' + v.address + '</a></div>' +
+            '<div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">\' + v.events[0] + \'</a></div>' +
+            '<div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">\' + v.event[0] + \'</a></div></div>');
     });
 }
 
@@ -47,8 +49,15 @@ function supplyPlayground() {
         success:
             function (data) {
                 console.log(data);
+                $('#supply_close').click()
+                $('#btnPGresult').click();
+                $('#result_h4').text("Площадка добавлена");
+
             },
             error: function (error) {
+                $('#supply_close').click()
+                $('#btnPGresult').click();
+                $('#result_h4').text("Ошибка при добавлении площадки");
                 console.log(error);
             }
     });
