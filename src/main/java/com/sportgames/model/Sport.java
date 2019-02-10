@@ -14,12 +14,34 @@ public class Sport {
     @Column(name = "type", nullable = false)
     private String type;
 
+    @Column (name = "minPlayers", nullable = false)
+    private int minPlayers;
+
+    @Column (name = "maxPlayers", nullable = false)
+    private int maxPlayers;
+
     public Sport() {
     }
 
     public Sport(String type) {
         this.type = type;
 
+    }
+
+    public void setMinPlayers(int minPlayers) {
+        this.minPlayers = minPlayers;
+    }
+
+    public void setMaxPlayers(int maxPlayers) {
+        this.maxPlayers = maxPlayers;
+    }
+
+    public int getMinPlayers() {
+        return minPlayers;
+    }
+
+    public int getMaxPlayers() {
+        return maxPlayers;
     }
 
     public Long getId() {
