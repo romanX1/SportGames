@@ -34,17 +34,5 @@ public class UserRestController {
     }
 
 
-    @PostMapping("/registration")
-    public String addUser(@RequestParam("name") String userName,
-                        @RequestParam("email") String login,
-                        @RequestParam("pass") String password) {
-        System.out.println(userName);
-        System.out.println(login);
-        System.out.println(password);
-        UserRole role = userRoleService.findByAuthority("ROLE_USER");
-        Set<UserRole> auth = new HashSet<>();
-        auth.add(role);
-        userService.add(new User(userName,login,password,auth));
-        return "";
-    }
+
 }
