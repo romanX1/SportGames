@@ -4,6 +4,7 @@
 
 <th:block th:fragment="head">
     <meta charset="UTF-8"/>
+    <base href="/"/>
     <script
             src="http://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -25,6 +26,7 @@
     <script type="text/javascript" th:src="@{/eventLogic.js}"></script>
     <script type="text/javascript" th:src="@{/sportController.js}"></script>
     <script type="text/javascript" th:src="@{/main.js}"></script>
+    <script type="text/javascript" th:src="@{/userLogic.js}"></script>
 </th:block>
 <th:block th:fragment="nav">
     <nav class="navbar navbar-inverse">
