@@ -1,6 +1,7 @@
 package com.sportgames;
 
 
+import com.sportgames.config.AddSportsToBase;
 import com.sportgames.config.TestData;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,6 +19,12 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+
+//    @Bean(initMethod = "initSports")
+//    public AddSportsToBase initAddSportsToBase(){
+//        return new AddSportsToBase();
+//    }
+//
 //    @Bean(initMethod = "initData")
 //    public TestData initTestData(){
 //        return new TestData();

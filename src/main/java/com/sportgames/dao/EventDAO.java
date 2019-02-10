@@ -11,8 +11,5 @@ import java.util.Optional;
 @Repository("eventDAO")
 public interface EventDAO extends JpaRepository<SportEvent, Long> {
     List<SportEvent> getAllByPlaygroundAddress(String adr);
-    SportEvent findById(Long id);
-    List<SportEvent> findAll();
-
-
+    List<SportEvent> getAllByPlaygroundId(Long id);
 }

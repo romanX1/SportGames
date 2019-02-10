@@ -26,14 +26,12 @@ public class TestData {
 
     public void initData() {
         usersData();
+
         Faker faker = new Faker(new Locale("ru"));
-        List<Sport> allSports = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            Sport sport = new Sport(faker.esports().game());
-            sportService.add(sport);
-        }
-        allSports = sportService.getAll();
-        Playground pgk=new Playground("Кремль");
+
+        List<Sport> allSports = sportService.getAll();
+
+        Playground pgk=new Playground("defaultPG");
         int sk1 = (int) (Math.random() * 15);
         int sk2 = (int) (Math.random() * 14) + 15;
         Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
@@ -42,7 +40,6 @@ public class TestData {
 
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
-
 
             int s1 = (int) (Math.random() * 15);
             int s2 = (int) (Math.random() * 14) + 15;

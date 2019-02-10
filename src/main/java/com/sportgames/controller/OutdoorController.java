@@ -24,11 +24,14 @@ public class OutdoorController {
     }
 
     @GetMapping("/outdoorpanel")
-    public ModelAndView outdoor(@RequestParam(defaultValue = "Кремль") String pgName){
-        ModelAndView mav=new ModelAndView("outdoorpanel");
-        String playground=pgName;
-        mav.addObject("events", seService.getByPlayground(playground));
-        mav.addObject("address", playground);
+    public ModelAndView outdoor(@RequestParam(defaultValue = "defaultPG") String pgName) {
+        ModelAndView mav = new ModelAndView("outdoorpanel");
+//        if (pgName.equals("defaultPG")) {
+//            pgName = pgService.findById(0L).getAddress();
+//        }
+
+        mav.addObject("events", seService.getByPlayground(pgName));
+        mav.addObject("address", pgName);
         mav.addObject("formatter", DateTimeFormatter.ofPattern("H-m-s"));
         return mav;
     }
