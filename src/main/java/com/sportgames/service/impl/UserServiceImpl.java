@@ -17,10 +17,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-<<<<<<< HEAD
 
-=======
->>>>>>> johny
     private PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Autowired
