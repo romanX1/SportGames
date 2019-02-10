@@ -19,12 +19,12 @@ public class SportServiceImpl implements SportService {
 
     @Override
     public List<Sport> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @Override
     public void add(Sport sport) {
-        dao.add(sport);
+        dao.saveAndFlush(sport);
     }
 
     @Override
@@ -32,8 +32,4 @@ public class SportServiceImpl implements SportService {
         return dao.findById(id);
     }
 
-    @Override
-    public Set<Sport> findById(Long[] id) {
-        return dao.findById(id);
-    }
 }

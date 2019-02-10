@@ -19,13 +19,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Override
     public void add(UserRole userRole) {
-        dao.add(userRole);
-    }
-
-    @Override
-    public void delete(UserRole userRole) {
-        dao.delete(userRole);
-
+        dao.saveAndFlush(userRole);
     }
 
     @Override
@@ -35,6 +29,6 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Override
     public List<UserRole> gelAll() {
-        return dao.gelAll();
+        return dao.findAll();
     }
 }

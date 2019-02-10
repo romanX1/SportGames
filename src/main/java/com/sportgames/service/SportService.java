@@ -10,5 +10,4 @@ public interface SportService {
     List<Sport> getAll();
     void add(Sport sport);
     Sport findById(Long id);
-    Set<Sport> findById(Long[] id);
 }

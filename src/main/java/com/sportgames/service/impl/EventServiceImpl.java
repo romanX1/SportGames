@@ -21,18 +21,18 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public SportEvent findById(Long id) {
-        return dao.findById(id);
+        return dao.findOne(id);
     }
 
     @Override
     public List<SportEvent> getAll() {
-        return dao.getAll();
+        return dao.findAll();
     }
 
     @Override
     @Transactional
     public void add(SportEvent sportEvent) {
-        dao.add(sportEvent);
+        dao.saveAndFlush(sportEvent);
     }
 
     @Override
@@ -43,12 +43,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<SportEvent> getByPlayground(String adr) {
-        return dao.getAllByPlayground(adr);
+        return dao.getAllByPlaygroundAddress(adr);
     }
 
     @Override
     @Transactional
     public void update(SportEvent sportEvent) {
-        dao.update(sportEvent);
+        dao.saveAndFlush(sportEvent);
     }
 }
