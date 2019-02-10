@@ -59,7 +59,7 @@ public class TestData {
             int s1 = (int) (Math.random() * 300);
             int s2 = (int) (Math.random() * 298 + 1);
             SportEvent spe = new SportEvent();
-            spe.setUsers(new HashSet<>(users.subList(Math.min(s1, s2), Math.max(s1, s2))));
+//            spe.setUsers(new HashSet<>(users.subList(Math.min(s1, s2), Math.max(s1, s2))));
             Playground pg = playgroundService.findById((long) (i % (int) (Math.random() * 28 + 1) + 1));
             spe.setPlayground(pg);
             List<Sport> pgsports = new ArrayList<>(pg.getSports());

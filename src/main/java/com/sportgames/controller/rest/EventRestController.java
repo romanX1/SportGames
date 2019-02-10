@@ -7,6 +7,8 @@ import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.EventService;
 import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/events")
@@ -36,12 +39,19 @@ public class EventRestController {
     }
 
     @GetMapping("/{eventId}/join")
-    public User getAuthentificatedEvent(@PathVariable Long eventId) {
+    public ResponseEntity<User> getAuthentificatedEvent(@PathVariable Long eventId) {
+
         User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         SportEvent sportEvent = eventService.findById(eventId);
-        sportEvent.getUsers().add(authUser);
-        eventService.update(sportEvent);
-        return authUser;
+
+        if(sportEvent.getUsers().size() < sportEvent.getSport().getMaxPlayers() && !sportEvent.getUsers().contains(authUser)) {
+            sportEvent.getUsers().add(authUser);
+            eventService.update(sportEvent);
+            return ResponseEntity.status(HttpStatus.OK).body(authUser);
+        }else{
+            return ResponseEntity.badRequest().body(authUser);
+        }
+
     }
 
     @GetMapping("/{eventId}/del")
