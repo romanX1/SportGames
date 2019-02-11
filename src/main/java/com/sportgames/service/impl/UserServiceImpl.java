@@ -17,7 +17,6 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-
     private PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @Autowired
