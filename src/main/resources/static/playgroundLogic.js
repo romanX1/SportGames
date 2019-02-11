@@ -21,7 +21,7 @@ function setPGs(data) {
     $('#thead_sport').html(data['type'] + " <button type=\"button\" class=\"btn btn-success\" style=\"float: right;\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>")
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')">'+v.address+'</div>');
+        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
     });
 }
 
@@ -65,15 +65,11 @@ function supplyPlayground() {
 function setEventsForPlaygrond(id, type){
     var tbl= $('#pg_tbl_2');
     tbl.empty();
-    tbl.append('<div class="panel-heading">Расписание</div>');
+    tbl.append('<div class="panel-heading">Расписание и участники <a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
     var events=getEventsByPlaygroundAndType(id, type);
     $.each(events, function (i, v) {
-        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setUsersForEvent('+v.id+')">'+
-            v.timeStart.hour+':'+v.timeStart.minute+':'+v.timeStart.second+' - '+
-            v.timeEnd.hour+':'+v.timeEnd.minute+':'+v.timeEnd.second+'</div>');
+        tbl.append('<div class="panel-body" style="cursor: pointer;" ><a target="_blank" href="/event?eventId='+v.id+'">'+
+            v.timeStart.dayOfMonth+' '+v.timeStart.month+' с '+v.timeStart.hour+':'+v.timeStart.minute+' по '+
+            v.timeEnd.hour+':'+v.timeEnd.minute+' зарегестрировано '+v.users.length+' участников</a></div>');
     });
-}
-
-function setUsersForEvent(id) {
-    alert(id);
 }

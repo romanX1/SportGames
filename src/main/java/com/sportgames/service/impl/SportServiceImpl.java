@@ -32,4 +32,8 @@ public class SportServiceImpl implements SportService {
         return dao.findById(id);
     }
 
+    @Override
+    public Sport findByType(String type) {
+        return dao.findByType(type);
+    }
 }

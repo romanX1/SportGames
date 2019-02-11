@@ -62,11 +62,16 @@ public class HelloController {
     }
 
     @GetMapping("/addnewevent")
-    public ModelAndView addneweventMenu() {
+    public ModelAndView addneweventMenu(@RequestParam("id") Long id, @RequestParam("type") String type) {
         ModelAndView modelAndView = new ModelAndView("addnewevent");
-        modelAndView.addObject("playgrounds", playgroundService.getAll());
-        modelAndView.addObject("sports", sportService.getAll());
+        if(id.equals(null)||type.equals(null)) {
 
+            modelAndView.addObject("playgrounds", playgroundService.getAll());
+            modelAndView.addObject("sports", sportService.getAll());
+        } else {
+            modelAndView.addObject("playgrounds", playgroundService.findById(id));
+            modelAndView.addObject("sports", sportService.findByType(type));
+        }
         return modelAndView;
     }
 

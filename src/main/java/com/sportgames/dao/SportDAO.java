@@ -9,5 +9,6 @@ public interface SportDAO extends JpaRepository<Sport, Long> {
 
     Sport findById(Long id);
     List<Sport> findAll();
+    Sport findByType(String type);
 
 }

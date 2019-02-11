@@ -9,6 +9,8 @@
         <div class="panel-heading">Выбрать площадку</div>
         <div class="panel-body">
             <select class="form-control"  id="exampleFormControlSelect1" name="selectGround" style="width: fit-content">
+                <option th:each="playground:${playgrounds}" th:text="${playground.address}"
+                        th:value="${playground.id}"></option>
             </select>
         </div>
     </div>

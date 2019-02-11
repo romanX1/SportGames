@@ -14,6 +14,7 @@ public class EventServiceImpl implements EventService {
 
     private final EventDAO dao;
 
+
     @Autowired
     public EventServiceImpl(EventDAO dao) {
         this.dao = dao;

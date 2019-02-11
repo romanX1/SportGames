@@ -1,6 +1,11 @@
 package com.sportgames.model;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -15,9 +20,13 @@ public class SportEvent {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     private Sport sport; // Вид спорта события
 
+    @JsonSerialize(as = LocalDateTime.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="Ru-ru")
     @Column (name = "timeStart", nullable = false)
     private LocalDateTime timeStart; //Время начала события
 
+    @JsonSerialize(as = LocalDateTime.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="ru-RU")
     @Column (name = "timeEnd", nullable = false)
     private LocalDateTime timeEnd; //Время окончания события
 
@@ -63,13 +72,18 @@ public class SportEvent {
         this.playground = playground;
     }
 
+    @JsonSerialize(as = LocalDateTime.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="Ru-ru")
     public LocalDateTime getTimeStart() {
         return timeStart;
     }
 
+    @JsonSerialize(as = LocalDateTime.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="ru-Ru")
     public void setTimeStart(LocalDateTime timeStart) {
         this.timeStart = timeStart;
     }
+
 
     public LocalDateTime getTimeEnd() {
         return timeEnd;

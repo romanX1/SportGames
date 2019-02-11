@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository("eventDAO")
-public interface EventDAO extends JpaRepository<SportEvent, Long> {
+public interface EventDAO extends JpaRepository<SportEvent, Long>{
     List<SportEvent> getAllByPlaygroundAddress(String adr);
     List<SportEvent> getAllByPlaygroundId(Long id);
     List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type);
