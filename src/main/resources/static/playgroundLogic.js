@@ -14,15 +14,14 @@ function playGroundsByType(typeId, typeName) {
 }
 
 function setPGs(data) {
-    var tbl = $('#pg_tbl');
+    var tbl = $('#pg_tbl_1');
     document.title = 'Площадки на которых доступен ' + data['type'];
-
-    $('#thead_sport').html(data['type'] + " <button type=\"button\" class=\"btn btn-success\" style=\"float: right;padding:0\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>")
+    tbl.empty();
+    tbl.append('<div class="panel-heading">Адреса площадок</div>');
+    $('#thead_sport').html(data['type'] + " <button type=\"button\" class=\"btn btn-success\" style=\"float: right;\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>")
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<div class="row"><div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">' + v.address + '</a></div>' +
-            '<div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">\' + v.events[0] + \'</a></div>' +
-            '<div class="col-lg-4" style="padding:0"><a class="list-group-item list-group-item-info" style="cursor: pointer">\' + v.event[0] + \'</a></div></div>');
+        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')">'+v.address+'</div>');
     });
 }
 
@@ -61,4 +60,20 @@ function supplyPlayground() {
                 console.log(error);
             }
     });
+}
+
+function setEventsForPlaygrond(id, type){
+    var tbl= $('#pg_tbl_2');
+    tbl.empty();
+    tbl.append('<div class="panel-heading">Расписание</div>');
+    var events=getEventsByPlaygroundAndType(id, type);
+    $.each(events, function (i, v) {
+        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setUsersForEvent('+v.id+')">'+
+            v.timeStart.hour+':'+v.timeStart.minute+':'+v.timeStart.second+' - '+
+            v.timeEnd.hour+':'+v.timeEnd.minute+':'+v.timeEnd.second+'</div>');
+    });
+}
+
+function setUsersForEvent(id) {
+    alert(id);
 }

@@ -20,7 +20,7 @@ function checkDuplicateName(name){
         async: false,
         success: function (answer){
             if(answer){
-                $("#warning").style=display:on;
+                $("#warning").show();
             }
         }
 

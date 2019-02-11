@@ -52,6 +52,11 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<SportEvent> getllByPlaygroundIdAndSportType(Long id, String type) {
+        return dao.getAllByPlaygroundIdAndSportType(id, type);
+    }
+
+    @Override
     @Transactional
     public void update(SportEvent sportEvent) {
         dao.saveAndFlush(sportEvent);
