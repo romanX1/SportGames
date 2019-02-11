@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3b4d365-8296-402b-9cba-2a3e6161ecf0" name="Default" comment="" />
+    <list default="true" id="c3b4d365-8296-402b-9cba-2a3e6161ecf0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SportGames.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +58,8 @@
       <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sportgames/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+            <state relative-caret-position="180">
+              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -63,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/playgrounds.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1820">
-              <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+              <caret line="111" column="132" selection-start-line="111" selection-start-column="132" selection-end-line="111" selection-end-column="132" />
             </state>
           </provider>
         </entry>
@@ -180,12 +185,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/userLogic.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/main.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sportgames/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/userLogic.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/eventController.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/playgrounds.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sportgames/config/SecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -359,15 +364,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SportGames" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SportGames" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SportGames" type="b2602c69:ProjectViewProjectNode" />
@@ -567,7 +563,7 @@
       <workItem from="1549443782236" duration="156000" />
       <workItem from="1549444407481" duration="91250000" />
       <workItem from="1549734714611" duration="12156000" />
-      <workItem from="1549795315739" duration="33509000" />
+      <workItem from="1549795315739" duration="34290000" />
     </task>
     <task id="LOCAL-00001" summary="process addnewevent">
       <created>1549532716033</created>
@@ -643,7 +639,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137071000" />
+    <option name="totallyTimeSpent" value="137852000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -661,7 +657,7 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.50226927" side_tool="true" weight="0.3443163" />
       <window_info anchor="bottom" id="Application Servers" order="8" sideWeight="0.49848714" weight="0.3294893" />
-      <window_info anchor="right" id="Maven Projects" order="9" visible="true" weight="0.1633888" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.1633888" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
@@ -677,10 +673,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3294893" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.4977307" weight="0.3294893" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.4977307" visible="true" weight="0.3443163" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4977307" visible="true" weight="0.3443163" />
       <window_info anchor="bottom" id="Spring" order="9" weight="0.3294893" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3294893" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6494845" visible="true" weight="0.24054463" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6494845" visible="true" weight="0.24054463" />
       <window_info anchor="right" id="Bean Validation" order="0" sideWeight="0.49557522" weight="0.32980332" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -1125,7 +1121,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/playgrounds.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1820">
-          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+          <caret line="111" column="132" selection-start-line="111" selection-start-column="132" selection-end-line="111" selection-end-column="132" />
         </state>
       </provider>
     </entry>
@@ -1138,8 +1134,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sportgames/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+        <state relative-caret-position="180">
+          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
         </state>
       </provider>
     </entry>
