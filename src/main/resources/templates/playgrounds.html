@@ -5,10 +5,18 @@
     <base href="/"/>
     <link href="../static/css/left-sidebar.css" th:href="@{/css/left-sidebar.css}"  rel="stylesheet" />
     <!--<title th:text="'Площадки на которых доступен '+${sports.get(0).type}"/>-->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=4bfe4448-4a7c-499a-b253-433a1b77d5b7" type="text/javascript"></script>
+    <script type="text/javascript" th:src="@{/map.js}"></script>
+    <style>
+        html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments::nav"/>
 <div id="wrapper" class="container">
+    <div class="map-block" id="map"></div>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
             <li><h3>Виды спорта</h3></li>
