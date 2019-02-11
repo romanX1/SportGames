@@ -23,7 +23,6 @@ function checkDuplicateName(name){
                 $("#warning").style=display:on;
             }
         }
-
     })
 }
 function TestLogin1(login){
