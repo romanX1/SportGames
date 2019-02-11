@@ -18,6 +18,13 @@
     overflow: hidden;
 }
 
+.map-block {
+    min-height: 70vh!important;
+    min-width: 60vh!important;
+    padding: 0;
+    margin: 0;
+}
+
 .login-card h1 {
     font-weight: 100;
     text-align: center;
