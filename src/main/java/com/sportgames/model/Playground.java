@@ -1,5 +1,7 @@
 package com.sportgames.model;
 
+import org.springframework.data.geo.Point;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,7 +15,10 @@ public class Playground {
     private Long id;
 
     @Column (name = "address", unique = true, nullable = false)
-    private String address; //type Address. Адрес площадки
+    private String address; //Адрес площадки
+
+    @Column (name = "coordinates", unique = true, nullable = false)
+    private Point coordinates; //Адрес площадки
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
@@ -22,7 +27,12 @@ public class Playground {
 
     public Playground(String address){
         this.address = address;
+        this.coordinates = new Point(0, 0);
+    }
 
+    public Playground(String address, Point coordinates){
+        this.address = address;
+        this.coordinates = coordinates;
     }
 
     public Long getId() {
@@ -49,5 +59,11 @@ public class Playground {
         this.sports = sports;
     }
 
+    public Point getCoordinates() {
+        return coordinates;
+    }
 
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
 }

@@ -19,7 +19,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//
+
 //    @Bean(initMethod = "initSports")
 //    public AddSportsToBase initAddSportsToBase(){
 //        return new AddSportsToBase();

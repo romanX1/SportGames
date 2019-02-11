@@ -3,60 +3,79 @@
 <head>
     <th:block th:include="fragments :: head"></th:block>
     <base href="/"/>
-    <link href="../static/css/left-sidebar.css" th:href="@{/css/left-sidebar.css}"  rel="stylesheet" />
+    <link href="../static/css/left-sidebar.css" th:href="@{/css/left-sidebar.css}" rel="stylesheet"/>
     <!--<title th:text="'Площадки на которых доступен '+${sports.get(0).type}"/>-->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=4bfe4448-4a7c-499a-b253-433a1b77d5b7"
+            type="text/javascript"></script>
+    <script type="text/javascript" th:src="@{/map.js}"></script>
+    <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments::nav"/>
 <div id="wrapper">
     <div class="row">
         <div class="col-lg-2" style="padding:0">
-    <div id="sidebar-wrapper">
-        <ul style="margin-top:0" class="sidebar-nav nav-pills nav-stacked" id="menu">
-            <li><h3 style="margin-top:0">Виды спорта</h3></li>
-            <li th:each="sport : ${sports}" style="cursor: pointer">
-                <a th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"  th:text="${sport.type}">
+            <div id="sidebar-wrapper">
+                <ul style="margin-top:0" class="sidebar-nav nav-pills nav-stacked" id="menu">
+                    <li><h3 style="margin-top:0">Виды спорта</h3></li>
+                    <li th:each="sport : ${sports}" style="cursor: pointer">
+                        <a th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"
+                           th:text="${sport.type}">
                     <span class="fa-stack fa-lg pull-left">
                     <i class="fa fa-dashboard fa-stack-1x ">
                     </i>
                     </span>
-                </a>
-            </li>
-        </ul>
-    </div><!-- /#sidebar-wrapper -->
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /#sidebar-wrapper -->
         </div>
         <div class="col-lg-10">
-    <div id="page-content-wrapper">
-        <div class="container-fluid xyz">
-            <div id="thead_sport" style="margin:0.8%" class="row"><button type="button" style="float: right;padding:0" class="btn btn-success" data-toggle="modal" data-target="#addPG">Предложить площадку</button></div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="panel panel-primary" id="pg_tbl_1">
-                        <div class="panel-heading">Адреса площадок</div>
-
+            <div id="page-content-wrapper">
+                <div class="container-fluid xyz">
+                    <div id="thead_sport" style="margin:0.8% 0 0.8% 0" class="row">
+                        <button type="button" style="float:right;padding:0;display:inline-block" class="btn btn-success"
+                                data-toggle="modal" data-target="#addPG">Предложить площадку
+                        </button>
+                        <button type="button" style="float:right;padding:0;display:inline-block;margin-right:2px"
+                                class="btn btn-success" data-toggle="modal" data-target="#showMap">Показать на карте
+                        </button>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-primary" id="pg_tbl_2">
-                        <div class="panel-heading">Расписание</div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-primary" id="pg_tbl_3">
-                        <div class="panel-heading">Участники</div>
-
-                    </div>
-                </div>
-            </div>
-            <div id="pg_tbl" class="list-group container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="panel panel-primary" id="pg_tbl_1">
+                                <div class="panel-heading">Адреса площадок</div>
 
                             </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="panel panel-primary" id="pg_tbl_2">
+                                <div class="panel-heading">Расписание</div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="panel panel-primary" id="pg_tbl_3">
+                                <div class="panel-heading">Участники</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pg_tbl" class="list-group container">
 
                     </div>
+
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 <!--SCRIPTS-->
@@ -74,22 +93,46 @@
                 <p>Заполните все поля и после проверки модератором мы опубликуем площадку</p>
                 <form th:action="@{/api/playgrounds/supply}" th:method="POST" id="PGform" action="">
                     <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                <label for="PGaddress">Введите адрес:</label>
-                <input type="text" class="form-control" id="PGaddress" name="PGaddress"/>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="PGaddress">Введите адрес:</label>
+                                <input type="text" class="form-control" id="PGaddress" name="PGaddress"/>
+                            </div>
+                        </div>
+                        <label for="PGsports">Выберите виды спорта:</label><br/>
+                        <div class="row">
+                            <select name="PGsports" id="PGsports" class="selectpicker col-lg-8" multiple="multiple"
+                                    data-live-search="true">
+                                <option th:each="sport :${sports}" th:value="${sport.id}" th:text="${sport.type}"
+                                        th:name="${sport.id}"></option>
+                            </select>
+                            <button onclick="supplyPlayground()" type="button" class="btn btn-success col-lg-3"
+                                    style="float:right">Предложить
+                            </button>
                         </div>
                     </div>
-                        <label for="PGsports">Выберите виды спорта:</label><br/>
-                <div class="row">
-                        <select name="PGsports" id="PGsports" class="selectpicker col-lg-8" multiple="multiple" data-live-search="true">
-                    <option th:each="sport :${sports}" th:value="${sport.id}" th:text="${sport.type}" th:name="${sport.id}"></option>
-                        </select>
-                    <button onclick="supplyPlayground()" type="button" class="btn btn-success col-lg-3" style="float:right">Предложить</button>
-                    </div>
-                </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="showMap" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="map_supply_close" type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="map_modal_h4" class="modal-title">Площадки на карте</h4>
+            </div>
+
+            <div class="modal-body" id="map_modal_bd">
+
+                <div class="map-block" id="map"></div>
+
+            </div>
+
+
         </div>
     </div>
 </div>
@@ -109,6 +152,8 @@
         </div>
     </div>
 </div>
-<button id="btnPGresult" style="display:none" class="btn btn-success" data-toggle="modal" data-target="#resultPG">Результат</button>
+<button id="btnPGresult" style="display:none" class="btn btn-success" data-toggle="modal" data-target="#resultPG">
+    Результат
+</button>
 </body>
 </html>
