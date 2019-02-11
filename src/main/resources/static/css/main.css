@@ -19,8 +19,8 @@
 }
 
 .map-block {
-    width: 450px;
-    height: 450px;
+    min-height: 70vh!important;
+    min-width: 60vh!important;
     padding: 0;
     margin: 0;
 }
