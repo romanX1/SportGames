@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments::head">
+<head  th:include="fragments :: head">
+
     <meta charset="UTF-8"/>
     <title>Представьтесь</title>
 </head>
 <body>
 <div class="container" style="margin: 5% 30%;width: 30%;">
-    <h3>Welcome</h3>
+    <h3>Добро пожаловать!</h3>
     <ul class="nav nav-tabs">
-        <li class="active"> <a data-toggle="tab" href="#home">Log In</a></li>
-        <li><a data-toggle="tab" href="#menu1">Registration</a></li>
+        <li class="active"> <a data-toggle="tab" href="#home">Вход</a></li>
+        <li><a data-toggle="tab" href="#menu1">Регистрация</a></li>
     </ul>
     <!--<div >-->
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
             <p> </p>
-            <h4>Login</h4>
+            <h4>Логин</h4>
             <form th:action="@{/login}" method="post">
                 <div class="input-group" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input type="text" class="form-control" name="user" placeholder="Email"> </input>
                 </div>
                 <p> </p>
-                <h4>Password</h4>
+                <h4>Пароль</h4>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" class="form-control" name="password" placeholder="Password"> </input>
+                    <input type="password" class="form-control" id="passwordL" name="passwordL" placeholder="Password"> </input>
                 </div>
                 <input type="submit" value="Log In" class="btn btn-success" style="margin: 5% 85%;" />
             </form>
@@ -39,43 +40,31 @@
                     <input id="name" type="text" class="form-control" name="name" placeholder="Имя" />
                 </div>
                 <p> </p>
-                <h4>Введите логин или Email</h4>
+                <h4>Введите Ваш Email</h4>
                 <div class="input-group" >
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input id="email" type="text" class="form-control" name="email" onblur="TestLogin1(this.value)" placeholder="Email" />
-                    <p style="display: none;color: red;" id="warning">Имя занято, выберите другое имя</p>
-
                 </div>
+                <p style="color: red"   hidden ="true"  id="warning">Имя занято, выберите другое имя</p>
                 <p> </p>
                 <h4>Введите пароль</h4>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="pass2" type="password" class="form-control" name="pass" placeholder="Password"> </input>
+                    <input name="password" id="password" type="password" class="form-control" placeholder="Password"> </input>
                 </div>
                 <h4>Повторите ввод пароля</h4>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password"> </input>
+                    <input id="password2" type="password" class="form-control"  placeholder="Password" onblur="TestPass()"> </input>
                 </div>
+                <p style="color: red"   hidden ="true"  id="warning2">Пароль не совпадает!</p>
                 <input type="submit" form="registrationForm" class="btn btn-success" style="margin: 5% 60%;" value="Зарегистрироваться" />
+
             </form>
 
         </div>
     </div>
 </div>
-<!--<script>-->
-    <!--function TestLogin1(login){-->
-
-        <!--if(/^[a-zA-Z1-9]+$/.test(login) === false)-->
-        <!--{alert('В логине должны быть только латинские буквы'); return false;}-->
-        <!--if(login.length < 4 || login.length > 20)-->
-        <!--{ alert('В логине должен быть от 4 до 20 символов'); return false;}-->
-        <!--if(parseInt(login.substr(0, 1)))-->
-        <!--{alert('Логине должен начинаться с буквы'); return false;}-->
-
-        <!--return true;-->
-    <!--}-->
-
-<!--</script>-->
+<script src="js/login.js" ></script>
 </body>
 </html>

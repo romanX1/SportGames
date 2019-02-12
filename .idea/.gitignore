@@ -2,3 +2,5 @@
 *.iml
 **
 *.local.xml
+/SportGames.iml
+/workspace.xml
