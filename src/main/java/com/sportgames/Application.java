@@ -1,7 +1,5 @@
 package com.sportgames;
 
-
-
 import com.sportgames.config.AddSportsToBase;
 import com.sportgames.config.TestData;
 import org.springframework.boot.SpringApplication;
