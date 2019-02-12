@@ -20,13 +20,13 @@ public class SportEvent {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch=FetchType.EAGER)
     private Sport sport; // Вид спорта события
 
-    @JsonSerialize(as = LocalDateTime.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="Ru-ru")
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM@HH:mm:ss", locale="ru")
     @Column (name = "timeStart", nullable = false)
     private LocalDateTime timeStart; //Время начала события
 
-    @JsonSerialize(as = LocalDateTime.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="ru-RU")
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM@HH:mm:ss", locale="ru")
     @Column (name = "timeEnd", nullable = false)
     private LocalDateTime timeEnd; //Время окончания события
 
@@ -72,14 +72,11 @@ public class SportEvent {
         this.playground = playground;
     }
 
-    @JsonSerialize(as = LocalDateTime.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="Ru-ru")
+
     public LocalDateTime getTimeStart() {
         return timeStart;
     }
 
-    @JsonSerialize(as = LocalDateTime.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss", locale="ru-Ru")
     public void setTimeStart(LocalDateTime timeStart) {
         this.timeStart = timeStart;
     }

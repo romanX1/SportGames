@@ -70,8 +70,10 @@ function setEventsForPlaygrond(id, type){
     tbl.append('<div class="panel-heading">Расписание и участники <a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
     var events=getEventsByPlaygroundAndType(id, type);
     $.each(events, function (i, v) {
+        var date=v.timeStart.split("@")[0];
+        var timeStart=v.timeStart.split("@")[1];
+        var timeEnd=v.timeEnd.split("@")[1]
         tbl.append('<div class="panel-body" style="cursor: pointer;" ><a target="_blank" href="/event?eventId='+v.id+'">'+
-            v.timeStart.dayOfMonth+' '+v.timeStart.month+' с '+v.timeStart.hour+':'+v.timeStart.minute+' по '+
-            v.timeEnd.hour+':'+v.timeEnd.minute+' зарегестрировано '+v.users.length+' участников</a></div>');
+            date+' с '+timeStart+' по '+ timeEnd+' зарегестрировано '+v.users.length+' участников</a></div>');
     });
 }
