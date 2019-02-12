@@ -123,7 +123,7 @@ public class HelloController {
     @PostMapping("/registration")
     public String addUser(@RequestParam("name") String userName,
                           @RequestParam("email") String login,
-                          @RequestParam("pass") String password) {
+                          @RequestParam("password2") String password) {
         System.out.println(userName);
         System.out.println(login);
         System.out.println(password);
