@@ -17,6 +17,8 @@ function setPGs(data) {
     init(data);
     var tbl = $('#pg_tbl_1');
     document.title = 'Площадки на которых доступен ' + data['type'];
+    $("#map_modal_h4").empty();
+    $("#map_modal_h4").append(data['type']);
     tbl.empty();
     tbl.append('<div class="panel-heading">Адреса площадок</div>');
     $('#thead_sport').html(data['type'] + " <button type=\"button\" style=\"float:right;padding:0;display:inline-block\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>" +
