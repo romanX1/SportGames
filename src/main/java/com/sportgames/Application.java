@@ -1,8 +1,6 @@
 package com.sportgames;
 
 
-
-import com.sportgames.config.AddSportsToBase;
 import com.sportgames.config.TestData;
 import org.springframework.boot.SpringApplication;
 
@@ -29,13 +27,13 @@ public class Application {
     }
 
 
-    @Bean(initMethod = "initSports")
-    public AddSportsToBase initAddSportsToBase(){
-        return new AddSportsToBase();
-    }
-
-    @Bean(initMethod = "initData")
-    public TestData initTestData(){
-        return new TestData();
-    }
+//    @Bean(initMethod = "initSports")
+//    public AddSportsToBase initAddSportsToBase(){
+//        return new AddSportsToBase();
+//    }
+//
+//    @Bean(initMethod = "initData")
+//    public TestData initTestData(){
+//        return new TestData();
+//    }
 }
