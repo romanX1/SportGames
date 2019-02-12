@@ -13,6 +13,19 @@ function playGroundsByType(typeId, typeName) {
     return playgrounds;
 }
 
+function getCoords(value){
+    var geo;
+    var inpt=$('#PGpoint');
+    var promise = new Promise(function(){
+        inpt.val(geo['_value']['getObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+    }, alert('ПНХ ПИДОР!') )
+    {
+        geo=ymaps.geocode($(value).val());
+    }
+
+    console.log(inpt.val());
+}
+
 function setPGs(data) {
     init(data);
     var tbl = $('#pg_tbl_1');

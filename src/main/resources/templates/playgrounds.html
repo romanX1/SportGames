@@ -35,7 +35,11 @@
         <div class="col-lg-10">
             <div id="page-content-wrapper">
                 <div class="container-fluid xyz">
-                    <div id="thead_sport" style="margin:0.8%" class="row"><button type="button" style="float: right;padding:0" class="btn btn-success" data-toggle="modal" data-target="#addPG">Предложить площадку</button></div>
+                    <div id="thead_sport" style="margin:0.8%" class="row">
+                        <button type="button" style="float: right;padding:0" class="btn btn-success" data-toggle="modal" data-target="#addPG">Предложить площадку</button>
+                        <button type="button" style="float:right;padding:0;display:inline-block;margin-right:2px" class="btn btn-success" data-toggle="modal" data-target="#showMap">Показать на карте</button>
+                    </div>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="panel panel-primary" id="pg_tbl_1">
@@ -83,8 +87,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <label for="PGaddress">Введите адрес:</label>
+                                <label for="PGaddress">Введите адрес или <a data-toggle="modal" data-target="#showMap" onclick="init({['create']:['true']})">выберите точку на карте</a></label>
                                 <input type="text" class="form-control" id="PGaddress" name="PGaddress"/>
+                                <input id="PGpoint" name="PGpoint" type="hidden"/>
                             </div>
                         </div>
                         <label for="PGsports">Выберите виды спорта:</label><br/>
