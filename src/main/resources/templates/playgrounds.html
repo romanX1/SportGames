@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="PGaddress">Введите адрес или <a data-toggle="modal" data-target="#showMap" onclick="init({['create']:['true']})">выберите точку на карте</a></label>
-                                <input type="text" class="form-control" id="PGaddress" name="PGaddress"/>
+                                <input type="text" class="form-control" id="PGaddress" name="PGaddress" onkeyup="getCoords(this)"/>
                                 <input id="PGpoint" name="PGpoint" type="hidden"/>
                             </div>
                         </div>

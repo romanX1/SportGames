@@ -16,14 +16,15 @@ function playGroundsByType(typeId, typeName) {
 function getCoords(value){
     var geo;
     var inpt=$('#PGpoint');
-    var promise = new Promise(function(){
-        inpt.val(geo['_value']['getObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
-    }, alert('ПНХ ПИДОР!') )
-    {
-        geo=ymaps.geocode($(value).val());
-    }
-
-    console.log(inpt.val());
+    var myGeocoder = ymaps.geocode($(value).val());
+    setTimeout( () => {
+        myGeocoder.then(function (res) {
+            geo = res;
+            console.log(geo);
+            console.log(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+            inpt.val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+        });
+    }, 1000);
 }
 
 function setPGs(data) {
@@ -44,10 +45,24 @@ function supplyPlayground() {
     var allSports = getAllSports();
     var formsData = $('#PGsports').val();
     var formsAddr = $('#PGaddress').val();
+    var coordinates=$('#PGpoint').val();
     var adrPG = [];
     $.each(formsData, function (i, v) {
+
         adrPG[i] = allSports[formsData[i] - 1];
     });
+
+
+    coordinates = $(coordinates.split(','))
+    let point = {
+        'x' : Number.parseFloat(coordinates[0]),
+        'y' : Number.parseFloat(coordinates[1])
+    };
+    let playground = {
+        'address': formsAddr,
+        'sports': adrPG,
+        'coordinates': point
+    };
 
     $.ajax({
         url: "/api/playgrounds/supply",
@@ -56,10 +71,7 @@ function supplyPlayground() {
             request.setRequestHeader("X-CSRF-TOKEN", $('[name=_csrf]').val());
         },
         method: "POST",
-        data: JSON.stringify({
-            'address': formsAddr,
-            'sports': adrPG
-        }),
+        data: JSON.stringify(playground),
         success:
             function (data) {
                 console.log(data);
