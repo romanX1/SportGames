@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
+<<<<<<< HEAD
     <data-source name="sportgames@localhost" uuid="a66949bf-b4d1-4043-88a4-6cc37be3acd9">
-      <database-info product="MySQL" version="5.7.25" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" dbms="MYSQL" exact-version="5.7.25" exact-driver-version="5.1">
+      <database-info product="MySQL" version="5.7.25" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -10,6 +11,19 @@
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <introspection-schemas>*:@</introspection-schemas>
+    </data-source>
+    <data-source name="sportgames@localhost [2]" uuid="1c979088-6fa9-43ce-9b8e-2d358545736d">
+=======
+    <data-source name="sportgames@localhost [2]" uuid="32edf1a1-129a-4c17-8e68-a1d3dc57674f">
+>>>>>>> johny
+      <database-info product="MySQL" version="5.7.25-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <introspection-schemas>*:sportgames</introspection-schemas>
     </data-source>
   </component>
 </project>
