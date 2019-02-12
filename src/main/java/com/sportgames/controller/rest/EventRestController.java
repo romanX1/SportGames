@@ -1,5 +1,6 @@
 package com.sportgames.controller.rest;
 
+import com.sportgames.dao.EventDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
@@ -62,6 +63,11 @@ public class EventRestController {
         eventService.update(sportEvent);
         return authUser;
 
+    }
+
+    @GetMapping("/{playgroundId}/{sportType}")
+    public List<SportEvent> getEventsByPlaygroundAndType(@PathVariable Long playgroundId, @PathVariable String sportType){
+        return eventService.getllByPlaygroundIdAndSportType(playgroundId, sportType);
     }
 
     @GetMapping("/{eventId}/users")

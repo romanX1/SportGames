@@ -14,4 +14,5 @@ public interface EventService {
     List<SportEvent> getByPlayground(String adr);
     List<SportEvent> getByPlaygroundId(Long id);
     void update(SportEvent sportEvent);
+    List<SportEvent> getllByPlaygroundIdAndSportType(Long id, String type);
 }
