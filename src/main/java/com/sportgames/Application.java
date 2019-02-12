@@ -27,13 +27,13 @@ public class Application {
     }
 
 //
-//    @Bean(initMethod = "initSports")
-//    public AddSportsToBase initAddSportsToBase(){
-//        return new AddSportsToBase();
-//    }
+    @Bean(initMethod = "initSports")
+    public AddSportsToBase initAddSportsToBase(){
+        return new AddSportsToBase();
+    }
 //
-//    @Bean(initMethod = "initData")
-//    public TestData initTestData(){
-//        return new TestData();
-//    }
+    @Bean(initMethod = "initData")
+    public TestData initTestData(){
+        return new TestData();
+    }
 }
