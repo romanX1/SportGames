@@ -57,8 +57,8 @@ function supplyPlayground() {
 
     coordinates = $(coordinates.split(','))
     let point = {
-        'x' : Number.parseFloat(coordinates[0]),
-        'y' : Number.parseFloat(coordinates[1])
+        'x' : Number.parseFloat(coordinates[1]),
+        'y' : Number.parseFloat(coordinates[0])
     };
     let playground = {
         'address': formsAddr,
