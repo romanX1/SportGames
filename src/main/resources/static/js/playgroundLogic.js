@@ -23,11 +23,10 @@ function getCoords(value){
             console.log(geo);
             console.log(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
             inpt.val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+            $('#PGadrCor').val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['SourceMetaDataList']['GeocoderResponseMetaData']['request']);
 
         });
-    }, 1000);
-    // $(value).val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['SourceMetaDataList']['GeocoderResponseMetaData']['request']);
-}
+    }, 1000);}
 
 function setPGs(data) {
     init(data);
@@ -48,7 +47,7 @@ function setPGs(data) {
 function supplyPlayground() {
     var allSports = getAllSports();
     var formsData = $('#PGsports').val();
-    var formsAddr = $('#PGaddress').val();
+    var formsAddr = $('#PGadrCor').val();
     var coordinates=$('#PGpoint').val();
     var adrPG = [];
     $.each(formsData, function (i, v) {
