@@ -5,44 +5,61 @@
 <th:block th:fragment="head">
     <meta charset="UTF-8"/>
     <base href="/"/>
-    <script
-            src="http://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/main.css" />
-    <!--BEAUTIFUL MULTIPLE SELECTS WITH LIVE SEARCH-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
 
-    <!--<script type="text/javascript" th:src="@{/js/eventController.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/playgroundLogic.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/eventController.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/sporteventsLogic.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/eventLogic.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/sportController.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/main.js}"></script>-->
-    <!--<script type="text/javascript" th:src="@{/js/userLogic.js}"></script>-->
 </th:block>
 <th:block th:fragment="nav">
-    <nav class="navbar navbar-inverse" style="margin-bottom:0;border-radius: 0">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">GLAGNE</a>
+    <!--<header>-->
+        <nav class="navbar  navbar-expand-lg navbar-dark green scrolling-navbar"
+             style="margin-bottom:0;border-radius: 0">
+            <span class="navbar-brand"><strong>Sport Games</strong></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/playgrounds">Площадки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sportevents">События</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/outdoorpanel">Терминал</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addnewevent">Новое событие</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link"><i class="fas fa-user-circle"></i><span>Выйти</span></a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/}">Иди домой</a></li>
-                <li><a th:href="@{/playgrounds}">Площадки</a></li>
-                <li><a th:href="@{/sportevents}">Все игры</a></li>
-                <li><a th:href="@{/outdoorpanel}">Уличная панель</a></li>
-                <li><a th:href="@{/addnewevent}">Добавить свое событие</a></li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
+    <!--</header>-->
 </th:block>
 </body>
 </html>
