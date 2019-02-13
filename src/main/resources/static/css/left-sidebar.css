@@ -1,6 +1,6 @@
 .sidenav {
     height: 100%;
-    width: 200px;
+    width: 220px;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -12,16 +12,17 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 18px;
-    color: #818181;
+    color: #f1f1f1;
     display: block;
 }
 
 .sidenav li:hover {
-    color: #f1f1f1;
+    color: #c0c0c0;
 }
 
 .main {
-    margin-left: 220px; /* Same as the width of the sidenav */
+    width: 100%;
+    margin-left: 150px; /* Same as the width of the sidenav */
 }
 
 @media screen and (max-height: 450px) {
