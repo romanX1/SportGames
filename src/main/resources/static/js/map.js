@@ -59,6 +59,7 @@ function init(data) {
                         balloonContent: firstGeoObject.getAddressLine()
                     });
                 $('#PGaddress').val(myPlacemark['properties']['_data']['balloonContent']);
+                $('#PGadrCor').val(myPlacemark['properties']['_data']['balloonContent']);
                 $('#PGpoint').val(myPlacemark['geometry']['_coordinates']);
 
             });
