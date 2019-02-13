@@ -34,7 +34,6 @@ public class PlaygroundRestController {
 
     @RequestMapping(method = RequestMethod.POST, value="/supply")
     public Boolean supplyPG(@RequestBody Playground playground){
-        System.out.println(playground);
         playgroundService.update(playground);
         return true;
     }
