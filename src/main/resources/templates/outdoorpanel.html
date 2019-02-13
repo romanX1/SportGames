@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments :: head">
-    <script type="text/javascript" th:src="@{/js/eventController.js}"/>
     <title th:text="${address}+' рассписание на сегодня'"/>
 
 </head>
 <body>
-
+<script type="text/javascript" src="/js/eventController.js"></script>
 <h2 th:text=" ${address}"/>
 <div>
     <table class="table table-dark table-striped" border="1">
