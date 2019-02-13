@@ -3,6 +3,7 @@ package com.sportgames.service;
 import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventService {
@@ -15,4 +16,5 @@ public interface EventService {
     List<SportEvent> getByPlaygroundId(Long id);
     void update(SportEvent sportEvent);
     List<SportEvent> getllByPlaygroundIdAndSportType(Long id, String type);
+    List<SportEvent> getAllUpToDate(LocalDateTime date);
 }
