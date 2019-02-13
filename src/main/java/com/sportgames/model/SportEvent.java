@@ -21,12 +21,12 @@ public class SportEvent {
     private Sport sport; // Вид спорта события
 
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM@HH:mm:ss", locale="ru")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM yyyy@HH:mm:ss", locale="ru")
     @Column (name = "timeStart", nullable = false)
     private LocalDateTime timeStart; //Время начала события
 
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM@HH:mm:ss", locale="ru")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "d MMMM yyyy@HH:mm:ss", locale="ru")
     @Column (name = "timeEnd", nullable = false)
     private LocalDateTime timeEnd; //Время окончания события
 

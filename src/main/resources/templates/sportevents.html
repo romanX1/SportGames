@@ -6,15 +6,16 @@
 </head>
 <body>
 <div th:replace="fragments::nav"/>
+<script type="text/javascript" src="/eventController.js"></script>
 <h1>Список всех ивентов:</h1>
 <div>
     <table id="table_1" class="table-dark table-striped">
         <thead>
         <tr>
-            <th>Площадка</th>
+            <th>Дата</th>
+            <th>Время</th>
             <th>Вид спорта</th>
-            <th>Время начала</th>
-            <th>Время завершения</th>
+            <th>Площадка</th>
             <th>Количество игроков</th>
         </tr>
         </thead>

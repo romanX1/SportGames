@@ -29,7 +29,7 @@ public class Application {
 //    public AddSportsToBase initAddSportsToBase(){
 //        return new AddSportsToBase();
 //    }
-//
+////
 //    @Bean(initMethod = "initData")
 //    public TestData initTestData(){
 //        return new TestData();
