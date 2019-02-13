@@ -8,6 +8,10 @@
     background-size: cover;
     font-family: 'Roboto', sans-serif;
 }
+
+.login-block {
+    margin: 5% 30%;width: 30%;
+}
 .login-card {
     padding: 40px;
     width: 274px;
