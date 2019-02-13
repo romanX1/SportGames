@@ -109,8 +109,8 @@ function getAllSportEvents() {
             $(tbl).empty();
             //
             trs.sort(function (a, b) {
-                let date1 = $(a).find("[name ='t1']").val().split(' ');
-                let date2 = $(b).find("[name ='t1']").val().split(' ');
+                let date2 = $(a).find("[name ='t1']").val().split(' ');
+                let date1 = $(b).find("[name ='t1']").val().split(' ');
                 //return date1[2] < date2[2] ? date1[2] - date2[2]
                 return  date2[1] < date1[1] ? date2[1].localeCompare(date1[1])
                     :  date2[0] - date1[0];
