@@ -65,9 +65,10 @@ function init(data) {
         }
     } else {
         var allPG;
-        if (data['data'].length > 0) {
+        if (data['data'].length > 0 || data['type']!==undefined) {
             allPG = data['data'];
         } else {
+            console.log(data);
             $.ajax({
                 url: "/api/playgrounds/",
                 type: "GET",
@@ -77,7 +78,7 @@ function init(data) {
                 }
             });
         }
-
+        console.log(data);
         var myMap = new ymaps.Map("map", {
             center: [59.939095, 30.315868],
             zoom: 10
