@@ -5,7 +5,6 @@ import com.sportgames.model.*;
 import com.sportgames.service.*;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -33,7 +32,7 @@ public class TestData {
         List<Sport> allSports = sportService.getAll();
 
         Playground pgk=new Playground("defaultPG");
-        pgk.setCoordinates(new Point(59.76565, 30.42358));
+        pgk.setCoordinates(new Point(59.76565f, 30.42358f));
         int sk1 = (int) (Math.random() * 15);
         int sk2 = (int) (Math.random() * 14) + 15;
         Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
@@ -42,8 +41,8 @@ public class TestData {
 
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
-            double dX = (0.4 * Math.random()) + 59.7;
-            double dY = (0.33 * Math.random()) + 30.18;
+            float dX = (float)(0.4 * Math.random()) + 59.7f;
+            float dY = (float)(0.33 * Math.random()) + 30.18f;
             pg.setCoordinates(new Point(dX, dY));
             int s1 = (int) (Math.random() * 15);
             int s2 = (int) (Math.random() * 14) + 15;

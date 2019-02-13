@@ -13,10 +13,26 @@ function playGroundsByType(typeId, typeName) {
     return playgrounds;
 }
 
+function getCoords(value){
+    var geo;
+    var inpt=$('#PGpoint');
+    var myGeocoder = ymaps.geocode($(value).val());
+    setTimeout( () => {
+        myGeocoder.then(function (res) {
+            geo = res;
+            console.log(geo);
+            console.log(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+            inpt.val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+        });
+    }, 1000);
+}
+
 function setPGs(data) {
     init(data);
     var tbl = $('#pg_tbl_1');
     document.title = 'Площадки на которых доступен ' + data['type'];
+    $("#map_modal_h4").empty();
+    $("#map_modal_h4").append(data['type']);
     tbl.empty();
     tbl.append('<div class="panel-heading">Адреса площадок</div>');
     $('#thead_sport').html(data['type'] + " <button type=\"button\" style=\"float:right;padding:0;display:inline-block\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>" +
@@ -31,10 +47,24 @@ function supplyPlayground() {
     var allSports = getAllSports();
     var formsData = $('#PGsports').val();
     var formsAddr = $('#PGaddress').val();
+    var coordinates=$('#PGpoint').val();
     var adrPG = [];
     $.each(formsData, function (i, v) {
+
         adrPG[i] = allSports[formsData[i] - 1];
     });
+
+
+    coordinates = $(coordinates.split(','))
+    let point = {
+        'x' : Number.parseFloat(coordinates[0]),
+        'y' : Number.parseFloat(coordinates[1])
+    };
+    let playground = {
+        'address': formsAddr,
+        'sports': adrPG,
+        'coordinates': point
+    };
 
     $.ajax({
         url: "/api/playgrounds/supply",
@@ -43,10 +73,7 @@ function supplyPlayground() {
             request.setRequestHeader("X-CSRF-TOKEN", $('[name=_csrf]').val());
         },
         method: "POST",
-        data: JSON.stringify({
-            'address': formsAddr,
-            'sports': adrPG
-        }),
+        data: JSON.stringify(playground),
         success:
             function (data) {
                 console.log(data);
