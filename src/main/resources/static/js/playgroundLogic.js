@@ -23,8 +23,10 @@ function getCoords(value){
             console.log(geo);
             console.log(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
             inpt.val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+
         });
     }, 1000);
+    // $(value).val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['SourceMetaDataList']['GeocoderResponseMetaData']['request']);
 }
 
 function setPGs(data) {
