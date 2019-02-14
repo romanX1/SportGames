@@ -1,14 +1,38 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments::head">
-    <meta charset="UTF-8"/>
-
-
+<head th:include="fragments :: head">
+    <title>Events</title>
 </head>
 <body>
 <div th:replace="fragments::nav"/>
-<h1>Добро пожаловать</h1>
-
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="card border-success mb-3" style="width: 400rem;">
+            <div class="card-body text-success">
+                <h5 class="card-title">Мои ближайшие спортивные события</h5>
+                <p class="card-text">
+                <table id="table_1" class="table table-striped">
+                    <thead class="text-white light-green lighten-1">
+                    <tr>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Вид спорта</th>
+                        <th>Площадка</th>
+                        <th>Количество игроков</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tablebody_2">
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/eventController.js"></script>
+<script>
+    $(document).ready(function () {
+        getAllSportEventsByUser();
+    });</script>
 </body>
-
 </html>

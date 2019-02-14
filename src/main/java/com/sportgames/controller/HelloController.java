@@ -3,6 +3,7 @@ package com.sportgames.controller;
 import com.sportgames.model.*;
 import com.sportgames.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,17 @@ public class HelloController {
 
     @GetMapping("/")
     public String mainPage() {
-        return "redirect:/playgrounds";
+        return "index";
     }
+
+//    @GetMapping("/")
+//    public ModelAndView eventsByUser() {
+//        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        List<SportEvent> sportEvents = eventService.getByUserId(authUser.getId());
+//        ModelAndView modelAndView = new ModelAndView("sportevents");
+//        modelAndView.addObject("sportevents", sportEvents);
+//        return modelAndView;
+//    }
 
     @GetMapping("/event")
     public ModelAndView eventPage(@RequestParam Long eventId) {

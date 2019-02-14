@@ -15,6 +15,7 @@ public interface EventService {
     void delete(Long id);
     List<SportEvent> getByPlayground(String adr);
     List<SportEvent> getByPlaygroundId(Long id);
+    List<SportEvent> getByUserId(Long id);
     void update(SportEvent sportEvent);
 
     List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type);
