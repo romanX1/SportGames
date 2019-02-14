@@ -3,8 +3,66 @@
 <head th:include="fragments :: head">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>event</title>
+
 </head>
-<body th:onload="'getAndFillEventForModal('+${sportEvent.id}+')'">
+<body>
+<script type="text/javascript" src="/js/eventController.js"></script>
+<script type="text/javascript" src="/js/stomp.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script>
+    var eventId=document.location.pathname.split("/")[2];
+        getAndFillEventForModal(eventId);
+</script>
+<script>
+    var stompClient = null;
+    var eventC=getEventById(eventId);
+    function setConnected(connected) {
+        // document.getElementById('connect').disabled = connected;
+        // document.getElementById('disconnect').disabled = !connected;
+        // document.getElementById('conversationDiv').style.visibility
+        //     = connected ? 'visible' : 'hidden';
+        // document.getElementById('response').innerHTML = '';
+    }
+
+    function connect() {
+        var socket = new SockJS('/api/chatique');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function(frame) {
+            setConnected(true);
+            console.log('Connected: ' + frame);
+            stompClient.subscribe(document.location.pathname, function(messageOutput) {
+                showMessageOutput(JSON.parse(messageOutput.body));
+            });
+        });
+    }
+
+    function disconnect() {
+        if(stompClient != null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendMessage() {
+        var from = $('#currentUsed').val();
+        var text = $('#MSGtext').val();
+
+        stompClient.send("/api/chatique/"+eventId, {},
+            JSON.stringify({'user':from, 'sportEvent': eventC, 'text':text, 'dateTime': new Date()}));
+    }
+
+    function showMessageOutput(messageOutput) {
+        var response = $('#messages');
+        response.append('<div>' +
+            messageOutput.dateTime+' - '+
+            messageOutput.user + ': '+
+            messageOutput.text+
+            '</div>');
+
+    }
+    connect();
+</script>
 <script type="text/javascript" src="/js/eventController.js"></script>
 <div th:replace="fragments::nav"/>
 <div class="container">
@@ -39,8 +97,17 @@
             </tbody>
 
         </table>
+        <div id="chatique">
+            <div id="messages">
+            <div th:each="msg : ${messages}" th:text="${msg.dateTime+' - '+msg.user+': '+msg.text}"></div>
+            </div>
+            <div>
+                <textarea rows="3" id="MSGtext"></textarea>
+                <button type="button" value="Отправить" onclick="sendMessage()"></button>
+            </div>
+        </div>
     </center>
 </div>
-
+<input id="currentUsed" th:type="hidden" th:value="${user}"/>
 </body>
 </html>

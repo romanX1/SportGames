@@ -105,3 +105,4 @@ function setEventsForPlaygrond(id, type){
             date+' с '+timeStart+' по '+ timeEnd+' зарегестрировано '+v.users.length+' участников</a></div>');
     });
 }
+

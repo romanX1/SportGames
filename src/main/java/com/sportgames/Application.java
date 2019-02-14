@@ -26,7 +26,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-////
+
 //    @Bean(initMethod = "initSports")
 //    public AddSportsToBase initAddSportsToBase(){
 //        return new AddSportsToBase();
@@ -36,5 +36,4 @@ public class Application {
 //    public TestData initTestData(){
 //        return new TestData();
 //    }
-
 }
