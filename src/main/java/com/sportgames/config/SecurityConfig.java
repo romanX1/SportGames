@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                // .successHandler(appAuth)
                 .usernameParameter("user")
                 .passwordParameter("password")
-                                .defaultSuccessUrl("/playgrounds", true)
+                 //               .defaultSuccessUrl("/playgrounds", true)
 
                 .permitAll()
                 .and()
