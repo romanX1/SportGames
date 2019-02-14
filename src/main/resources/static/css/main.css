@@ -1,5 +1,37 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
+.adminlink {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 150px;
+    top: 13px;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 5%;
+    text-align: center;
+    line-height: 2.5;
+}
+
+.adminlinkli:last-child a {
+    margin-right: 0;
+}
+
+.adminlink:link, .adminlink:visited, .adminlink:focus {
+    background: lightgrey;
+}
+
+.adminlink:hover {
+    color: grey;
+    background: white;
+}
+
+.adminlink:active {
+    background: red;
+    color: black;
+}
+
 .login_body {
     background: url("/static/img/stadium.jpeg") no-repeat center center fixed;
     -webkit-background-size: cover;
