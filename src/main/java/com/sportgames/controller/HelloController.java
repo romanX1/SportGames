@@ -110,6 +110,18 @@ public class HelloController {
         return modelAndView;
     }
 
+    @GetMapping("/adminplaygrounds")
+    public ModelAndView adminPlayGroundsByType() {
+        List<Playground> playgrounds;
+        playgrounds = playgroundService.getAll();
+        ModelAndView modelAndView = new ModelAndView("adminplaygrounds");
+        modelAndView.addObject("kremlin", playgroundService.findByName("Кремль"));
+        modelAndView.addObject("grounds", playgrounds);
+        modelAndView.addObject("sports", sportService.getAll());
+
+        return modelAndView;
+    }
+
     @GetMapping("/sportevents")
     public ModelAndView events() {
         return eventsByTime("");
