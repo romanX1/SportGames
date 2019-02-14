@@ -33,8 +33,8 @@ public class TestData {
 
         Playground pgk=new Playground("defaultPG");
         pgk.setCoordinates(new Point(59.76565f, 30.42358f));
-        int sk1 = (int) (Math.random() * 15);
-        int sk2 = (int) (Math.random() * 14) + 15;
+        int sk1 = (int) (Math.random() * 7);
+        int sk2 = (int) (Math.random() * 7) + 7;
         Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
         pgk.setSports(ksports);
         playgroundService.add(pgk);
@@ -44,8 +44,8 @@ public class TestData {
             float dX = (float)(0.4 * Math.random()) + 59.7f;
             float dY = (float)(0.33 * Math.random()) + 30.18f;
             pg.setCoordinates(new Point(dX, dY));
-            int s1 = (int) (Math.random() * 15);
-            int s2 = (int) (Math.random() * 14) + 15;
+            int s1 = (int) (Math.random() * 7);
+            int s2 = (int) (Math.random() * 7) + 7;
             Set<Sport> sports = new HashSet<>(allSports.subList(Math.min(s1, s2), Math.max(s1, s2)));
             pg.setSports(sports);
 
@@ -76,12 +76,14 @@ public class TestData {
 
     private void usersData() {
         userRoleData();
+        Faker faker = new Faker(new Locale("ru"));
+
 
         for (int i = 0; i < 300; i++) {
             User user = new User();
-            user.setName("user" + i);
-            user.setLogin("user" + i);
-            user.setPassword(userService.encodePassword("user" + i));
+            user.setName(faker.name().fullName());
+            user.setLogin("test" + i);
+            user.setPassword(userService.encodePassword("123"));
             user.setAuthorities(new HashSet<>(randomAutorities()));
             userService.add(user);
         }
