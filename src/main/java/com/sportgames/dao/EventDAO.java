@@ -16,6 +16,13 @@ import java.util.Optional;
 public interface EventDAO extends JpaRepository<SportEvent, Long>{
     List<SportEvent> getAllByPlaygroundAddress(String adr);
     List<SportEvent> getAllByPlaygroundId(Long id);
+
+    @Query(value = "SELECT ev FROM SportEvent ev " +
+            "JOIN ev.users AS user W" +
+            "HERE user.id = :id")
+    List<SportEvent> getAllByUsersId(@Param("id")Long id);
+
+
     List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type);
 
     @Query(value = "SELECT event FROM SportEvent event " +

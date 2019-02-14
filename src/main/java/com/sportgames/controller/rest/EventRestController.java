@@ -83,4 +83,9 @@ public class EventRestController {
     public List<SportEvent> getAllEvent() {
         return eventService.getAllUpToDate(LocalDateTime.now());
     }
+    @GetMapping("/byUser")
+    public List<SportEvent> getAllEventByUser() {
+        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return eventService.getByUserId(authUser.getId());
+    }
 }
