@@ -1,5 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
+.adminbuttonchange {
+    position: relative;
+    top: 5px;
+    left: 150px;
+}
+
+.adminbuttondelete {
+    /*position: center;*/
+    /*top: 155px;*/
+    /*left: 295px;*/
+}
+
 .adminlink {
     color: white;
     font-weight: bold;
