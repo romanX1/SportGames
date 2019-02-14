@@ -64,11 +64,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                // .successHandler(appAuth)
                 .usernameParameter("user")
                 .passwordParameter("password")
+                                .defaultSuccessUrl("/playgrounds", true)
+
                 .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .permitAll();
-//                        .defaultSuccessUrl("/", true);
+//                .and()
 
     }
 
