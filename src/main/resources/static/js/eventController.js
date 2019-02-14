@@ -122,6 +122,48 @@ function getAllSportEvents() {
     });
 }
 
+function getAllSportEventsByUser() {
+    $.ajax({
+        url: "api/events/byUser",
+        type: "GET",
+        async: false,
+        success: function (data) {
+            var tbl = $('#tablebody_2');
+            tbl.empty();
+            $.each(data, function (i, v) {
+                tbl.append(
+                    "<tr class='tr-link blue-grey-text' data-href='/event/"+v.id+"' class='blue-grey-text'>" +
+                    "<td><input name ='t1' type='hidden' value='"+v.timeStart+"' />" + v.timeStart.split("@")[0] + " </td>" +
+                    "<td style='text-align: center'> " + v.timeStart.split("@")[1] + "  " + v.timeEnd.split("@")[1] + "</td>" +
+                    "<td>" + v.sport.type + "</td>" +
+                    "<td>" + v.playground.address + "</td>" +
+                    "<td>" + v.users.length + "</td>" +
+                    "</tr>")
+            });
+
+
+            let trs = $(tbl).children();
+            $(tbl).empty();
+            //
+            trs.sort(function (a, b) {
+                let date2 = $(a).find("[name ='t1']").val().split(' ');
+                let date1 = $(b).find("[name ='t1']").val().split(' ');
+                //return date1[2] < date2[2] ? date1[2] - date2[2]
+                return  date2[1] < date1[1] ? date2[1].localeCompare(date1[1])
+                    :  date2[0] - date1[0];
+
+            });
+            $(trs).each(function(i, v) {
+                $(tbl).append(v);
+            });
+
+            $('tr[data-href].tr-link').on("click", function() {
+                document.location = $(this).data('href');
+            });
+        }
+    });
+}
+
 function getEventsByPlaygroundAndType(id, type) {
     var events;
     $.ajax({

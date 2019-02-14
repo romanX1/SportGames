@@ -67,6 +67,11 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<SportEvent> getByUserId(Long id) {
+        return dao.getAllByUsersId(id);
+    }
+
+    @Override
     public List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type) {
         return dao.getAllByPlaygroundIdAndSportType(id, type);
     }
