@@ -3,6 +3,7 @@ package com.sportgames.controller.rest;
 import com.sportgames.model.Message;
 import com.sportgames.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,9 @@ public class MessageRestController {
 //        return messageService.findBySportEventId(eventId);
 //    }
 
-    @MessageMapping("/api/chatique")
-    @SendTo("/event/34")
-    public Message send(Message message) throws Exception{
+    @MessageMapping("/api/chatique/{eventId}")
+    @SendTo("/event/{eventId}")
+    public Message send(@DestinationVariable Long eventId, Message message) throws Exception{
         System.out.println("Got message");
         messageService.add(message);
         String time=LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy@HH:mm:ss"));
