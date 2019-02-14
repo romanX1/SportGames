@@ -7,25 +7,72 @@
 </head>
 <body>
 <div th:replace="fragments::nav"/>
-<h1>Существуют три вида лжи: ложь, наглая ложь и статистика.</h1><br/>
 
-<strong>Самая популярная площадка:</strong><br/>
-<div th:text="${famousPG.address}+' Количество ивентов на площадке: ' + ${famousPG.sports.size()}"></div><br/>
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="card border-success mb-3" style="width: 400rem;">
 
-<strong>Самый популярный ивент:</strong><br/>
-<div th:text="${famousSE.sport.type} + ' на площадке: ' + ${famousSE.playground.address} + '. Количество игроков: ' + ${famousSE.users.size()}"></div><br/>
+            <div class="card-body text-success">
+                <h5 class="card-title">Статистика</h5>
+                <p class="card-text">
 
-<strong>Самый активный игрок:</strong><br/>
-<div th:text="${famousUser.getKey().getName()} + ' принимает участие в ' + ${famousUser.getValue()} + ' ивентах'"></div><br/>
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Самая популярная площадка:</strong>
+                        <div th:text="${famousPG.address}+'. Количество событий на площадке: ' + ${famousPG.sports.size()}"
+                             style="margin-left: 15px"></div>
+                    </div>
+                </li>
 
-<strong>Количество доступных площадок: </strong>
-<div th:text="${countPG}"></div><br/>
 
-<strong>Количество ивентов: </strong>
-<div th:text="${countSE}"></div><br/>
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Самое популярное событие:</strong>
+                        <div th:text="${famousSE.sport.type} + ' на площадке: ' + ${famousSE.playground.address} + '. Количество игроков: ' + ${famousSE.users.size()}"
+                             style="margin-left: 15px"></div>
+                    </div>
+                </li>
 
-<strong>Количество игроков:</strong><br/>
-<div th:text="${countUsers}"></div><br/>
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Самый активный игрок:</strong>
+                        <div th:text="${famousUser.getKey().getName()} + ' принимает участие в ' + ${famousUser.getValue()} + ' мероприятиях'"
+                             style="margin-left: 15px"></div>
+                    </div>
+                </li>
+
+
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Количество доступных площадок: </strong>
+                        <div th:text="${countPG}" style="margin-left: 15px"></div>
+                    </div>
+                </li>
+
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Количество ивентов: </strong>
+                        <div th:text="${countSE}" style="margin-left: 15px"></div>
+                    </div>
+                </li>
+
+                <li class="list-group-item list-group-item-success">
+                    <div style="display: inline-flex">
+                        <strong>Количество игроков:</strong>
+                        <div th:text="${countUsers}" style="margin-left: 15px"></div>
+                    </div>
+                </li>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br/>
+
+<br/>
 
 </body>
 
