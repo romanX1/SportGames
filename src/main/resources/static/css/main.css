@@ -38,7 +38,7 @@
 }
 
 .login_body {
-    background: url("/static/img/stadium.jpeg") no-repeat center center fixed;
+    background: url("/img/stadium.jpeg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
