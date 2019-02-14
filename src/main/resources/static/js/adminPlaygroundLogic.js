@@ -95,9 +95,9 @@ function supplyPlayground() {
 function setEventsForPlaygrond(id, type){
     var tbl= $('#pg_tbl_2');
     tbl.empty();
-    tbl.append('<div class="panel-heading">Расписание и участники <a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success adminbuttons" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a>' +
-        '<a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success adminbuttons" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Изменить событие</a>' +
-        '<a href="/addnewevent?id=\'+id+\'&type=\'+type+\'" type="button" class="btn btn-success adminbuttons" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal"><Удалить></Удалить> событие</a>' +
+    tbl.append('<div class="panel-heading">Расписание и участники <a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a>' +
+        '<a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success adminbuttonchange" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Изменить событие</a>' +
+        '<a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success adminbuttondelete" style="float: right;padding: 0 0.5% 0 2.5%;" data-toggle="modal">Удалить событие</a>' +
         '</div>');
     var events=getEventsByPlaygroundAndType(id, type);
     $.each(events, function (i, v) {
