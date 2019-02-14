@@ -30,6 +30,11 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<SportEvent> getActualEventsByPG(Long id, LocalDateTime ts, LocalDateTime te) {
+        return dao.getActualEventsByPG(id, ts, te);
+    }
+
+    @Override
     public List<SportEvent> getAllUpToDate(LocalDateTime date) {
         return dao.getAllUpToDate(date);
     }
