@@ -2,29 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments :: head">
     <title>Events</title>
-
 </head>
 <body>
 <div th:replace="fragments::nav"/>
-<script type="text/javascript" src="/js/eventController.js"></script>
-<h1>Список всех ивентов:</h1>
-<div>
-    <table id="table_1" class="table-dark table-striped">
-        <thead>
-        <tr>
-            <th>Дата</th>
-            <th>Время</th>
-            <th>Вид спорта</th>
-            <th>Площадка</th>
-            <th>Количество игроков</th>
-        </tr>
-        </thead>
-        <tbody id="tablebody_1">
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="card border-success mb-3" style="width: 400rem;">
+            <div class="card-header">Выберите событие</div>
+            <div class="card-body text-success">
+                <h5 class="card-title">Ближайшие спортивные события</h5>
+                <p class="card-text">
+                <table id="table_1" class="table table-striped">
+                    <thead class="text-white light-green lighten-1">
+                        <tr>
+                            <th>Дата</th>
+                            <th>Время</th>
+                            <th>Вид спорта</th>
+                            <th>Площадка</th>
+                            <th>Количество игроков</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody_1">
 
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-
+<script type="text/javascript" src="/js/eventController.js"></script>
 <script>$(document).ready(function () {
     getAllSportEvents();
 });</script>

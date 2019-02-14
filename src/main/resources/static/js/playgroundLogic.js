@@ -40,7 +40,7 @@ function setPGs(data) {
         "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте</button>");
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
+        tbl.append('<div class="list-group-item" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
     });
 }
 

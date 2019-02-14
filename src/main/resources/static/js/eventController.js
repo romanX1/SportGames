@@ -90,20 +90,15 @@ function getAllSportEvents() {
             tbl.empty();
             $.each(data, function (i, v) {
                 tbl.append(
-                    "<tr>" +
+                    "<tr class='tr-link blue-grey-text' data-href='/event/"+v.id+"' class='blue-grey-text'>" +
                     "<td><input name ='t1' type='hidden' value='"+v.timeStart+"' />" + v.timeStart.split("@")[0] + " </td>" +
                     "<td style='text-align: center'> " + v.timeStart.split("@")[1] + "  " + v.timeEnd.split("@")[1] + "</td>" +
                     "<td>" + v.sport.type + "</td>" +
                     "<td>" + v.playground.address + "</td>" +
                     "<td>" + v.users.length + "</td>" +
-                    "<td>" +
-                    "<form method='get' action='/event' > " +
-                    "<input type='hidden' name='eventId' value='" + v.id + "'>" +
-                    "<button type='submit'>открыть событие</button>" +
-                    "</form>" +
-                    "</td>" +
                     "</tr>")
             });
+
 
             let trs = $(tbl).children();
             $(tbl).empty();
@@ -118,6 +113,10 @@ function getAllSportEvents() {
             });
             $(trs).each(function(i, v) {
                 $(tbl).append(v);
+            });
+
+            $('tr[data-href].tr-link').on("click", function() {
+                document.location = $(this).data('href');
             });
         }
     });

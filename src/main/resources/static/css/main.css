@@ -32,6 +32,11 @@
     color: black;
 }
 
+.tr-link:hover {
+    color: black !important;
+    background-color: #dcedc8 !important;
+}
+
 .login_body {
     background: url("/static/img/stadium.jpeg") no-repeat center center fixed;
     -webkit-background-size: cover;
