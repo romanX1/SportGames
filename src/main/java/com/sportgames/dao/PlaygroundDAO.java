@@ -22,4 +22,8 @@ public interface PlaygroundDAO  extends JpaRepository<Playground, Long> {
             "JOIN play.sports AS sport W" +
             "HERE sport.id = :id")
     List<Playground> getPlaygroundsByType(@Param("id")Long id);
+
+
+    @Query(value = "SELECT play.playground.id FROM SportEvent play")
+    List<Long> getAllPlaygroundIdFromEvents();
 }

@@ -11,7 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -61,4 +64,28 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsersByEventId(Long eventId) {
         return dao.getUsersById(eventId);
     }
+
+    @Override
+    public Map.Entry<User, Long> findFamousUser() {
+        List<User> userList = dao.findAll();
+        Map<User, Long> userLongMap = new HashMap<>();
+        for (User user : userList) {
+            userLongMap.put(user, dao.countUserInEvents(user.getId()));
+        }
+        Map.Entry<User, Long> userCountMapEntry = userLongMap
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(1)
+                .findFirst()
+                .get();
+
+        return userCountMapEntry;
+    }
+
+    @Override
+    public Long countUsers() {
+        return dao.count();
+    }
+
 }
