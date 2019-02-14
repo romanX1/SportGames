@@ -1,5 +1,6 @@
 package com.sportgames.dao;
 
+import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,4 +32,11 @@ public interface EventDAO extends JpaRepository<SportEvent, Long> {
     @Query(value = "SELECT event FROM SportEvent event " +
             "WHERE event.timeStart > :date")
     List<SportEvent> getAllUpToDate(@Param("date") LocalDateTime date);
+
+    @Query(value = "SELECT play.sport FROM SportEvent play")
+    List<Sport> getAllSport();
+
+    @Query(value = "SELECT play.sport FROM SportEvent play ")
+    List<Sport> getSportInMonth();
+
 }

@@ -2,6 +2,7 @@ package com.sportgames.service.impl;
 
 import com.sportgames.dao.EventDAO;
 import com.sportgames.model.Playground;
+import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
 import com.sportgames.service.EventService;
@@ -17,6 +18,8 @@ import java.time.LocalDateTime;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service("SportEventService")
 public class EventServiceImpl implements EventService {
@@ -38,6 +41,32 @@ public class EventServiceImpl implements EventService {
     public List<SportEvent> getAllUpToDate(LocalDateTime date) {
         return dao.getAllUpToDate(date);
     }
+
+    @Override
+    public Map.Entry<Sport, Long> getFamousSport() {
+        List<Sport> sports = dao.getAllSport();
+        Map<Sport, Long> map = sports.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map.Entry<Sport, Long> famousSport = map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(1)
+                .findFirst().get();
+
+        return famousSport;
+    }
+
+//    @Override
+//    public Map.Entry<Sport, Long> getFamousSportInMonth() {
+//        List<Sport> sports = dao.getAllSport();
+//        Map<Sport, Long> map = sports.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//        Map.Entry<Sport, Long> famousSport = map.entrySet()
+//                .stream()
+//                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+//                .limit(1)
+//                .findFirst().get();
+//
+//        return famousSport;
+//    }
 
     @Override
     public SportEvent findById(Long id) {
