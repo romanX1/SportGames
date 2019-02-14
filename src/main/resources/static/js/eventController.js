@@ -94,30 +94,10 @@ function getAllSportEvents() {
                     "<td><input name ='t1' type='hidden' value='"+v.timeStart+"' />" + v.timeStart.split("@")[0] + " </td>" +
                     "<td style='text-align: center'> " + v.timeStart.split("@")[1].split(":")[0]+ ":" + v.timeStart.split("@")[1].split(":")[0] + " - " + v.timeEnd.split("@")[1].split(":")[0]+ ":" + v.timeEnd.split("@")[1].split(":")[1] + "</td>" +
                     "<td>" + v.sport.type + "</td>" +
-                    "<td>" + v.playground.address + "</td>" +
                     "<td>" + v.users.length + "</td>" +
+                    "<td>" + v.playground.address + "</td>" +
                     "</tr>")
             });
-
-            //
-            // let trs = $(tbl).children();
-            // $(tbl).empty();
-            // //
-            // trs.sort(function (a, b) {
-            //     let date2 = $(a).find("[name ='t1']").val().split(' ');
-            //     let date1 = $(b).find("[name ='t1']").val().split(' ');
-            //     //return date1[2] < date2[2] ? date1[2] - date2[2]
-            //     return  date2[1] < date1[1] ? date2[1].localeCompare(date1[1])
-            //         :  date2[0] - date1[0];
-            //
-            // });
-            // $(trs).each(function(i, v) {
-            //     $(tbl).append(v);
-            // });
-            //
-            // $('tr[data-href].tr-link').on("click", function() {
-            //     document.location = $(this).data('href');
-            // });
 
             initial_sort_id = 0; // номер начального отсортированного столбца, начиная с нуля
             initial_sort_up = 1; // 0 - сортировка вниз, 1 - вверх
@@ -271,7 +251,9 @@ function getAllSportEvents() {
                 if (root.addEventListener) root.addEventListener("load", init, false);
                 else if (root.attachEvent) root.attachEvent("onload", init);
             }
-
+            $('tr[data-href].tr-link').on("click", function() {
+                document.location = $(this).data('href');
+            });
         }
     });
 }

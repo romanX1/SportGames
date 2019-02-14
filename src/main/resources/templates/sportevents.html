@@ -2,28 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments :: head">
     <title>Events</title>
+
 </head>
 <body>
+
 <div th:replace="fragments::nav"/>
 <div class="container" style="padding-top: 50px;">
+
+    <div id="showMap" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button id="map_supply_close" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body" id="map_modal_bd">
+
+                    <div class="map-block" id="map"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="card border-success mb-3" style="width: 400rem;">
             <div class="card-header">СПОРТИВНЫЕ СОБЫТИЯ</div>
             <div class="card-body text-success">
-                <h5 class="card-title">выбирите событие</h5>
+                <h5 class="card-title">выберите событие</h5>
                 <p class="card-text">
+                    <button type="button" style="float:right;padding:0;display:inline-block;margin-right:2px"
+                            onclick="init({['create']:['true']})"
+                            class="btn btn-success" data-toggle="modal" data-target="#showMap">Показать адреса на карте
+                    </button>
                 <table class="sort table table-striped"  align="center">
                     <thead class="text-white light-green lighten-1">
                     <tr>
                         <td>ДАТА</td>
                         <td>ВРЕМЯ</td>
                         <td>СПОРТ</td>
-                        <td>АДРЕС</td>
                         <td>ИГРОКИ</td>
+                        <td>АДРЕС</td>
                     </tr>
                     </thead>
                     <tbody id="tablebody_1">
-
                     </tbody>
                 </table>
                 </p>
@@ -31,6 +54,9 @@
         </div>
     </div>
 </div>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=4bfe4448-4a7c-499a-b253-433a1b77d5b7"
+        type="text/javascript"></script>
+<script type="text/javascript" src="/js/map.js"></script>
 <script type="text/javascript" src="/js/eventController.js"></script>
 <script>
     $(document).ready(function () {
