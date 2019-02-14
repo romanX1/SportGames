@@ -32,7 +32,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String mainPage() {
-        return "index";
+        return "playgrounds";
     }
 
     @GetMapping("/event")

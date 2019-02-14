@@ -26,14 +26,14 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//
-    @Bean(initMethod = "initSports")
-    public AddSportsToBase initAddSportsToBase(){
-        return new AddSportsToBase();
-    }
-//
-    @Bean(initMethod = "initData")
-    public TestData initTestData(){
-        return new TestData();
-    }
+////
+//    @Bean(initMethod = "initSports")
+//    public AddSportsToBase initAddSportsToBase(){
+//        return new AddSportsToBase();
+//    }
+////
+//    @Bean(initMethod = "initData")
+//    public TestData initTestData(){
+//        return new TestData();
+//    }
 }
