@@ -92,7 +92,7 @@ function getAllSportEvents() {
                 tbl.append(
                     "<tr class='tr-link blue-grey-text' data-href='/event/"+v.id+"' class='blue-grey-text'>" +
                     "<td><input name ='t1' type='hidden' value='"+v.timeStart+"' />" + v.timeStart.split("@")[0] + " </td>" +
-                    "<td style='text-align: center'> " + v.timeStart.split("@")[1] + "  " + v.timeEnd.split("@")[1] + "</td>" +
+                    "<td style='text-align: center'> " + v.timeStart.split("@")[1].split(":")[0]+ ":" + v.timeStart.split("@")[1].split(":")[0] + " - " + v.timeEnd.split("@")[1].split(":")[0]+ ":" + v.timeEnd.split("@")[1].split(":")[1] + "</td>" +
                     "<td>" + v.sport.type + "</td>" +
                     "<td>" + v.playground.address + "</td>" +
                     "<td>" + v.users.length + "</td>" +
