@@ -3,6 +3,8 @@ package com.sportgames.controller;
 import com.sportgames.model.*;
 import com.sportgames.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,8 @@ import java.util.Set;
 public class HelloController {
 
     @Autowired
+    private MessageService messageService;
+    @Autowired
     private PlaygroundService playgroundService;
     @Autowired
     private SportService sportService;
@@ -35,12 +39,14 @@ public class HelloController {
         return "index";
     }
 
-    @GetMapping("/event")
-    public ModelAndView eventPage(@RequestParam Long eventId) {
-
+    @GetMapping("/event/{eventId}")
+    public ModelAndView eventPage(@PathVariable Long eventId) {
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         SportEvent sportEvent = eventService.findById(eventId);
         ModelAndView modelAndView = new ModelAndView("event");
         modelAndView.addObject("sportEvent", sportEvent);
+        modelAndView.addObject("user", auth.getName());
+        modelAndView.addObject("messages", messageService.findBySportEventId(eventId));
         return modelAndView;
     }
 
@@ -99,7 +105,7 @@ public class HelloController {
     }
 
     @GetMapping("/playgrounds")
-    public ModelAndView playGroundsByType() {
+    public ModelAndView playGroundsByType(HttpServletRequest request) {
         List<Playground> playgrounds;
         playgrounds = playgroundService.getAll();
         ModelAndView modelAndView = new ModelAndView("playgrounds");

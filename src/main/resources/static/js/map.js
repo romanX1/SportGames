@@ -97,4 +97,11 @@ function init(data) {
         });
 
     }
+    // var userCoor=ipLookUp();
+    // myMap.add(new ymaps.Placemark([55.694843, 37.435023], {
+    //     balloonContent: 'цвет <strong>носика Гены</strong>',
+    //     iconCaption: 'Очень длиннный, но невероятно интересный текст'
+    // }));
 }
+
+
