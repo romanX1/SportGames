@@ -23,7 +23,6 @@ function checkDuplicateName(name){
                 $("#warning").show();
             }
         }
-
     })
 }
 function TestLogin1(login){

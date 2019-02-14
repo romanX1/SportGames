@@ -13,28 +13,59 @@ function playGroundsByType(typeId, typeName) {
     return playgrounds;
 }
 
+function getCoords(value){
+    var geo;
+    var inpt=$('#PGpoint');
+    var myGeocoder = ymaps.geocode($(value).val());
+    setTimeout( () => {
+        myGeocoder.then(function (res) {
+            geo = res;
+            console.log(geo);
+            console.log(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+            inpt.val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['Point']['coordinates']);
+            $('#PGadrCor').val(geo['geoObjects']['properties']['_data']['metaDataProperty']['GeocoderResponseMetaData']['SourceMetaDataList']['GeocoderResponseMetaData']['request']);
+
+        });
+    }, 1000);}
+
 function setPGs(data) {
     init(data);
     var tbl = $('#pg_tbl_1');
     document.title = 'Площадки на которых доступен ' + data['type'];
+    $("#map_modal_h4").empty();
+    $("#map_modal_h4").append(data['type']);
     tbl.empty();
     tbl.append('<div class="panel-heading">Адреса площадок</div>');
     $('#thead_sport').html(data['type'] + " <button type=\"button\" style=\"float:right;padding:0;display:inline-block\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>" +
         "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте</button>");
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<div class="panel-body" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
+        tbl.append('<div class="list-group-item" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
     });
 }
 
 function supplyPlayground() {
     var allSports = getAllSports();
     var formsData = $('#PGsports').val();
-    var formsAddr = $('#PGaddress').val();
+    var formsAddr = $('#PGadrCor').val();
+    var coordinates=$('#PGpoint').val();
     var adrPG = [];
     $.each(formsData, function (i, v) {
+
         adrPG[i] = allSports[formsData[i] - 1];
     });
+
+
+    coordinates = $(coordinates.split(','))
+    let point = {
+        'x' : Number.parseFloat(coordinates[1]),
+        'y' : Number.parseFloat(coordinates[0])
+    };
+    let playground = {
+        'address': formsAddr,
+        'sports': adrPG,
+        'coordinates': point
+    };
 
     $.ajax({
         url: "/api/playgrounds/supply",
@@ -43,10 +74,7 @@ function supplyPlayground() {
             request.setRequestHeader("X-CSRF-TOKEN", $('[name=_csrf]').val());
         },
         method: "POST",
-        data: JSON.stringify({
-            'address': formsAddr,
-            'sports': adrPG
-        }),
+        data: JSON.stringify(playground),
         success:
             function (data) {
                 console.log(data);

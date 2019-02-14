@@ -5,6 +5,7 @@
     <title>event</title>
 </head>
 <body th:onload="'getAndFillEventForModal('+${sportEvent.id}+')'">
+<script type="text/javascript" src="/js/eventController.js"></script>
 <div th:replace="fragments::nav"/>
 <div class="container">
     <tr>
@@ -32,7 +33,7 @@
         <h1 >
             Список участников
         </h1>
-        <table class="table table-dark table-striped">
+        <table align="center"  class="table table-dark table-striped">
             <!--</td>-->
             <tbody id="user-trs">
             </tbody>

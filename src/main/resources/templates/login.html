@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments::head">
+<head th:include="fragments :: head">
     <meta charset="UTF-8"/>
     <title>Представьтесь</title>
+    <script src="js/login.js"></script>
 </head>
 <body>
-<div class="container" style="margin: 5% 30%;width: 30%;">
-    <h3>Welcome</h3>
-    <ul class="nav nav-tabs">
-        <li class="active"> <a data-toggle="tab" href="#home">Log In</a></li>
-        <li><a data-toggle="tab" href="#menu1">Registration</a></li>
-    </ul>
-    <!--<div >-->
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <p> </p>
-            <h4>Login</h4>
-            <form th:action="@{/login}" method="post">
-                <div class="input-group" >
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" class="form-control" name="user" placeholder="Email"> </input>
-                </div>
-                <p> </p>
-                <h4>Password</h4>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" class="form-control" name="password" placeholder="Password"> </input>
-                </div>
-                <input type="submit" value="Log In" class="btn btn-success" style="margin: 5% 85%;" />
-            </form>
-
+<center>
+    <div class="card text-center w-50 p-3" style="padding: 0px!important; margin-top: 50px; ">
+        <div class="card-header">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#signin" role="tab"
+                       aria-controls="home"
+                       aria-selected="true">Войти</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#signup" role="tab"
+                       aria-controls="profile"
+                       aria-selected="false">Зарегистрироваться</a>
+                </li>
+            </ul>
         </div>
-        <div id="menu1" class="tab-pane fade">
-            <form action="/registration" id="registrationForm" method="post" onsubmit="return TestLogin1(email.value);">
-                <h4>Введите Ваше имя</h4>
-                <div class="input-group" >
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="name" type="text" class="form-control" name="name" placeholder="Имя" />
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="home-tab">
+                    <form  action="/login" method="post">
+                        <h3 class="h4 mb-4">Добро пожаловать!</h3>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control mb-4" name="user" placeholder="электронаня почта"/>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control mb-4" id="passwordL" name="password"
+                                   placeholder="Password"/>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block my-4">Войти</button>
+                    </form>
                 </div>
-                <p> </p>
-                <h4>Введите логин или Email</h4>
-                <div class="input-group" >
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="email" type="text" class="form-control" name="email" onblur="TestLogin1(this.value)" placeholder="Email" />
-                    <p style="display: none;color: red;" id="warning">Имя занято, выберите другое имя</p>
-
+                <div class="tab-pane fade" id="signup" role="signup" aria-labelledby="profile-tab">
+                    <form action="/registration" id="registrationForm" method="post"
+                          onsubmit="return TestLogin1(email.value);">
+                        <h3 class="h4 mb-4">Зарегестрируйтесь</h3>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="name" type="text" class="form-control  mb-4" name="name"
+                                   placeholder="Введите Ваше имя"/>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="text" class="form-control  mb-4" name="email"
+                                   onblur="TestLogin1(this.value)"
+                                   placeholder="Введите Ваш Email"/>
+                        </div>
+                        <p style="color: red" hidden="true" id="warning">Имя занято, выберите другое имя</p>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input name="password" id="password" type="password" class="form-control  mb-4"
+                                   placeholder="Введите пароль"/>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="password2" type="password" class="form-control"
+                                   placeholder="Повторите ввод пароля"
+                                   onblur="TestPass()"> </input>
+                        </div>
+                        <p style="color: red" hidden="true" id="warning2">Пароль не совпадает!</p>
+                        <input type="submit" form="registrationForm" class="btn btn-success btn-block my-4"
+                               value="Зарегистрироваться"/>
+                    </form>
                 </div>
-                <p> </p>
-                <h4>Введите пароль</h4>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="pass2" type="password" class="form-control" name="pass" placeholder="Password"> </input>
-                </div>
-                <h4>Повторите ввод пароля</h4>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password"> </input>
-                </div>
-                <input type="submit" form="registrationForm" class="btn btn-success" style="margin: 5% 60%;" value="Зарегистрироваться" />
-            </form>
-
+            </div>
         </div>
     </div>
-</div>
-<!--<script>-->
-    <!--function TestLogin1(login){-->
-
-        <!--if(/^[a-zA-Z1-9]+$/.test(login) === false)-->
-        <!--{alert('В логине должны быть только латинские буквы'); return false;}-->
-        <!--if(login.length < 4 || login.length > 20)-->
-        <!--{ alert('В логине должен быть от 4 до 20 символов'); return false;}-->
-        <!--if(parseInt(login.substr(0, 1)))-->
-        <!--{alert('Логине должен начинаться с буквы'); return false;}-->
-
-        <!--return true;-->
-    <!--}-->
-
-<!--</script>-->
+</center>
 </body>
 </html>

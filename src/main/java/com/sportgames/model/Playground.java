@@ -1,6 +1,5 @@
 package com.sportgames.model;
 
-import org.springframework.data.geo.Point;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,7 +16,9 @@ public class Playground {
     @Column (name = "address", unique = true, nullable = false)
     private String address; //Адрес площадки
 
-    @Column (name = "coordinates", unique = true, nullable = false)
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="pointId")
     private Point coordinates; //Адрес площадки
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
@@ -27,7 +28,7 @@ public class Playground {
 
     public Playground(String address){
         this.address = address;
-        this.coordinates = new Point(0, 0);
+        this.coordinates = new Point(0.0f, 0.0f);
     }
 
     public Playground(String address, Point coordinates){

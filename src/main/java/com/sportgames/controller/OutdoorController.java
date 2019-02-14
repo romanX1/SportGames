@@ -1,5 +1,6 @@
 package com.sportgames.controller;
 
+import com.sportgames.model.Playground;
 import com.sportgames.service.PlaygroundService;
 import com.sportgames.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,14 @@ public class OutdoorController {
     }
 
     @GetMapping("/outdoorpanel")
-    public ModelAndView outdoor(@RequestParam(defaultValue = "defaultPG") String pgName) {
+    public ModelAndView outdoor(@RequestParam(defaultValue = "1") Long id) {
         ModelAndView mav = new ModelAndView("outdoorpanel");
 //        if (pgName.equals("defaultPG")) {
 //            pgName = pgService.findById(0L).getAddress();
 //        }
-
-        mav.addObject("events", seService.getByPlayground(pgName));
-        mav.addObject("address", pgName);
+        Playground pg=pgService.findById(id);
+        mav.addObject("events", seService.getByPlaygroundId(id));
+        mav.addObject("address", pg.getAddress());
         mav.addObject("formatter", DateTimeFormatter.ofPattern("H-m-s"));
         return mav;
     }
