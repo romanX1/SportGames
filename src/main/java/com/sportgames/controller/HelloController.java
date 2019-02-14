@@ -172,6 +172,8 @@ public class HelloController {
         modelAndView.addObject("countPG", playgroundService.countPG());
         modelAndView.addObject("countSE", eventService.countSE());
         modelAndView.addObject("countUsers", userService.countUsers());
+        modelAndView.addObject("famousSport", eventService.getFamousSport());
+
 
         return modelAndView;
     }

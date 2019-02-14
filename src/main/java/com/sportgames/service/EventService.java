@@ -1,11 +1,13 @@
 package com.sportgames.service;
 
 import com.sportgames.model.Playground;
+import com.sportgames.model.Sport;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 public interface EventService {
 
@@ -23,5 +25,8 @@ public interface EventService {
 
     Long countSE();
     List<SportEvent> getAllUpToDate(LocalDateTime date);
+
+    Map.Entry<Sport, Long> getFamousSport();
+
 
 }
