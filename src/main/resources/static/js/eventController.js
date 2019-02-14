@@ -70,7 +70,7 @@ function getAndFillEventForModal(id) {
 }
 
 function fillEventToModal(event) {
-    $("#header").text(event.sport.type + ' с ' + event.timeStart + ' по ' + event.timeEnd);
+    // $("#header").text(event.sport.type + ' с ' + event.timeStart + ' по ' + event.timeEnd);
     $(event.users).each(function (i, user) {
         $("#user-trs").append(
             "<tr id=" + user.id + ">" +

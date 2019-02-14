@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsersByEventId(Long eventId) {
-        return dao.getUsersById(eventId);
+        return dao.getUsersByEventId(eventId);
     }
 
     @Override

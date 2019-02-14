@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script>
     var eventId=document.location.pathname.split("/")[2];
-        getAndFillEventForModal(eventId);
+
 </script>
 <script>
     var stompClient = null;
@@ -109,5 +109,6 @@
     </center>
 </div>
 <input id="currentUsed" th:type="hidden" th:value="${user}"/>
+<script>getAndFillEventForModal(eventId)</script>
 </body>
 </html>

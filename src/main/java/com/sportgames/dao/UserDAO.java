@@ -19,7 +19,8 @@ public interface UserDAO extends JpaRepository<User, Long> {
     User findByLogin(String login);
     List<User> findAll();
     List<User> getUsersById(Long sportEventId);
-
+    @Query(value = "select  se.users from SportEvent se where se.id = :sportEventId")
+    List<User> getUsersByEventId(@Param("sportEventId")Long sportEventId);
     @Query(value = "select count(se.id) FROM SportEvent se JOIN se.users user WHERE user.id = :userId")
     Long countUserInEvents(@Param("userId") Long userId);
 }
