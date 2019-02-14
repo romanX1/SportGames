@@ -1,6 +1,5 @@
 package com.sportgames.controller.rest;
 
-import com.sportgames.dao.EventDAO;
 import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
 import com.sportgames.model.User;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/events")
@@ -67,7 +65,7 @@ public class EventRestController {
 
     @GetMapping("/{playgroundId}/{sportType}")
     public List<SportEvent> getEventsByPlaygroundAndType(@PathVariable Long playgroundId, @PathVariable String sportType){
-        return eventService.getllByPlaygroundIdAndSportType(playgroundId, sportType);
+        return eventService.getAllByPlaygroundIdAndSportType(playgroundId, sportType);
     }
 
     @GetMapping("/{eventId}/users")

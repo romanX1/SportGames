@@ -138,4 +138,18 @@ public class HelloController {
         userService.add(new User(userName, login, userService.encodePassword(password), auth));
         return "/login";
     }
+
+    @GetMapping("/stat")
+    public ModelAndView showStat() {
+        ModelAndView modelAndView = new ModelAndView("stat");
+        modelAndView.addObject("famousPG", playgroundService.findFamousPlayground());
+        modelAndView.addObject("famousSE", eventService.findFamousSE());
+        modelAndView.addObject("famousUser", userService.findFamousUser());
+        modelAndView.addObject("countPG", playgroundService.countPG());
+        modelAndView.addObject("countSE", eventService.countSE());
+        modelAndView.addObject("countUsers", userService.countUsers());
+
+        return modelAndView;
+    }
+
 }

@@ -1,13 +1,18 @@
 package com.sportgames.service.impl;
 
 import com.sportgames.dao.EventDAO;
+import com.sportgames.model.Playground;
 import com.sportgames.model.SportEvent;
+import com.sportgames.model.User;
 import com.sportgames.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("SportEventService")
 public class EventServiceImpl implements EventService {
@@ -53,9 +58,36 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<SportEvent> getllByPlaygroundIdAndSportType(Long id, String type) {
+    public List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type) {
         return dao.getAllByPlaygroundIdAndSportType(id, type);
     }
+
+    @Override
+    public SportEvent findFamousSE() {
+        List<SportEvent> sportEventList = dao.findAll();
+        Map<SportEvent, Long> sportEventLongMap = new HashMap<>();
+
+        for (SportEvent se : sportEventList) {
+            sportEventLongMap.put(se, Long.valueOf(se.getUsers().size()));
+        }
+
+        SportEvent sportEvent = sportEventLongMap
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(1)
+                .map(e -> e.getKey())
+                .findFirst()
+                .get();
+
+        return sportEvent;
+    }
+
+    @Override
+    public Long countSE() {
+        return dao.count();
+    }
+
 
     @Override
     @Transactional

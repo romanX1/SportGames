@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments::head">
+    <meta charset="UTF-8"/>
+
+
+</head>
+<body>
+<div th:replace="fragments::nav"/>
+<h1>Существуют три вида лжи: ложь, наглая ложь и статистика.</h1><br/>
+
+<strong>Самая популярная площадка:</strong><br/>
+<div th:text="${famousPG.address}+' Количество ивентов на площадке: ' + ${famousPG.sports.size()}"></div><br/>
+
+<strong>Самый популярный ивент:</strong><br/>
+<div th:text="${famousSE.sport.type} + ' на площадке: ' + ${famousSE.playground.address} + '. Количество игроков: ' + ${famousSE.users.size()}"></div><br/>
+
+<strong>Самый активный игрок:</strong><br/>
+<div th:text="${famousUser.getKey().getName()} + ' принимает участие в ' + ${famousUser.getValue()} + ' ивентах'"></div><br/>
+
+<strong>Количество доступных площадок: </strong>
+<div th:text="${countPG}"></div><br/>
+
+<strong>Количество ивентов: </strong>
+<div th:text="${countSE}"></div><br/>
+
+<strong>Количество игроков:</strong><br/>
+<div th:text="${countUsers}"></div><br/>
+
+</body>
+
+</html>

@@ -14,4 +14,8 @@ public interface PlaygroundService {
     List<Playground> getPlaygroundBySportType(Long sportTypeId);
 
     void update(Playground playground);
+
+    Playground findFamousPlayground();
+
+    Long countPG();
 }
