@@ -66,7 +66,7 @@ public class TestData {
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
             int g = pgsports.size() != 1 ? i % (pgsports.size() - 1) : 0;
             spe.setSport(pgsports.get(g));
-            LocalDateTime ldStart = LocalDateTime.of(2019, (int) (Math.random() + 2), (int) (Math.random() * 27 + 1), (int) (Math.random() * 10 + 10), (int) (Math.random() * 59));
+            LocalDateTime ldStart = LocalDateTime.of(2019,  2, (int) (Math.random() * 13 + 15), (int) (Math.random() * 23), (int) (Math.random() * 59));
             LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
             spe.setTimeStart(ldStart);
             spe.setTimeEnd(ldEnd);
