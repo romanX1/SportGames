@@ -26,11 +26,11 @@
 <div th:replace="fragments::nav"/>
 <div class="container">
     <div class="row">
-        <div class="sidenav">
+        <div class="sidenav green lighten-2">
             <div class="green lighten-2">
                 <h3 class="font-weight-bold cyan-lighter-hover mb-3 maintext">Виды спорта</h3>
                 <ul class="w3-sidebar w3-bar-block">
-                    <li th:each="sport : ${sports}" style="cursor: pointer" class="w3-bar-item w3-button leftmenutext">
+                    <li th:each="sport : ${sports}" style="cursor: pointer" class="w3-bar-item w3-button tab">
                         <a th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"
                            th:text="${sport.type}" class="leftmenutext">
                             <span class="fa-stack fa-lg pull-left">
