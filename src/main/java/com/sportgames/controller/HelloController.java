@@ -146,6 +146,7 @@ public class HelloController {
             //sportEvents = playgroundService.getPlaygroundBySportType(time); //нужно допилить
         }
         ModelAndView modelAndView = new ModelAndView("sportevents");
+        modelAndView.addObject("sports", sportService.getAll());
         modelAndView.addObject("sportevents", sportEvents);
         //modelAndView.addObject("sports", sportService.getAll() );
 
