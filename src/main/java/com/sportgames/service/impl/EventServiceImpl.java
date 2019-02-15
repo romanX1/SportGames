@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.temporal.TemporalAdjusters;
 import java.util.Comparator;
 import java.util.HashMap;
 
@@ -55,18 +56,19 @@ public class EventServiceImpl implements EventService {
         return famousSport;
     }
 
-//    @Override
-//    public Map.Entry<Sport, Long> getFamousSportInMonth() {
-//        List<Sport> sports = dao.getAllSport();
-//        Map<Sport, Long> map = sports.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-//        Map.Entry<Sport, Long> famousSport = map.entrySet()
-//                .stream()
-//                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-//                .limit(1)
-//                .findFirst().get();
-//
-//        return famousSport;
-//    }
+    @Override
+    public Map.Entry<Sport, Long> getFamousSportInMonth() {
+        LocalDateTime timeStart = LocalDateTime.now().withDayOfMonth(1);
+        LocalDateTime timeEnd = LocalDateTime.now().with(TemporalAdjusters.firstDayOfNextMonth());
+        List<Sport> sports = dao.getSportInTimes(timeStart, timeEnd);
+        Map<Sport, Long> map = sports.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        Map.Entry<Sport, Long> famousSport = map.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(1)
+                .findFirst().get();
+        return famousSport;
+    }
 
     @Override
     public SportEvent findById(Long id) {
@@ -134,6 +136,13 @@ public class EventServiceImpl implements EventService {
     @Override
     public Long countSE() {
         return dao.count();
+    }
+
+    @Override
+    public Long countSEInMonth() {
+        LocalDateTime timeStart = LocalDateTime.now().withDayOfMonth(1);
+        LocalDateTime timeEnd = LocalDateTime.now().with(TemporalAdjusters.firstDayOfNextMonth());
+        return dao.countSEInTimes(timeStart, timeEnd);
     }
 
 

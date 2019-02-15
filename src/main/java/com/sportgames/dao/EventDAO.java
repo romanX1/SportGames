@@ -36,7 +36,10 @@ public interface EventDAO extends JpaRepository<SportEvent, Long> {
     @Query(value = "SELECT play.sport FROM SportEvent play")
     List<Sport> getAllSport();
 
-    @Query(value = "SELECT play.sport FROM SportEvent play ")
-    List<Sport> getSportInMonth();
+    @Query(value = "SELECT play.sport FROM SportEvent play JOIN play.playground as pg WHERE play.timeStart BETWEEN :ts AND :te")
+    List<Sport> getSportInTimes(@Param("ts") LocalDateTime ts, @Param("te") LocalDateTime te);
+
+    @Query(value = "SELECT COUNT(play.id) FROM SportEvent play JOIN play.playground as pg WHERE play.timeStart BETWEEN :ts AND :te")
+    public Long countSEInTimes(@Param("ts") LocalDateTime ts, @Param("te") LocalDateTime te);
 
 }

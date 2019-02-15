@@ -1,5 +1,6 @@
 package com.sportgames.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sportgames.model.*;
 import com.sportgames.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -173,6 +176,9 @@ public class HelloController {
         modelAndView.addObject("countSE", eventService.countSE());
         modelAndView.addObject("countUsers", userService.countUsers());
         modelAndView.addObject("famousSport", eventService.getFamousSport());
+        modelAndView.addObject("famousSportInMonth", eventService.getFamousSportInMonth());
+        modelAndView.addObject("Date", LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM yyyy", new Locale("ru"))));
+        modelAndView.addObject("countSEInMonth", eventService.countSEInMonth());
 
 
         return modelAndView;

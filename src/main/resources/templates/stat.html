@@ -50,15 +50,17 @@
 
                 <li class="list-group-item list-group-item-success">
                     <div style="display: inline-flex">
-                        <strong>Самый популярный вид спорта за февраль:</strong>
-                        <div th:text="${countUsers}" style="margin-left: 15px"></div>
+                        <strong>
+                            <div th:text="'Самый популярный вид спорта в период '+${Date}"></div></strong>
+                        <div th:text="'В ' + ${famousSport.getKey().getType()} + ' играют в ' + ${famousSport.getValue()} + ' событиях'" style="margin-left: 15px"></div>
                     </div>
                 </li>
 
                 <li class="list-group-item list-group-item-success">
                     <div style="display: inline-flex">
-                        <strong>Количество событий за февраль:</strong>
-                        <div th:text="${countUsers}" style="margin-left: 15px"></div>
+                        <strong>
+                        <div th:text="'Количество событий в период '+${Date}"></div></strong>
+                        <div th:text="${countSEInMonth}" style="margin-left: 15px"></div>
                     </div>
                 </li>
 
@@ -72,7 +74,7 @@
 
                 <li class="list-group-item list-group-item-success">
                     <div style="display: inline-flex">
-                        <strong>Количество ивентов: </strong>
+                        <strong>Количество событий: </strong>
                         <div th:text="${countSE}" style="margin-left: 15px"></div>
                     </div>
                 </li>

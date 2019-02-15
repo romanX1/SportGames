@@ -38,5 +38,8 @@ public interface EventService {
 
     Map.Entry<Sport, Long> getFamousSport();
 
+    Map.Entry<Sport, Long> getFamousSportInMonth();
+
+    Long countSEInMonth();
 
 }
