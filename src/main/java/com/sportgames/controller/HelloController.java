@@ -47,8 +47,9 @@ public class HelloController {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         SportEvent sportEvent = eventService.findById(eventId);
         ModelAndView modelAndView = new ModelAndView("event");
+        User cur=(User)auth.getPrincipal();
         modelAndView.addObject("sportEvent", sportEvent);
-        modelAndView.addObject("user", auth.getName());
+        modelAndView.addObject("user", cur);
         modelAndView.addObject("messages", messageService.findBySportEventId(eventId));
                                                             //2/15/19 11:46 AM
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MM/d/YY HH:mm");
