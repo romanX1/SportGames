@@ -70,6 +70,11 @@ function getAndFillEventForModal(id) {
 }
 
 function fillEventToModal(event) {
+    $('#mdcontent').keydown(function (e) {
+        if (e.ctrlKey && (e.keyCode == 13||e.keyCode==10)) {
+            sendMessage();
+        }
+    });
     // $("#header").text(event.sport.type + ' с ' + event.timeStart + ' по ' + event.timeEnd);
     $(event.users).each(function (i, user) {
         $("#user-trs").append(
@@ -312,4 +317,5 @@ function getEventsByPlaygroundAndType(id, type) {
     });
     return events;
 }
-//
+
+

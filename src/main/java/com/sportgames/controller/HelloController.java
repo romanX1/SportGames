@@ -50,6 +50,11 @@ public class HelloController {
         modelAndView.addObject("sportEvent", sportEvent);
         modelAndView.addObject("user", auth.getName());
         modelAndView.addObject("messages", messageService.findBySportEventId(eventId));
+                                                            //2/15/19 11:46 AM
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("MM/d/YY HH:mm");
+        modelAndView.addObject("formatter", formatter);
+        modelAndView.addObject("eventDateStart", sportEvent.getTimeStart().format(DateTimeFormatter.ofPattern("d MMMM yyyy с HH:mm", new Locale("ru"))));
+        modelAndView.addObject("eventDateEnd", sportEvent.getTimeEnd().format(DateTimeFormatter.ofPattern("по HH:mm", new Locale("ru"))));
         return modelAndView;
     }
 
