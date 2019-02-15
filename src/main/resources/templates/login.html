@@ -7,7 +7,7 @@
 </head>
 <body>
 <center>
-    <div class="card text-center w-50 p-3" style="padding: 0px!important; margin-top: 50px; ">
+    <div class="card text-center w-50 p-3 mainmenu" style="padding: 0px!important; margin-top: 50px; ">
         <div class="card-header">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -28,13 +28,13 @@
                     <form  action="/login" method="post">
                         <h3 class="h4 mb-4">Добро пожаловать!</h3>
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control mb-4" name="user" placeholder="электронаня почта"/>
+                            <span class="input-group-addon logintext"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control mb-4 logintext" name="user" placeholder="Логин"/>
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input type="password" class="form-control mb-4" id="passwordL" name="password"
-                                   placeholder="Password"/>
+                                   placeholder="Пароль"/>
                         </div>
                         <button type="submit" class="btn btn-success btn-block my-4">Войти</button>
                     </form>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="password2" type="password" class="form-control"
+                            <input id="password2" type="password" name="password2" class="form-control"
                                    placeholder="Повторите ввод пароля"
                                    onblur="TestPass()"> </input>
                         </div>
