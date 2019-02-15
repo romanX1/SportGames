@@ -24,9 +24,10 @@
 </head>
 <body>
 <div th:replace="fragments::nav"/>
-<div class="container">
-    <div class="row">
-        <div class="sidenav green lighten-2">
+
+    <div class="row" style="margin-right: 0px; min-height:100%">
+        <div class="col-lg-2">
+        <div class="sidenav green lighten-2" >
             <div class="green lighten-2">
                 <h3 class="font-weight-bold cyan-lighter-hover mb-3 maintext">Виды спорта</h3>
                 <ul class="w3-sidebar w3-bar-block">
@@ -41,6 +42,8 @@
                 </ul>
             </div><!-- /#sidebar-wrapper -->
         </div>
+        </div>
+        <div class="col-lg-7">
         <div class="main">
             <div id="page-content-wrapper">
                 <div class="container-fluid xyz">
@@ -83,7 +86,8 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+
 
 <!--SCRIPTS-->
 <div id="addPG" class="modal fade" role="dialog">
