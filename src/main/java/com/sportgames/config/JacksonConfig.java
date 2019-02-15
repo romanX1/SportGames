@@ -26,32 +26,4 @@ public class JacksonConfig{
         objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         return new MappingJackson2HttpMessageConverter(objectMapper);
     }
-//
-//    public JacksonConfig() {
-//        this.objectMapper = Jackson2ObjectMapperBuilder.json().build();
-//    }
-//
-//    public JacksonConfig(ObjectMapper objectMapper) {
-//        Assert.notNull(objectMapper, "ObjectMapper must not be null");
-//        this.objectMapper = objectMapper;
-//    }
-//
-//    @Override
-//    @Nullable
-//    public String[] decode(String content) throws IOException {
-//        return this.objectMapper.readValue(content, String[].class);
-//    }
-//
-//    @Override
-//    @Nullable
-//    public String[] decodeInputStream(InputStream content) throws IOException {
-//        return this.objectMapper.readValue(content, String[].class);
-//    }
-//
-//    @Override
-//    @SuppressWarnings("deprecation")
-//    protected char[] applyJsonQuoting(String content) {
-//        return JsonStringEncoder.getInstance().quoteAsString(content);
-//
-//    }
 }

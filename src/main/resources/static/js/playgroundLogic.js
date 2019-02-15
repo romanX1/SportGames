@@ -33,11 +33,16 @@ function setPGs(data) {
     var tbl = $('#pg_tbl_1');
     document.title = 'Площадки на которых доступен ' + data['type'];
     $("#map_modal_h4").empty();
-    $("#map_modal_h4").append(data['type']);
+    // $("#map_modal_h4").append(data['type']);
     tbl.empty();
     tbl.append('<div class="panel-heading"></div>');
-    $('#thead_sport').html(data['type'] + " <button type=\"button\" style=\"float:right;padding:0;display:inline-block\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>" +
-        "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте</button>");
+    $('#thead_sport').html("<button type=\"button\" style=\"float: right;padding:0\" class=\"btn btn-success firstbutton\" data-toggle=\"modal\"" +
+        "                                data-target=\"#addPG\">Предложить площадку" +
+        "                        </button>" +
+        "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\"\n" +
+        "                                class=\"btn btn-success secondbutton\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте\n" +
+        "                        </button>");
+
     $.each(data['data'], function (i, v) {
         console.log('added address');
         tbl.append('<div class="list-group-item menutext" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
