@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments :: head">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>event</title>
+    <title>Мероприятие</title>
 
 </head>
 <body>
 <script type="text/javascript" src="/js/eventController.js"></script>
 <script type="text/javascript" src="/js/stomp.js"></script>
+<script type="text/javascript" src="/js/map.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=4bfe4448-4a7c-499a-b253-433a1b77d5b7"
+        type="text/javascript"></script>
 <script>
     var eventId=document.location.pathname.split("/")[2];
 
@@ -16,6 +19,7 @@
 <script>
     var stompClient = null;
     var eventC=getEventById(eventId);
+
     function setConnected(connected) {
         // document.getElementById('connect').disabled = connected;
         // document.getElementById('disconnect').disabled = !connected;
@@ -104,7 +108,7 @@
         <h1 >
             Список участников
         </h1>
-
+        <div style="max-height:500px;overflow: auto">
         <table align="center"  class="table table-dark table-striped">
             <!--</td>-->
             <!--<thead>-->
@@ -116,7 +120,7 @@
             </tbody>
 
         </table>
-
+        </div>
     </center>
 </div>
 <!-- Full Height Modal Right -->
@@ -161,6 +165,7 @@
 <input id="currentUsed" th:type="hidden" th:value="${user}"/>
 <script>
     getAndFillEventForModal(eventId);
+
 </script>
 </body>
 </html>

@@ -8,9 +8,9 @@ function getAuth(id) {
 
             //$(event.users).each(function (i, user) {
             $("#user-trs").append(
-
-                "<td id='"+user.id+"'>" + user.name + "</td>"
-
+                "<tr id=" + user.id + ">" +
+                "   <td>" + user.name + "</td>" +
+                "</tr>"
             );
             // })
         },
@@ -78,9 +78,9 @@ function fillEventToModal(event) {
     // $("#header").text(event.sport.type + ' с ' + event.timeStart + ' по ' + event.timeEnd);
     $(event.users).each(function (i, user) {
         $("#user-trs").append(
-
-            "<td id='"+user.id+"'>" + user.name + "</td>"
-
+            "<tr id=" + user.id + ">" +
+            "   <td>" + user.name + "</td>" +
+            "</tr>"
         );
     })
 }
