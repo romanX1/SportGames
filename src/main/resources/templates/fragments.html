@@ -1,5 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+</head>
 <body>
 
 <th:block th:fragment="head">
@@ -35,24 +37,24 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto nav nav-tabs" id="myTab" role="tablist">
                     <!--<li class="nav-item active">-->
                         <!--<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>-->
                     <!--</li>-->
                     <li class="nav-item active">
-                        <a class="nav-link" href="/playgrounds">Площадки</a>
+                        <a class="nav-link topmenutext" href="/playgrounds">Площадки</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/sportevents">События</a>
+                        <a class="nav-link topmenutext" href="/sportevents">События</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/outdoorpanel">Терминал</a>
+                        <a class="nav-link topmenutext" href="/outdoorpanel">Терминал</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/addnewevent">Новое событие</a>
+                        <a class="nav-link topmenutext" href="/addnewevent">Новое событие</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/stat">Статистика</a>
+                        <a class="nav-link topmenutext" href="/stat">Статистика</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav nav-flex-icons">

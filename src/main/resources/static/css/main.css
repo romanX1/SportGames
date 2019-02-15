@@ -1,5 +1,146 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
+.closebutton3 {
+    position: relative;
+    left: 200px;
+    font-size: 40px;
+}
+
+.mapmodalheader {
+    position: relative;
+    left: -320px;
+}
+
+.mapmodal {
+    position: relative;
+    left: -250px;
+    width: 900px;
+    height: 850px;
+}
+
+.modal-body p{
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.textmenu {
+    position: relative;
+    top: 65px;
+    left: 30px;
+    font-size: 20px;
+}
+
+.addressinput {
+    position: relative;
+    top: 70px;
+    width: 720px;
+    left: 10px;
+}
+
+.boldlink {
+    font-weight: bold;
+}
+
+.okstylechoose {
+    position: relative;
+    top: 120px;
+    left: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.okstyle {
+    position: relative;
+    top: 120px;
+    left: 30px;
+}
+
+.closebutton{
+    position: relative;
+    left: 250px;
+    font-size: 40px;
+}
+
+.header1 {
+    text-align: center!important;
+    position: relative;
+    left: -260px;
+}
+
+.firstmodalsize {
+    height: 500px!important;
+    width: 800px!important;
+    position: relative;
+    left: -200px;
+}
+
+.firstbutton {
+    height: 50px!important;
+    width: 150px!important;
+    position: relative;
+    left: -250px;
+    top: 65px;
+}
+
+.secondbutton {
+    height: 50px!important;
+    width: 150px!important;
+    position: relative;
+    left: -412px;
+    top: 135px;
+}
+
+.logintext {
+    background-color: white!important;
+    background: white!important;
+}
+
+.mainmenu {
+    width: 400px!important;
+    height:500px;
+    position: relative;
+    top: 50px;
+    right: 50px;
+}
+
+.forgotpassword {
+    position: relative;
+    left: -190px;
+}
+
+.maintext {
+    font-size: 20px;
+    position: relative;
+    left: 30px;
+    top: 10px;
+    color: white;
+    font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.leftmenutext {
+    font-size: 15px;
+    position: relative;
+    left: -12px;
+    top: 10px;
+    font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+    letter-spacing:0.1em;
+}
+
+.leftmenutext:hover {
+    color: black!important;
+    border-bottom: 1px solid #ccc;
+}
+
+.topmenutext {
+    letter-spacing:0.1em;
+    font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
 .adminbuttonchange {
     position: relative;
     top: 5px;
