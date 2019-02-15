@@ -1,7 +1,7 @@
 .sidenav {
     height: 100%;
     width: 220px;
-    position: absolute;
+    position: relative;
     z-index: 1;
     left: 0;
     /*background-color: #111;*/
@@ -19,6 +19,11 @@
 
 .sidenav li:hover {
     color: #c0c0c0;
+}
+
+.sidenav .active{
+    background: #388e3c;
+    box-shadow: #666666;
 }
 
 .main {

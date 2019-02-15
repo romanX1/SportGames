@@ -24,23 +24,27 @@
 </head>
 <body onload="activateItem('playground-item')">
 <div th:replace="fragments::nav"/>
-<div class="container">
-    <div class="row">
-        <div class="sidenav green lighten-2">
+
+    <div class="row" style="margin-right: 0px; min-height:100%">
+        <div class="col-lg-2">
+        <div class="sidenav green lighten-2" >
             <div class="green lighten-2">
                 <h3 class="font-weight-bold cyan-lighter-hover mb-3 maintext">Виды спорта</h3>
-                <ul class="w3-sidebar w3-bar-block">
-                    <li th:each="sport : ${sports}" style="cursor: pointer" class="w3-bar-item w3-button tab">
-                        <a th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"
-                           th:text="${sport.type}" class="leftmenutext">
+                <ul style="padding-left: 7%; ">
+                    <a th:each="sport : ${sports}" th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"
+                       class="leftmenutext">
+                    <li  style="cursor: pointer" th:id="'spt'+${sport.id}" th:text="${sport.type}" class="lalala">
+
                             <span class="fa-stack fa-lg pull-left">
                                 <i class="fa fa-dashboard fa-stack-1x "></i>
-                            </span>
+                            </span></li>
                         </a>
-                    </li>
+
                 </ul>
             </div><!-- /#sidebar-wrapper -->
         </div>
+        </div>
+        <div class="col-lg-7">
         <div class="main">
             <div id="page-content-wrapper">
                 <div class="container-fluid xyz">
@@ -83,7 +87,8 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+
 
 <!--SCRIPTS-->
 <div id="addPG" class="modal fade" role="dialog">
