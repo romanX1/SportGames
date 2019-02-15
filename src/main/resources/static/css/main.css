@@ -133,6 +133,12 @@
     border-bottom: 1px solid #ccc;
 }
 
+.menutext:hover {
+    color: black!important;
+    border-bottom: 1px solid #ccc;
+    background: #b4da9d;
+}
+
 .topmenutext {
     letter-spacing:0.1em;
     font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;

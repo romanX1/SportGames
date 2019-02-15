@@ -40,7 +40,7 @@ function setPGs(data) {
         "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте</button>");
     $.each(data['data'], function (i, v) {
         console.log('added address');
-        tbl.append('<div class="list-group-item" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
+        tbl.append('<div class="list-group-item menutext" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
     });
 }
 
@@ -101,7 +101,7 @@ function setEventsForPlaygrond(id, type){
         var date=v.timeStart.split("@")[0];
         var timeStart=v.timeStart.split("@")[1];
         var timeEnd=v.timeEnd.split("@")[1]
-        tbl.append('<div class="list-group-item" style="cursor: pointer;" ><a target="_blank" href="/event/'+v.id+'">'+
+        tbl.append('<div class="list-group-item menutext" style="cursor: pointer;" ><a target="_blank" href="/event/'+v.id+'">'+
             date+' с '+timeStart+' по '+ timeEnd+' зарегестрировано '+v.users.length+' участников</a></div>');
         tbl.append('<div class="panel-heading"><a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
     });
