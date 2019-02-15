@@ -35,7 +35,7 @@ function setPGs(data) {
     $("#map_modal_h4").empty();
     $("#map_modal_h4").append(data['type']);
     tbl.empty();
-    tbl.append('<div class="panel-heading">Адреса площадок</div>');
+    tbl.append('<div class="panel-heading"></div>');
     $('#thead_sport').html(data['type'] + " <button type=\"button\" style=\"float:right;padding:0;display:inline-block\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#addPG\">Предложить площадку</button>" +
         "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте</button>");
     $.each(data['data'], function (i, v) {
@@ -94,15 +94,16 @@ function supplyPlayground() {
 
 function setEventsForPlaygrond(id, type){
     var tbl= $('#pg_tbl_2');
+
     tbl.empty();
-    tbl.append('<div class="panel-heading">Расписание и участники <a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
     var events=getEventsByPlaygroundAndType(id, type);
     $.each(events, function (i, v) {
         var date=v.timeStart.split("@")[0];
         var timeStart=v.timeStart.split("@")[1];
         var timeEnd=v.timeEnd.split("@")[1]
-        tbl.append('<div class="panel-body" style="cursor: pointer;" ><a target="_blank" href="/event?eventId='+v.id+'">'+
+        tbl.append('<div class="list-group-item" style="cursor: pointer;" ><a target="_blank" href="/event/'+v.id+'">'+
             date+' с '+timeStart+' по '+ timeEnd+' зарегестрировано '+v.users.length+' участников</a></div>');
+        tbl.append('<div class="panel-heading"><a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
     });
 }
 
