@@ -2,6 +2,7 @@
 <head>
     <script type="text/javascript" th:src="@{/js/main.js}"></script>
 </head>
+
 <body>
 
 <th:block th:fragment="head">
@@ -29,6 +30,7 @@
 </th:block>
 <th:block th:fragment="nav">
     <!--<header>-->
+    <div id="topheader">
         <nav class="navbar  navbar-expand-lg navbar-dark green scrolling-navbar"
              style="margin-bottom:0;border-radius: 0">
             <span class="navbar-brand"><strong>Sport Games</strong></span>
@@ -41,6 +43,7 @@
                     <!--<li class="nav-item active">-->
                         <!--<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>-->
                     <!--</li>-->
+<<<<<<< HEAD
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Мои игры</a>
                     </li>
@@ -58,6 +61,22 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/stat">Статистика</a>
+=======
+                    <li class="nav-item" id="playground-item">
+                        <a class="nav-link topmenutext" href="/playgrounds">Площадки</a>
+                    </li>
+                    <li class="nav-item" id="sportevent-item">
+                        <a class="nav-link topmenutext" href="/sportevents" >События</a>
+                    </li>
+                    <!--<li class="nav-item" id="terminal-item">-->
+                        <!--<a class="nav-link topmenutext" href="/outdoorpanel">Терминал</a>-->
+                    <!--</li>-->
+                    <li class="nav-item" id="newevent-item">
+                        <a class="nav-link topmenutext" href="/addnewevent">Новое событие</a>
+                    </li>
+                    <li class="nav-item" id="satistic-item">
+                        <a class="nav-link topmenutext" href="/stat">Статистика</a>
+>>>>>>> johny
                     </li>
                 </ul>
                 <ul class="navbar-nav nav-flex-icons">
@@ -71,7 +90,14 @@
             </div>
 
         </nav>
+    </div>
     <!--</header>-->
 </th:block>
+<!--<script>-->
+    <!--$( '#topheader .navbar-nav a' ).on( 'click', function () {-->
+        <!--$( '#topheader .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );-->
+        <!--$( this ).parent( 'li' ).addClass( 'active' );-->
+    <!--});-->
+<!--</script>-->
 </body>
 </html>
