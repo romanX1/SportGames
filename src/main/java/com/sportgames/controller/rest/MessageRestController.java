@@ -1,7 +1,9 @@
 package com.sportgames.controller.rest;
 
 import com.sportgames.model.Message;
+import com.sportgames.model.User;
 import com.sportgames.service.MessageService;
+import com.sportgames.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -19,7 +21,8 @@ public class MessageRestController {
 
     @Autowired
     private MessageService messageService;
-
+    @Autowired
+    private UserService userService;
 //    @RequestMapping(method = RequestMethod.POST, value = "/say")
 //    public void say(@RequestBody Message message){
 //        messageService.add(message);
@@ -33,6 +36,8 @@ public class MessageRestController {
     @MessageMapping("/api/chatique/{eventId}")
     @SendTo("/event/{eventId}")
     public Message send(@DestinationVariable Long eventId, Message message) throws Exception{
+        User u=userService.findById(message.getUser().getId());
+        message.setUser(u);
         messageService.add(message);
         return message;
     }

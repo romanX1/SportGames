@@ -52,9 +52,9 @@
         var from = $('#currentUsed').val();
         var text = $('#MSGtext').val();
         $('#MSGtext').val("");
-
+        var user={'id':from};
         stompClient.send("/api/chatique/"+eventId, {},
-            JSON.stringify({'user':from, 'sportEvent': eventC, 'text':text, 'dateTime': new Date()}));
+            JSON.stringify({'user':user, 'sportEvent': eventC, 'text':text, 'dateTime': new Date()}));
     }
 
     function showMessageOutput(messageOutput) {
@@ -68,7 +68,7 @@
         str=dat+'/'+dd[2]+'/'+dd[0].toString().substring(2,4)+' '+dd[3]+':'+min;
         response.append('<div><small class="text-muted">' +
             str+' -</small> <strong>'+
-            messageOutput.user + ':</strong> '+
+            messageOutput.user.name + ':</strong> '+
             messageOutput.text+
             '</div>');
 
@@ -143,7 +143,7 @@
                     <div id="messages">
                         <div th:each="msg : ${messages}">
                             <small class="text-muted" th:text="${msg.dateTime.format(formatter)}+' - '"></small>
-                            <strong th:text="${msg.user}+': '"></strong>
+                            <strong th:text="${msg.user.name}+': '"></strong>
                             <th:block th:text="${msg.text}"></th:block>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
 <!-- Full Height Modal Right -->
 
 
-<input id="currentUsed" th:type="hidden" th:value="${user}"/>
+<input id="currentUsed" th:type="hidden" th:value="${user.getId()}"/>
 <script>
     getAndFillEventForModal(eventId);
 

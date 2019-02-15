@@ -15,8 +15,8 @@ public class Message {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private SportEvent sportEvent;
 
-    @JoinColumn(name="userName")
-    private String user;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private User user;
 
     @Column
     private String text;
@@ -28,7 +28,7 @@ public class Message {
     public Message() {
     }
 
-    public Message(String user, SportEvent event, String string, LocalDateTime dateTime) {
+    public Message(User user, SportEvent event, String string, LocalDateTime dateTime) {
         this.user = user;
         this.text = string;
         this.dateTime = dateTime;
@@ -50,11 +50,11 @@ public class Message {
         this.id = id;
     }
 
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
