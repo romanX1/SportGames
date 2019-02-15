@@ -30,13 +30,13 @@ public class TestData {
         Faker faker = new Faker(new Locale("ru"));
         List<Sport> allSports = sportService.getAll();
 
-        Playground pgk=new Playground("defaultPG");
-        pgk.setCoordinates(new Point(59.76565f, 30.42358f));
-        int sk1 = (int) (Math.random() * 7);
-        int sk2 = (int) (Math.random() * 7) + 7;
-        Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
-        pgk.setSports(ksports);
-        playgroundService.add(pgk);
+//        Playground pgk=new Playground("defaultPG");
+//        pgk.setCoordinates(new Point(59.76565f, 30.42358f));
+//        int sk1 = (int) (Math.random() * 7);
+//        int sk2 = (int) (Math.random() * 7) + 7;
+//        Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
+//        pgk.setSports(ksports);
+//        playgroundService.add(pgk);
 
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
@@ -65,7 +65,7 @@ public class TestData {
             List<Sport> pgsports = new ArrayList<>(pg.getSports());
             int g = pgsports.size() != 1 ? i % (pgsports.size() - 1) : 0;
             spe.setSport(pgsports.get(g));
-            LocalDateTime ldStart = LocalDateTime.of(2019,  2, (int) (Math.random() * 13 + 15), (int) (Math.random() * 23), (int) (Math.random() * 59));
+            LocalDateTime ldStart = LocalDateTime.of(2019,  2, 16, (int) (Math.random() * 23), (int) (Math.random() * 59));
             LocalDateTime ldEnd = ldStart.plusMinutes((int) (Math.random() * 75 + 30));
             spe.setTimeStart(ldStart);
             spe.setTimeEnd(ldEnd);

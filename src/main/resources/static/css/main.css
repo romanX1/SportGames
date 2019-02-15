@@ -4,6 +4,16 @@
     /*overflow: auto;*/
 /*}*/
 
+body{
+    background: whitesmoke;
+}
+
+.supersize {
+    min-width: 95%!important;
+    min-height: 95%!important;
+    width: 100%!important;
+    height: 100%!important;
+}
 .closebutton3 {
     position: relative;
     left: 200px;

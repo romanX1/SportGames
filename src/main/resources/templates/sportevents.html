@@ -10,16 +10,22 @@
 <div class="container" style="padding-top: 50px;">
 
     <div id="showMap" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="   min-width: 95%!important;
+    min-height: 95%!important;
+    width: 100%!important;
+    height: 100%!important;">
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content supersize">
                 <div class="modal-header">
                     <button id="map_supply_close" type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <div class="modal-body" id="map_modal_bd">
+                <div class="modal-body" style="   min-width: 95%!important;
+    min-height: 95%!important;
+    width: 100%!important;
+    height: 100%!important;" id="map_modal_bd">
 
-                    <div class="map-block" id="map"></div>
+                    <div class="map-block supersize" id="map"></div>
 
                 </div>
 
@@ -32,8 +38,8 @@
             <div class="card-body text-success">
                 <h5 class="card-title">выберите событие</h5>
                 <p class="card-text">
-                    <button type="button" style="float: right;padding:0" class="btn btn-success firstbutton" daПоказать адреса на ta-toggle="modal"
-                        th:onclick="'setPGs();'" data-target="#showMap">карте
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                        th:onclick="'setPGs();'" data-target="#showMap">Показать адреса на карте
                     </button>
                 <table class="sort table table-striped"  align="center">
                     <thead class="text-white light-green lighten-1">
