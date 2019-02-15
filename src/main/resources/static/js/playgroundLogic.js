@@ -101,7 +101,7 @@ function setEventsForPlaygrond(id, type){
         var date=v.timeStart.split("@")[0];
         var timeStart=v.timeStart.split("@")[1];
         var timeEnd=v.timeEnd.split("@")[1]
-        tbl.append('<div class="panel-body" style="cursor: pointer;" ><a target="_blank" href="/event?eventId='+v.id+'">'+
+        tbl.append('<div class="panel-body" style="cursor: pointer;" ><a target="_blank" href="/event/'+v.id+'">'+
             date+' с '+timeStart+' по '+ timeEnd+' зарегестрировано '+v.users.length+' участников</a></div>');
     });
 }
