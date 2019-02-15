@@ -47,6 +47,7 @@
     function sendMessage() {
         var from = $('#currentUsed').val();
         var text = $('#MSGtext').val();
+        $('#MSGtext').val("");
 
         stompClient.send("/api/chatique/"+eventId, {},
             JSON.stringify({'user':from, 'sportEvent': eventC, 'text':text, 'dateTime': new Date()}));
@@ -54,14 +55,22 @@
 
     function showMessageOutput(messageOutput) {
         var response = $('#messages');
-        response.append('<div>' +
-            messageOutput.dateTime+' - '+
-            messageOutput.user + ': '+
+        var dd=messageOutput.dateTime;
+        var str;
+        var hh=new Date().getHours();
+        var ampm = hh >= 12 ? 'PM' : 'AM';
+        var dat=dd[1].toString().length ==1 ?"0"+dd[1] : dd[1];
+        var min=dd[4].toString().length ==1?"0"+dd[4]:dd[4];
+        str=dat+'/'+dd[2]+'/'+dd[0].toString().substring(2,4)+' '+dd[3]+':'+min;
+        response.append('<div><small class="text-muted">' +
+            str+' -</small> <strong>'+
+            messageOutput.user + ':</strong> '+
             messageOutput.text+
             '</div>');
 
     }
     connect();
+
 </script>
 <script type="text/javascript" src="/js/eventController.js"></script>
 <div th:replace="fragments::nav"/>
@@ -77,38 +86,81 @@
         <h2>
             <td th:text="${sportEvent.sport.type}">...</td>
         </h2>
-        <td th:text="${sportEvent.timeStart}">...</td>
-        <td th:text="${sportEvent.timeEnd}">....</td>
-        <p></p>
-        <button type="button" th:onclick="'getAuth('+ ${sportEvent.id} +')'">
+        <tr id="eventDates">
+        <td th:text="${eventDateStart}">...</td>
+        <td th:text="${eventDateEnd}">....</td>
+            <br/>
+        </tr>
+        <button class="btn btn-success waves-effect waves-light" type="button" th:onclick="'getAuth('+ ${sportEvent.id} +')'">
             Добавиться в это событие
         </button>
-        <button type="button" th:onclick="'deleteAuth('+ ${sportEvent.id} +')'">
+        <button class="btn btn-danger waves-effect waves-light" type="button" th:onclick="'deleteAuth('+ ${sportEvent.id} +')'">
             Удалиться из этого события
         </button>
+        <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">Открыть чат</button>
+
     </center>
     <center>
         <h1 >
             Список участников
         </h1>
+
         <table align="center"  class="table table-dark table-striped">
             <!--</td>-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<td>Участники</td>-->
+            <!--</tr>-->
+            <!--</thead>-->
             <tbody id="user-trs">
             </tbody>
 
         </table>
-        <div id="chatique">
-            <div id="messages">
-            <div th:each="msg : ${messages}" th:text="${msg.dateTime+' - '+msg.user+': '+msg.text}"></div>
-            </div>
-            <div>
-                <textarea rows="3" id="MSGtext"></textarea>
-                <button type="button" value="Отправить" onclick="sendMessage()"></button>
-            </div>
-        </div>
+
     </center>
 </div>
+<!-- Full Height Modal Right -->
+<div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+        <div class="modal-content" id="mdcontent">
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">Чат участников</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="max-height: 450px;overflow: auto">
+                <div id="chatique">
+                    <div id="messages">
+                        <div th:each="msg : ${messages}">
+                            <small class="text-muted" th:text="${msg.dateTime.format(formatter)}+' - '"></small>
+                            <strong th:text="${msg.user}+': '"></strong>
+                            <th:block th:text="${msg.text}"></th:block>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <div>
+                    <textarea rows="1" id="MSGtext"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="sendMessage()">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Full Height Modal Right -->
+
+
 <input id="currentUsed" th:type="hidden" th:value="${user}"/>
-<script>getAndFillEventForModal(eventId)</script>
+<script>
+    getAndFillEventForModal(eventId);
+</script>
 </body>
 </html>

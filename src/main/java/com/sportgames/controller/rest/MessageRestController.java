@@ -33,10 +33,8 @@ public class MessageRestController {
     @MessageMapping("/api/chatique/{eventId}")
     @SendTo("/event/{eventId}")
     public Message send(@DestinationVariable Long eventId, Message message) throws Exception{
-        System.out.println("Got message");
         messageService.add(message);
-        String time=LocalDateTime.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy@HH:mm:ss"));
-        return new Message(message.getUser(), message.getSportEvent(), message.getText(), LocalDateTime.now());
+        return message;
     }
 
 

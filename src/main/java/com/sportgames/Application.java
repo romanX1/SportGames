@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.socket.sockjs.frame.Jackson2SockJsMessageCodec;
 
 @EntityScan(
         basePackageClasses = {Application.class, Jsr310JpaConverters.class}
@@ -26,7 +27,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-//
+
 //    @Bean(initMethod = "initSports")
 //    public AddSportsToBase initAddSportsToBase(){
 //        return new AddSportsToBase();

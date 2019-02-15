@@ -28,7 +28,6 @@ public class TestData {
         usersData();
 
         Faker faker = new Faker(new Locale("ru"));
-
         List<Sport> allSports = sportService.getAll();
 
         Playground pgk=new Playground("defaultPG");

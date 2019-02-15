@@ -25,7 +25,6 @@ public interface EventDAO extends JpaRepository<SportEvent, Long> {
             "HERE user.id = :id")
     List<SportEvent> getAllByUsersId(@Param("id") Long id);
 
-
     List<SportEvent> getAllByPlaygroundIdAndSportType(Long id, String type);
 
     @Query(value = "SELECT event FROM SportEvent event " +
