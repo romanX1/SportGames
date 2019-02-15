@@ -97,6 +97,9 @@
     background: white!important;
 }
 
+.active-item {
+    background: #7ad07d;
+}
 .mainmenu {
     width: 400px!important;
     height:500px;
