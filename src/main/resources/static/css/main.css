@@ -124,6 +124,7 @@
 }
 
 .leftmenutext {
+    text-align: center;
     font-size: 15px;
     position: relative;
     left: -12px;
@@ -311,5 +312,15 @@
 .login-help {
     width: 100%;
     text-align: center;
-    font-size: 12px;
+    font-size: 12px ;
+}
+
+.active{
+    color:white!important;
+    background:#388e3c!important;
+}
+
+.lalala1:hover {
+    color:white!important;
+
 }

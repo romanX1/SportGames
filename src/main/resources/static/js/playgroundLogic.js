@@ -10,6 +10,10 @@ function playGroundsByType(typeId, typeName) {
             playgrounds['data'] = data;
         }
     });
+    $('.sidenav li').removeClass('active');
+    $('#spt'+typeId).addClass('active');
+
+
     return playgrounds;
 }
 
@@ -44,8 +48,8 @@ function setPGs(data) {
         "                        </button>");
 
     $.each(data['data'], function (i, v) {
-        console.log('added address');
-        tbl.append('<div class="list-group-item menutext" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
+
+        tbl.append('<div class="list-group-item menutext lalala1" id="pgi'+v.id+'" style="cursor: pointer;" onclick="setEventsForPlaygrond('+v.id+',\''+data['type']+'\')"><a>'+v.address+'</a></div>');
     });
 }
 
@@ -98,6 +102,8 @@ function supplyPlayground() {
 }
 
 function setEventsForPlaygrond(id, type){
+    $('.lalala1').removeClass('active');
+    $('#pgi'+id).addClass('active');
     var tbl= $('#pg_tbl_2');
     tbl.empty();
     tbl.append('<div class="panel-heading"><a href="/addnewevent?id='+id+'&type='+type+'" type="button" class="btn btn-success" style="float: right;padding: 0 0.5% 0 0.5%;" data-toggle="modal">Добавить событие</a></div>');
