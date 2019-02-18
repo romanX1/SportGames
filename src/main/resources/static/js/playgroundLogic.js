@@ -40,11 +40,11 @@ function setPGs(data) {
     // $("#map_modal_h4").append(data['type']);
     tbl.empty();
     tbl.append('<div class="panel-heading"></div>');
-    $('#thead_sport').html("<button type=\"button\" style=\"float: right;padding:0\" class=\"btn btn-success firstbutton\" data-toggle=\"modal\"" +
+    $('#thead_sport').html("<button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\"" +
         "                                data-target=\"#addPG\">Предложить площадку" +
         "                        </button>" +
-        "<button type=\"button\" style=\"float:right;padding:0;display:inline-block;margin-right:2px\"\n" +
-        "                                class=\"btn btn-success secondbutton\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте\n" +
+        "<button type=\"button\" " +
+        "                                class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#showMap\">Показать на карте\n" +
         "                        </button>");
 
     $.each(data['data'], function (i, v) {
@@ -67,8 +67,8 @@ function supplyPlayground() {
 
     coordinates = $(coordinates.split(','))
     let point = {
-        'x' : Number.parseFloat(coordinates[1]),
-        'y' : Number.parseFloat(coordinates[0])
+        'x' : Number.parseFloat(coordinates[0]),
+        'y' : Number.parseFloat(coordinates[1])
     };
     let playground = {
         'address': formsAddr,

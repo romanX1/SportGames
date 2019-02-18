@@ -1,12 +1,12 @@
 .sidenav {
     height: 100%;
-    width: 220px;
     position: relative;
+    width: 100%;
     z-index: 1;
     left: 0;
-    /*background-color: #111;*/
-    /*background-color: #4bc174;*/
     overflow-x: hidden;
+    color:white;
+    text-align:center;
 }
 
 .sidenav li {
@@ -24,11 +24,6 @@
 .sidenav .active{
     background: #388e3c;
     box-shadow: #666666;
-}
-
-.main {
-    width: 100%;
-    margin-left: 150px; /* Same as the width of the sidenav */
 }
 
 @media screen and (max-height: 450px) {

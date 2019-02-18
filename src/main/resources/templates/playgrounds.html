@@ -29,8 +29,8 @@
         <div class="col-lg-2">
         <div class="sidenav green lighten-2" >
             <div class="green lighten-2">
-                <h3 class="font-weight-bold cyan-lighter-hover mb-3 maintext">Виды спорта</h3>
-                <ul style="padding-left: 7%; ">
+                <h3 class="font-weight-bold cyan-lighter-hover mt-3">Виды спорта</h3>
+                <ul style="padding-left: 0; ">
                     <a th:each="sport : ${sports}" th:onclick="'setPGs(playGroundsByType('+${sport.id}+', \''+${sport.type}+'\'));'"
                        class="leftmenutext">
                     <li  style="cursor: pointer" th:id="'spt'+${sport.id}" th:text="${sport.type}" class="lalala">
@@ -44,22 +44,22 @@
             </div><!-- /#sidebar-wrapper -->
         </div>
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-10">
         <div class="main">
             <div id="page-content-wrapper">
                 <div class="container-fluid xyz">
                     <div id="thead_sport" style="margin:0.8%" class="row">
-                        <button type="button" style="float: right;padding:0" class="btn btn-success firstbutton" data-toggle="modal"
+                        <button type="button" data-toggle="modal" class="btn btn-success"
                                 data-target="#addPG">Предложить площадку
                         </button>
-                        <button type="button" style="float:right;padding:0;display:inline-block;margin-right:2px"
-                                class="btn btn-success secondbutton" data-toggle="modal" data-target="#showMap">Показать на карте
+                        <button type="button"
+                                class="btn btn-success" data-toggle="modal" data-target="#showMap">Показать на карте
                         </button>
                     </div>
 
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="card bg-light mb-3" style="max-width: 40rem;">
+                                <div class="card bg-light mb-3" >
                                     <table id="table_1" class="table table-striped">
                                         <thead class="text-white light-green lighten-1">
                                     <div class="card-header">Площадки</div>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="card bg-light mb-3" style="max-width: 40rem;">
+                                <div class="card bg-light mb-3" >
                                     <div class="card-header">Расписание и участники</div>
                                     <div class="card-body">
                                         <h11 class="card-title">Выберите подходящее расписание</h11>

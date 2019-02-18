@@ -4,52 +4,55 @@
 </head>
 <div th:replace="fragments::nav"/>
 <body onload="activateItem('newevent-item')">
-<div class="container" style="padding-top: 50px;">
-    <div class="row">
-        <div class="card border-success mb-3" style="width: 400rem;">
+
+    <div class="container" style="padding-top: 50px;">
+        <center>
+        <div class="card border-success mb-3 col-lg-4">
             <div class="card-header">Новое событие</div>
             <div class="card-body text-success">
                 <div class="card-text">
                     <form th:action="@{/addnewevent}" method="post" id="formAdd">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Выбрать площадку</div>
-                        <div class="panel-body">
-                            <select class="form-control" id="exampleFormControlSelect1" name="selectGround"
-                                    style="width: fit-content">
+                        <div class="input-group mb-3">
+                            <select class="browser-default custom-select" id="exampleFormControlSelect1"
+                                    name="selectGround"
+                                    style="width: fit-content;    max-width: 100%;" placeholder="Выбрать площадку">
                                 <option th:each="playground:${playgrounds}" th:text="${playground.address}"
                                         th:value="${playground.id}"></option>
                             </select>
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Выбрать вид спорта</div>
-                        <div class="panel-body">
-                            <select class="form-control" id="exampleFormControlSelect" name="selectSport"
-                                    style="width: fit-content">
+                        <div class="input-group mb-3">
+
+                            <select class="browser-default custom-select" id="exampleFormControlSelect"
+                                    name="selectSport"
+                                    style="width: fit-content;    max-width: 100%;" placeholder="Выбрать вид спорта">
                                 <option th:each=" sport :${sports}" th:text="${sport.type}"
                                         th:value="${sport.id}"></option>
                             </select>
+
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Выберите дату</div>
-                        <div class="panel-body">
-                            <input type="date" name="data"/>
-                            <h4> Время начала:</h4>
-                            <input type="time" name="timeStart"/>
-                            <h4> Время завершения:</h4>
-                            <input type="time" name="timeEnd"/>
+
+                            <label for="d1">Дата мероприятия</label>
+                            <div class="input-group mb-3"><input id="d1" class="form-control timepicker"  type="date" name="data"/>
+                        </div>
+
+                            <label for="d2"> Время начала:</label>
+
+
+                            <div class="input-group mb-3"> <input id="d2" class="form-control timepicker" type="time" name="timeStart"/></div>
+
+                            <label for="d3"> Время завершения:</label>
+                            <div class="input-group mb-3">
+                            <input id="d3" class="form-control timepicker" type="time" name="timeEnd"/>
                         </div>
                         <!--<div class="container">-->
                         <input type="submit" form="formAdd" class="btn btn-primary btn-lg" value="Создать событие"/>
                         <!--</div>-->
-                    </div>
-                </form>
 
+                    </form>
+
+                </div>
             </div>
-        </div>
+        </div></center>
     </div>
-</div>
-</div>
 </body>
 </html>

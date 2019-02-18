@@ -9,7 +9,7 @@ function getAuth(id) {
             //$(event.users).each(function (i, user) {
             $("#user-trs").append(
                 "<tr id=" + user.id + ">" +
-                "   <td>" + user.name + "</td>" +
+                "   <td style='font-size: 1.8em;'>" + user.name + "</td>" +
                 "</tr>"
             );
             // })
@@ -79,7 +79,7 @@ function fillEventToModal(event) {
     $(event.users).each(function (i, user) {
         $("#user-trs").append(
             "<tr id=" + user.id + ">" +
-            "   <td>" + user.name + "</td>" +
+            "   <td style='font-size: 1.8em;'>" + user.name + "</td>" +
             "</tr>"
         );
     })

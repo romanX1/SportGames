@@ -109,7 +109,7 @@ public class HelloController {
         LocalDateTime dataTimeStart = LocalDateTime.parse(startTime, formatter);
         LocalDateTime dataTimeEnd = LocalDateTime.parse(endTime, formatter);
         Sport sport = sportService.findById(sportId);
-        eventService.add(new SportEvent(sport, dataTimeEnd, dataTimeStart, playground));
+        eventService.add(new SportEvent(sport, dataTimeStart, dataTimeEnd, playground));
         return "redirect:/playgrounds";
     }
 

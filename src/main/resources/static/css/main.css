@@ -112,7 +112,7 @@ body{
 }
 
 .active-item {
-    background: #7ad07d;
+    background: #094b0982;
 }
 .mainmenu {
     width: 400px!important;
@@ -128,10 +128,9 @@ body{
 }
 
 .maintext {
-    font-size: 20px;
+    text-align: center;
+    font-size: 17px;
     position: relative;
-    left: 30px;
-    top: 10px;
     color: white;
     font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
 }
@@ -140,10 +139,10 @@ body{
     text-align: center;
     font-size: 15px;
     position: relative;
-    left: -12px;
+
     top: 10px;
     font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
-    letter-spacing:0.1em;
+
 }
 
 .leftmenutext:hover {
@@ -211,7 +210,7 @@ body{
 
 .tr-link:hover {
     color: black !important;
-    background-color: #dcedc8 !important;
+    background-color: #094b0957 !important;
 }
 
 .login_body {

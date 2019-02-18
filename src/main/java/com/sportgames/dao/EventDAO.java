@@ -18,7 +18,7 @@ public interface EventDAO extends JpaRepository<SportEvent, Long> {
     List<SportEvent> getAllByPlaygroundAddress(String adr);
 
     List<SportEvent> getAllByPlaygroundId(Long id);
-    @Query(value = "select ev from SportEvent ev join ev.playground as pg where pg.id=:id and ev.timeStart between :ts and :te")
+    @Query(value = "select ev from SportEvent ev join ev.playground as pg where pg.id=:id and ev.timeStart between :ts and :te ORDER BY ev.timeStart")
     List<SportEvent> getActualEventsByPG(@Param("id") Long id, @Param("ts") LocalDateTime ts, @Param("te") LocalDateTime te);
 
     @Query(value = "SELECT ev FROM SportEvent ev " +
@@ -35,7 +35,7 @@ public interface EventDAO extends JpaRepository<SportEvent, Long> {
     @Query(value = "SELECT play.sport FROM SportEvent play")
     List<Sport> getAllSport();
 
-    @Query(value = "SELECT play.sport FROM SportEvent play JOIN play.playground as pg WHERE play.timeStart BETWEEN :ts AND :te")
+    @Query(value = "SELECT play.sport FROM SportEvent play JOIN play.playground as pg WHERE play.timeStart BETWEEN :ts AND :te ")
     List<Sport> getSportInTimes(@Param("ts") LocalDateTime ts, @Param("te") LocalDateTime te);
 
     @Query(value = "SELECT COUNT(play.id) FROM SportEvent play JOIN play.playground as pg WHERE play.timeStart BETWEEN :ts AND :te")
