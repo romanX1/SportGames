@@ -1,7 +1,5 @@
 package com.sportgames.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -20,8 +18,7 @@ public class Message {
 
     @Column
     private String text;
-//                                                            2019-02-15T00:14:47.781Z
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.SSSZ", locale="ru")
+
     @Column
     private LocalDateTime dateTime;
 

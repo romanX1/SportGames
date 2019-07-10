@@ -30,14 +30,6 @@ public class TestData {
         Faker faker = new Faker(new Locale("ru"));
         List<Sport> allSports = sportService.getAll();
 
-//        Playground pgk=new Playground("defaultPG");
-//        pgk.setCoordinates(new Point(59.76565f, 30.42358f));
-//        int sk1 = (int) (Math.random() * 7);
-//        int sk2 = (int) (Math.random() * 7) + 7;
-//        Set<Sport> ksports = new HashSet<>(allSports.subList(Math.min(sk1, sk2), Math.max(sk1, sk2)));
-//        pgk.setSports(ksports);
-//        playgroundService.add(pgk);
-
         for (int i = 0; i < 30; i++) {
             Playground pg = new Playground(faker.address().streetAddress());
             float dX = (float)(0.4 * Math.random()) + 59.7f;

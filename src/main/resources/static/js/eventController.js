@@ -6,13 +6,13 @@ function getAuth(id) {
         async: false,
         success: function (user) {
 
-            //$(event.users).each(function (i, user) {
+
             $("#user-trs").append(
                 "<tr id=" + user.id + ">" +
                 "   <td style='font-size: 1.8em;'>" + user.name + "</td>" +
                 "</tr>"
             );
-            // })
+
         },
 
         error: function (error) {

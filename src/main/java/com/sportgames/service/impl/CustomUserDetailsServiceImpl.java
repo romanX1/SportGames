@@ -14,11 +14,6 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDAO userDAO;
 
-//    @Autowired
-//    public CustomUserDetailsServiceImpl(UserDAO userDAO) {
-//        this.userDAO = userDAO;
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = userDAO.findByLogin(s);

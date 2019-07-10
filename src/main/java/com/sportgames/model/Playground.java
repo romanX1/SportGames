@@ -14,15 +14,15 @@ public class Playground {
     private Long id;
 
     @Column (name = "address", unique = true, nullable = false)
-    private String address; //Адрес площадки
+    private String address;
 
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="pointId")
-    private Point coordinates; //Адрес площадки
+    private Point coordinates;
 
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Set<Sport> sports; // Виды спорта, поддерживаемые площадкой
+    private Set<Sport> sports;
 
     public Playground(){}
 

@@ -30,7 +30,6 @@ public class OutdoorController {
         ModelAndView mav = new ModelAndView("outdoorpanel");
         Playground pg = pgService.findById(id);
         LocalDateTime ds=LocalDateTime.now();
-//        .withHour(0).withMinute(0).withSecond(0);
         LocalDateTime de=LocalDateTime.now().withHour(23).withMinute(59).withSecond(59);
         mav.addObject("events", seService.getActualEventsByPG(id, ds, de));
         mav.addObject("address", pg.getAddress());

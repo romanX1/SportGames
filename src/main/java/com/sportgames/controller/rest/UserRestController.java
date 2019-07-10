@@ -31,7 +31,6 @@ public class UserRestController {
 
     @GetMapping("/point")
     public String getgeo(HttpServletRequest req){
-//        String ip=req.getHeader("X-FORWARDED-FOR");
         String ip=req.getRemoteAddr();
         ip+="\n"+req.getLocalAddr();
         ip+="\n"+req.getRemoteHost();

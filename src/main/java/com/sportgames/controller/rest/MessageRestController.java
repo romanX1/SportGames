@@ -23,15 +23,6 @@ public class MessageRestController {
     private MessageService messageService;
     @Autowired
     private UserService userService;
-//    @RequestMapping(method = RequestMethod.POST, value = "/say")
-//    public void say(@RequestBody Message message){
-//        messageService.add(message);
-//    }
-//
-//    @GetMapping("/get/{eventId}")
-//    public List<Message> getByEvent(@PathVariable Long eventId){
-//        return messageService.findBySportEventId(eventId);
-//    }
 
     @MessageMapping("/api/chatique/{eventId}")
     @SendTo("/event/{eventId}")
